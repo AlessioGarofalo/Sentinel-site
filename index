@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentinel Global Awareness Map</title>
+    <link rel="icon" type="image/png" href="./assets/sentinel-favicon.png?v=20260526-logo-cut-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260529-region-buttons-1" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="map-stage" aria-label="Sentinel global awareness map">
+        <svg id="operational-map" class="operational-map" viewBox="0 0 1600 1000" aria-label="Global awareness map">
+          <defs>
+            <filter id="asset-glow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <g id="map-viewport">
+            <g id="graticule-layer"></g>
+            <g id="country-layer"></g>
+            <g id="weather-layer"></g>
+            <g id="region-layer"></g>
+            <g id="alliance-layer"></g>
+            <g id="conflict-layer"></g>
+            <g id="pressure-layer"></g>
+            <g id="route-layer"></g>
+            <g id="event-layer"></g>
+          </g>
+        </svg>
+
+        <div class="map-crosshair" aria-hidden="true"></div>
+        <div class="weather-hover-readout" id="weather-hover-readout" aria-hidden="true"></div>
+        <section class="legend-feed-widget collapsed" id="legend-feed-widget" aria-label="Map auxiliary monitor">
+          <div class="legend-feed-title">
+            <span>MAP_AUX</span>
+            <button id="toggle-aux-widget" type="button" aria-label="Expand map auxiliary monitor">+</button>
+          </div>
+          <div class="legend-feed-body">
+            <div class="temperature-legend" aria-label="Temperature and pressure legend">
+              <strong>TEMP / PRESSURE</strong>
+              <label class="weather-toggle"><input data-weather-overlay type="checkbox" /> Weather overlay</label>
+              <span>40C</span>
+              <div class="legend-gradient"></div>
+              <span>-30C</span>
+            </div>
+            <small class="pressure-note">H/L markers show high or low pressure systems in hPa. White rings approximate pressure fields.</small>
+            <section class="feed-monitor" id="feed-monitor" aria-label="Connected live feeds"></section>
+          </div>
+        </section>
+        <section class="map-event-popup hidden" id="map-event-popup" aria-live="polite"></section>
+        <section class="key-modal hidden" id="key-modal" aria-live="polite" aria-label="Secret key management"></section>
+        <section class="file-modal hidden" id="file-modal" aria-live="polite" aria-label="Private file management"></section>
+        <section class="ai-settings-modal hidden" id="ai-settings-modal" aria-live="polite" aria-label="AI settings"></section>
+        <section class="mode-modal hidden" id="mode-modal" aria-live="polite" aria-label="Sentinel operating mode workspace"></section>
+        <section class="stream-modal hidden" id="stream-modal" aria-live="polite" aria-label="Streaming source viewer"></section>
+      </section>
+
+      <header class="top-bar">
+        <div>
+          <div class="title-row">
+            <div class="brand-command">
+              <h1 class="brand-wordmark"><img class="brand-mark" src="./assets/sentinel-mark.png?v=20260526-logo-cut-1" alt="Sentinel mark" /><span>entinel</span></h1>
+              <div class="voice-button-row">
+                <button id="voice-toggle" class="voice-toggle" type="button" aria-pressed="false" title="Voice mode">VOICE</button>
+                <button id="ai-memory-clear" class="ai-memory-clear" type="button" title="Clear Sentinel AI memory">CLEAR MEMORY</button>
+              </div>
+            </div>
+            <div id="voice-wave" class="voice-wave" aria-live="polite" aria-label="Voice activity monitor">
+              <div class="voice-sphere" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <em>VOICE STANDBY</em>
+            </div>
+          </div>
+        </div>
+        <div class="top-control-stack">
+          <div class="mode-switch" role="group" aria-label="Time window">
+            <button class="mode-button active" data-window="24h" type="button">24H</button>
+            <button class="mode-button" data-window="72h" type="button">72H</button>
+            <button class="mode-button" data-window="30d" type="button">30D</button>
+            <button class="mode-button refresh-button" id="refresh-all" type="button">REFRESH</button>
+          </div>
+          <div class="settings-switch" role="group" aria-label="Sentinel settings">
+            <button class="mode-button visibility-button active" id="global-ui-toggle" type="button" aria-pressed="true" title="Show interface panels">
+              <span class="eye-glyph" aria-hidden="true"></span>
+              <span class="sr-only">Toggle interface panels</span>
+            </button>
+            <button class="mode-button ai-settings-button" id="ai-settings-toggle" type="button">AI SETTINGS</button>
+            <button class="mode-button key-button" id="key-manager-toggle" type="button">KEYS</button>
+            <button class="mode-button file-button" id="file-manager-toggle" type="button">FILES</button>
+          </div>
+        </div>
+      </header>
+
+      <aside class="left-panel control-panel collapsed" aria-label="Map filters">
+        <div class="panel-header">
+          <span>MAP_VIEW</span>
+          <button id="wiki-mode-toggle" class="wiki-mode-toggle" type="button" aria-pressed="false" title="Country wiki mode">i</button>
+          <button class="panel-collapse" data-panel-toggle="left" type="button" aria-label="Expand left panel">›</button>
+          <strong id="selected-view">COMMON</strong>
+        </div>
+        <div class="map-toggle-row">
+          <label class="map-toggle"><input data-map-toggle="alliance-mode" type="checkbox" /> Alliance view</label>
+          <label class="map-toggle"><input data-map-toggle="conflict" type="checkbox" /> In conflict</label>
+        </div>
+        <div class="view-grid">
+          <button class="view-button continent-view-button active" data-view="global" type="button">
+            <span>GLOBAL</span>
+            <small>World signals</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="northAmerica" type="button">
+            <span>N AMER</span>
+            <small>North America</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="southAmerica" type="button">
+            <span>S AMER</span>
+            <small>South America</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="europe" type="button">
+            <span>EUROPE</span>
+            <small>Europe</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="africa" type="button">
+            <span>AFRICA</span>
+            <small>Africa</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="asia" type="button">
+            <span>ASIA</span>
+            <small>Asia</small>
+          </button>
+          <button class="view-button continent-view-button" data-view="oceania" type="button">
+            <span>OCEANIA</span>
+            <small>Oceania</small>
+          </button>
+          <button class="view-button alliance-view-button hidden active" data-alliance="all" type="button"><span>ALL</span><small>All alliances</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="nato" type="button"><span>NATO</span><small>Military</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="eu" type="button"><span>EU</span><small>Economic</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="g7" type="button"><span>G7</span><small>Economic</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="brics" type="button"><span>BRICS</span><small>Economic</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="asean" type="button"><span>ASEAN</span><small>Economic</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="gcc" type="button"><span>GCC</span><small>Economic</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="au" type="button"><span>AU</span><small>African Union</small></button>
+          <button class="view-button alliance-view-button hidden" data-alliance="quad" type="button"><span>QUAD</span><small>Security</small></button>
+        </div>
+
+        <div class="layer-block">
+          <div class="layer-heading">
+            <p class="section-label">PUBLIC_LAYERS</p>
+            <span>
+              <button data-layer-action="all" type="button">All</button>
+              <button data-layer-action="none" type="button">None</button>
+            </span>
+          </div>
+          <div class="layer-columns">
+            <div class="layer-column">
+              <span>SIGNALS</span>
+              <label><input data-layer="politics" type="checkbox" /> Politics</label>
+              <label><input data-layer="security" type="checkbox" /> Security</label>
+              <label><input data-layer="finance" type="checkbox" /> Finance</label>
+              <label><input data-layer="business" type="checkbox" /> Business</label>
+              <label><input data-layer="energy" type="checkbox" /> Energy</label>
+              <label><input data-layer="weather" type="checkbox" /> Weather</label>
+              <label><input data-layer="technology" type="checkbox" /> Technology</label>
+              <label><input data-layer="health" type="checkbox" /> Health</label>
+              <label><input data-layer="sports" type="checkbox" /> Sports</label>
+              <label><input data-layer="culture" type="checkbox" /> Culture</label>
+              <label><input data-layer="disaster" type="checkbox" /> Disasters</label>
+              <label><input data-layer="infrastructure" type="checkbox" /> Infrastructure</label>
+            </div>
+            <div class="layer-column">
+              <span>SENSORS</span>
+              <label><input data-layer="camera" type="checkbox" /> Cameras</label>
+              <label><input data-layer="broadcast" type="checkbox" /> Broadcasts</label>
+              <label><input data-layer="sensor" type="checkbox" /> Air Quality</label>
+              <label><input data-layer="moving_asset" type="checkbox" /> Moving Assets</label>
+            </div>
+          </div>
+        </div>
+        <div class="left-event-block">
+          <p class="section-label">IMPACT_SIGNALS</p>
+          <small class="impact-note">Impact scale I1-I5; I5 is the most impactful.</small>
+          <div class="asset-list" id="event-list"></div>
+        </div>
+      </aside>
+
+      <aside class="right-panel telemetry-panel collapsed" aria-label="Signal telemetry">
+        <div class="panel-header">
+          <span>SIGNAL_STATUS</span>
+          <button class="panel-collapse" data-panel-toggle="right" type="button" aria-label="Expand right panel">‹</button>
+          <strong id="sync-clock">--:--:--Z</strong>
+        </div>
+        <div class="metric-grid">
+          <article>
+            <span>Signals</span>
+            <strong id="metric-tracks">00</strong>
+          </article>
+          <article>
+            <span>Live</span>
+            <strong id="metric-live">00</strong>
+          </article>
+          <article>
+            <span>High Impact</span>
+            <strong id="metric-impact">00</strong>
+          </article>
+          <article>
+            <span>Quality</span>
+            <strong id="metric-region">ALL</strong>
+          </article>
+        </div>
+        <div class="correlation-panel" id="correlation-panel" aria-label="Signal correlations"></div>
+        <section class="briefing-panel" id="briefing-panel" aria-label="Draft intelligence briefing"></section>
+      </aside>
+
+      <section class="chatter-strip collapsed" id="chatter-strip" aria-label="Public chatter pulse">
+        <div class="chatter-head">
+          <button class="pulse-collapse" data-pulse-toggle="chatter" type="button" aria-label="Expand chatter pulse">+</button>
+          <span>CHATTER_PULSE</span>
+          <strong id="chatter-status">OPEN_WEB</strong>
+        </div>
+        <div class="chatter-tape" id="chatter-tape"></div>
+        <section class="chatter-popup hidden" id="chatter-popup" aria-live="polite"></section>
+      </section>
+
+      <section class="market-strip collapsed" id="market-strip" aria-label="Live market pulse">
+        <div class="market-head">
+          <button class="pulse-collapse" data-pulse-toggle="market" type="button" aria-label="Expand market pulse">+</button>
+          <span>MARKET_PULSE</span>
+          <strong id="market-status">ALPHAVANTAGE</strong>
+        </div>
+        <div class="market-tape" id="market-tape"></div>
+        <form id="market-form" class="market-search">
+          <label for="market-input">Market lookup</label>
+          <input id="market-input" autocomplete="off" placeholder="symbol / company / commodity ETF" />
+        </form>
+        <section class="market-popup hidden" id="market-popup" aria-live="polite"></section>
+      </section>
+
+      <section class="reserved-strip collapsed" id="reserved-strip" aria-label="Google search trends pulse">
+        <div class="reserved-head">
+          <button class="pulse-collapse" data-pulse-toggle="reserved" type="button" aria-label="Expand reserved pulse">+</button>
+          <span>SEARCH_TRENDS</span>
+          <strong id="reserved-status">GOOGLE</strong>
+        </div>
+        <div class="reserved-tape" id="reserved-tape"></div>
+        <section class="trends-popup hidden" id="trends-popup" aria-live="polite"></section>
+      </section>
+
+      <footer class="console-strip" aria-label="Sentinel AI workspace">
+        <form id="command-form">
+          <label class="sr-only" for="command-input">Ask Sentinel AI</label>
+          <input id="command-input" autocomplete="off" placeholder="ask Sentinel AI" />
+          <button class="sentinel-mode-button daily-intel-icon" data-mode-workspace="daily" type="button" aria-label="Open Shift Analyzer" title="Shift Analyzer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 19h16" />
+              <path d="M7 16V9" />
+              <path d="M12 16V5" />
+              <path d="M17 16v-7" />
+            </svg>
+          </button>
+        </form>
+        <section class="ai-answer hidden" id="ai-answer" aria-live="polite"></section>
+      </footer>
+    </main>
+
+    <script src="./world-map.js?v=20260524-country-polygons-1"></script>
+    <script src="./app.js?v=20260529-osint-cameras-1"></script>
+  </body>
+</html>
