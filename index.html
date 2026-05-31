@@ -1,273 +1,769 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sentinel Global Awareness Map</title>
-    <link rel="icon" type="image/png" href="./assets/sentinel-favicon.png?v=20260526-logo-cut-1" />
-    <link rel="stylesheet" href="./styles.css?v=20260529-region-buttons-1" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <section class="map-stage" aria-label="Sentinel global awareness map">
-        <svg id="operational-map" class="operational-map" viewBox="0 0 1600 1000" aria-label="Global awareness map">
-          <defs>
-            <filter id="asset-glow" x="-80%" y="-80%" width="260%" height="260%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <g id="map-viewport">
-            <g id="graticule-layer"></g>
-            <g id="country-layer"></g>
-            <g id="weather-layer"></g>
-            <g id="region-layer"></g>
-            <g id="alliance-layer"></g>
-            <g id="conflict-layer"></g>
-            <g id="pressure-layer"></g>
-            <g id="route-layer"></g>
-            <g id="event-layer"></g>
-          </g>
-        </svg>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SENTINEL — Sovereign Intelligence Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #020506;
+      --bg2:         #061013;
+      --ink:         #d9fff4;
+      --muted:       #7ea59b;
+      --line:        rgba(139,255,222,0.18);
+      --line-strong: rgba(139,255,222,0.42);
+      --panel:       rgba(2,8,10,0.82);
+      --land:        #a4e06e;
+      --maritime:    #58a6ff;
+      --special:     #ffb85c;
+      --warn:        #ff6b6b;
+      --air:         #62d4ff;
+      --accent:      #8bffde;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-        <div class="map-crosshair" aria-hidden="true"></div>
-        <div class="weather-hover-readout" id="weather-hover-readout" aria-hidden="true"></div>
-        <section class="legend-feed-widget collapsed" id="legend-feed-widget" aria-label="Map auxiliary monitor">
-          <div class="legend-feed-title">
-            <span>MAP_AUX</span>
-            <button id="toggle-aux-widget" type="button" aria-label="Expand map auxiliary monitor">+</button>
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: transparent;
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(2,5,6,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom-color: var(--line);
+    }
+    .nav-brand {
+      font-family: "Roboto Mono", monospace;
+      font-size: 17px; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { color: rgba(217,255,244,0.7); font-size: 13px; letter-spacing: 0.03em; font-family: "Roboto Mono", monospace; }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-cta {
+      padding: 8px 20px;
+      border: 1px solid var(--line-strong);
+      background: rgba(139,255,222,0.07);
+      color: var(--accent) !important;
+      font-size: 12px !important; letter-spacing: 0.07em !important;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-cta:hover { background: rgba(139,255,222,0.14) !important; border-color: var(--accent) !important; text-decoration: none !important; }
+
+    /* ── FIXED VIDEO BACKGROUND ── */
+    /* Video is fixed to viewport so it persists while scrolling */
+    .video-fixed {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .video-fixed iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 177.78vh;
+      height: 56.25vw;
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      border: none;
+    }
+    /* Persistent dark overlay behind all content */
+    .video-overlay {
+      position: fixed; inset: 0; z-index: 1;
+      background: rgba(2,5,6,0.62);
+      pointer-events: none;
+    }
+
+    /* ── HERO ── */
+    /* Hero sits above the fixed video, transparent bg so video shows through */
+    .hero {
+      position: relative; z-index: 10;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 100px;
+      /* No background — video shows through */
+    }
+    /* Subtle fade at bottom of hero — transparent so video shows through */
+    .hero::after {
+      content: "";
+      position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
+      background: linear-gradient(0deg, rgba(2,5,6,0.45) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-block; margin-bottom: 24px;
+      padding: 5px 14px;
+      border: 1px solid var(--line-strong);
+      background: rgba(2,5,6,0.4);
+      backdrop-filter: blur(10px);
+      font-family: "Roboto Mono", monospace;
+      font-size: 11.5px; letter-spacing: 0.12em;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 76px);
+      font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.7);
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: 18px; color: rgba(217,255,244,0.8); line-height: 1.75;
+      max-width: 600px; margin: 0 auto 48px;
+      text-shadow: 0 1px 20px rgba(0,0,0,0.6);
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      padding: 15px 38px;
+      background: var(--accent); color: #020506;
+      font-weight: 700; font-size: 14px; letter-spacing: 0.07em;
+      border: none; cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      font-family: "Roboto Mono", monospace;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; color: #020506; }
+    .btn-ghost {
+      padding: 14px 32px;
+      border: 1px solid rgba(139,255,222,0.45);
+      background: rgba(2,5,6,0.3);
+      backdrop-filter: blur(8px);
+      color: var(--ink); font-size: 14px; letter-spacing: 0.06em;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+      font-family: "Roboto Mono", monospace;
+    }
+    .btn-ghost:hover { background: rgba(139,255,222,0.1); border-color: var(--accent); text-decoration: none; color: var(--ink); }
+
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+      margin-top: 80px; padding-top: 48px;
+      border-top: 1px solid rgba(139,255,222,0.2);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-val { font-size: 30px; font-weight: 700; color: var(--accent); font-family: "Roboto Mono", monospace; }
+    .hero-stat-label { font-size: 11px; color: rgba(217,255,244,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; font-family: "Roboto Mono", monospace; }
+
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-family: "Roboto Mono", monospace; font-size: 10px;
+      color: rgba(139,255,222,0.35); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 1px; height: 36px;
+      background: linear-gradient(180deg, rgba(139,255,222,0.35), transparent);
+      animation: scrollDown 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.3); }
+    }
+
+    /* ── CONTENT SECTIONS ── */
+    /* Semi-transparent backgrounds so the fixed video shows through while scrolling */
+    .content-wrap {
+      position: relative; z-index: 10;
+    }
+
+    /* Base for all sections — transparent so video bleeds through */
+    section { padding: 100px 24px; background: transparent; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: "Roboto Mono", monospace;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 600;
+      line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 20px;
+    }
+    .section-title em { font-style: normal; color: var(--accent); }
+    .section-body { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+    /* ── FEATURE GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px; margin-top: 64px; border: 1px solid var(--line);
+    }
+    .feature-card {
+      padding: 36px 32px; background: rgba(6,16,19,0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line); margin: -1px; transition: background 0.2s;
+    }
+    .feature-card:hover { background: rgba(6,16,19,0.94); }
+    .feature-icon {
+      width: 40px; height: 40px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line-strong);
+      background: rgba(139,255,222,0.05);
+      color: var(--accent); font-size: 18px;
+    }
+    .feature-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+    .feature-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .feature-tag {
+      display: inline-block; margin-top: 14px; padding: 3px 9px;
+      border: 1px solid var(--line);
+      font-family: "Roboto Mono", monospace;
+      font-size: 10.5px; color: var(--muted); letter-spacing: 0.08em;
+    }
+
+    /* ── SIGNALS ── */
+    .signals-section { background: transparent; padding: 80px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .signals-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+    .signal-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border: 1px solid var(--line); background: rgba(2,8,10,0.6);
+      font-family: "Roboto Mono", monospace; font-size: 12px; color: var(--ink); letter-spacing: 0.05em;
+    }
+    .signal-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dot-air     { background: var(--air);      box-shadow: 0 0 6px var(--air); }
+    .dot-land    { background: var(--land);     box-shadow: 0 0 6px var(--land); }
+    .dot-sea     { background: var(--maritime); box-shadow: 0 0 6px var(--maritime); }
+    .dot-special { background: var(--special);  box-shadow: 0 0 6px var(--special); }
+    .dot-warn    { background: var(--warn);     box-shadow: 0 0 6px var(--warn); }
+    .dot-accent  { background: var(--accent);   box-shadow: 0 0 6px var(--accent); }
+
+    /* ── SOVEREIGN ── */
+    .sovereign-section {
+      position: relative; overflow: hidden;
+      background: rgba(3,10,12,0.78);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .sovereign-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 0% 50%, rgba(139,255,222,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 100% 50%, rgba(88,166,255,0.04) 0%, transparent 60%);
+    }
+    .sovereign-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      max-width: 1100px; margin: 0 auto; padding: 100px 24px; align-items: center;
+    }
+    .sovereign-checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .sovereign-check { display: flex; align-items: flex-start; gap: 14px; }
+    .check-mark {
+      flex-shrink: 0; width: 20px; height: 20px;
+      border: 1px solid var(--line-strong);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--accent); margin-top: 2px;
+    }
+    .check-text { font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+    .check-text strong { color: var(--ink); font-weight: 500; }
+    .sovereign-terminal {
+      background: rgba(2,5,6,0.82); border: 1px solid var(--line-strong);
+      padding: 28px; font-family: "Roboto Mono", monospace; font-size: 12.5px; line-height: 1.8;
+    }
+    .term-line { color: var(--muted); }
+    .term-line .kw  { color: var(--accent); }
+    .term-line .val { color: var(--land); }
+    .term-line .comment { color: rgba(126,165,155,0.5); }
+    .term-prompt { color: var(--special); }
+    .term-title {
+      font-size: 10px; letter-spacing: 0.14em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 16px;
+      border-bottom: 1px solid var(--line); padding-bottom: 10px;
+    }
+
+    /* ── AI SECTION ── */
+    .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+    .ai-card { padding: 32px; border: 1px solid var(--line); background: rgba(6,16,19,0.82); backdrop-filter: blur(12px); }
+    .ai-card-label {
+      font-family: "Roboto Mono", monospace;
+      font-size: 10.5px; letter-spacing: 0.12em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .ai-card-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+    .ai-card-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .ai-model-list { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .ai-model {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; border: 1px solid var(--line);
+      font-family: "Roboto Mono", monospace; font-size: 12.5px;
+    }
+    .ai-model-name { color: var(--ink); }
+    .ai-model-badge { padding: 2px 8px; font-size: 10px; letter-spacing: 0.06em; border: 1px solid; }
+    .badge-cloud { border-color: var(--air);  color: var(--air); }
+    .badge-local { border-color: var(--land); color: var(--land); }
+
+    /* ── PRICING ── */
+    .pricing-section { background: rgba(6,16,19,0.78); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px; margin-top: 60px; border: 1px solid var(--line);
+    }
+    .pricing-card {
+      padding: 40px 36px; background: rgba(2,5,6,0.72);
+      border: 1px solid var(--line); margin: -1px; position: relative;
+    }
+    .pricing-card.featured { background: rgba(6,15,18,0.88); border-color: var(--line-strong); }
+    .pricing-badge {
+      position: absolute; top: -1px; right: 28px;
+      padding: 4px 12px; background: var(--accent); color: #020506;
+      font-family: "Roboto Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    }
+    .pricing-tier {
+      font-family: "Roboto Mono", monospace;
+      font-size: 11px; letter-spacing: 0.14em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .pricing-price { font-size: 40px; font-weight: 700; font-family: "Roboto Mono", monospace; color: var(--ink); line-height: 1; }
+    .pricing-price sup { font-size: 20px; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .pricing-period { font-size: 13px; color: var(--muted); margin-top: 6px; margin-bottom: 28px; }
+    .pricing-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+    .pricing-features { display: flex; flex-direction: column; gap: 11px; margin-bottom: 36px; }
+    .pricing-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--muted); }
+    .pricing-feature::before { content: "—"; color: var(--accent); flex-shrink: 0; font-family: "Roboto Mono", monospace; }
+    .pricing-cta {
+      display: block; width: 100%; padding: 13px; text-align: center;
+      border: 1px solid var(--line-strong); background: transparent;
+      color: var(--ink); font-size: 13px; letter-spacing: 0.07em;
+      font-family: "Roboto Mono", monospace; cursor: pointer; transition: background 0.2s; text-decoration: none;
+    }
+    .pricing-cta:hover { background: rgba(139,255,222,0.07); text-decoration: none; }
+    .pricing-card.featured .pricing-cta { background: var(--accent); border-color: var(--accent); color: #020506; font-weight: 700; }
+    .pricing-card.featured .pricing-cta:hover { opacity: 0.88; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 60px; border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q {
+      width: 100%; background: none; border: none;
+      padding: 24px 0; text-align: left;
+      font-size: 16px; font-weight: 500; color: var(--ink);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      font-family: "Inter", sans-serif; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-q .faq-arrow { color: var(--muted); font-size: 20px; transition: transform 0.25s, color 0.2s; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); color: var(--accent); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 14.5px; color: var(--muted); line-height: 1.75;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      padding: 100px 24px; text-align: center;
+      background: rgba(3,10,12,0.8); backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line); position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(139,255,222,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-band-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-band h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 600; margin-bottom: 16px; letter-spacing: -0.01em; }
+    .cta-band h2 em { font-style: normal; color: var(--accent); }
+    .cta-band p { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 40px; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 24px;
+      background: rgba(2,5,6,0.88); backdrop-filter: blur(14px);
+    }
+    .footer-brand { font-family: "Roboto Mono", monospace; font-size: 14px; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--muted); font-family: "Roboto Mono", monospace; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 12px; color: rgba(126,165,155,0.4); font-family: "Roboto Mono", monospace; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .sovereign-inner { grid-template-columns: 1fr; gap: 40px; }
+      .ai-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .cursor { animation: blink 1s step-end infinite; }
+  </style>
+</head>
+<body>
+
+<!-- Fixed video layer — sits behind everything, persists on scroll -->
+<div class="video-fixed">
+  <iframe
+    src="https://player.vimeo.com/video/1197139785?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
+    allow="autoplay; fullscreen"
+    title="Sentinel background">
+  </iframe>
+</div>
+<div class="video-overlay"></div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-brand">SENTINEL</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#signals">Signals</a>
+    <a href="#sovereign">Sovereign Mode</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:alessio@rabbitholetech.io?subject=Demo%20Request&body=Name%3A%20%0ACompany%3A%20">Request Demo</a>
+    <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Sovereign Intelligence Workspace</div>
+  <h1>Your world.<br /><em>Your intelligence.</em><br />No cloud required.</h1>
+  <p class="hero-sub">
+    Sentinel aggregates global signals, news, markets, maritime, aviation, disasters, chatter, into a single live operational map. Analysed by AI. Runs entirely on your hardware.
+  </p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">GET SENTINEL — £999</a>
+    <a href="#features" class="btn-ghost">SEE HOW IT WORKS</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">1000s</div>
+      <div class="hero-stat-label">Daily Signals Ingested</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">100%</div>
+      <div class="hero-stat-label">Offline Capable</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">0</div>
+      <div class="hero-stat-label">Cloud Dependencies</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">∞</div>
+      <div class="hero-stat-label">Private Knowledge</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- All content below scrolls over the fixed video -->
+<div class="content-wrap">
+
+  <!-- ── FEATURES ── -->
+  <section id="features" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
+    <div class="section-inner">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Everything an analyst needs.<br /><em>Nothing they don't.</em></h2>
+      <p class="section-body">Purpose-built for professionals who need to understand the world in real time, without feeding their intelligence to a third-party cloud.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⊕</div>
+          <div class="feature-title">Global Awareness Map</div>
+          <div class="feature-body">Interactive world map with live layers for news events, maritime traffic, aviation, conflict zones, weather, pressure systems, and alliance overlays.</div>
+          <div class="feature-tag">REAL-TIME</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">◈</div>
+          <div class="feature-title">AI Signal Analysis</div>
+          <div class="feature-body">Ask questions across all ingested signals. Sentinel correlates news, markets, chatter, and geographic data to deliver grounded, evidence-backed answers.</div>
+          <div class="feature-tag">OpenAI / LOCAL LLM</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⬡</div>
+          <div class="feature-title">Private Knowledge Base</div>
+          <div class="feature-body">Upload PDFs, Word documents, spreadsheets, and images. OCR-powered ingestion, semantic search, and AI Q&amp;A over your private files, all stored locally.</div>
+          <div class="feature-tag">SEMANTIC SEARCH</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">▶</div>
+          <div class="feature-title">Voice Interface</div>
+          <div class="feature-body">Hands-free operation via Whisper speech-to-text and Kokoro neural TTS. Ask questions aloud; hear briefings read back in natural voice, no cloud STT required.</div>
+          <div class="feature-tag">WHISPER + KOKORO</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⬚</div>
+          <div class="feature-title">Market &amp; Chatter Pulse</div>
+          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
+          <div class="feature-tag">LIVE DATA</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">◎</div>
+          <div class="feature-title">Portable Appliance</div>
+          <div class="feature-body">Entire workspace runs from an encrypted external drive. Double-click to launch, browser, backend, and vault all self-contained. No install, no cloud account.</div>
+          <div class="feature-tag">PLUG &amp; PLAY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SIGNALS ── -->
+  <section class="signals-section" id="signals">
+    <div class="section-inner">
+      <div class="section-label">Signal Sources</div>
+      <h2 class="section-title">Thousands of signals.<br /><em>Hundreds of sources.</em></h2>
+      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more, unified into a single operational picture.</p>
+      <div class="signals-row">
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Global News (NewsAPI)</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>GDELT Event Database</div>
+        <div class="signal-pill"><span class="signal-dot dot-sea"></span>AIS Maritime (AISstream)</div>
+        <div class="signal-pill"><span class="signal-dot dot-air"></span>Live Flight Tracking</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Market Data (Alpha Vantage)</div>
+        <div class="signal-pill"><span class="signal-dot dot-warn"></span>GDACS Disaster Alerts</div>
+        <div class="signal-pill"><span class="signal-dot dot-land"></span>Weather &amp; Pressure</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Social Chatter Trends</div>
+        <div class="signal-pill"><span class="signal-dot dot-sea"></span>Live Webcam Registry</div>
+        <div class="signal-pill"><span class="signal-dot dot-air"></span>OpenCCTV Cameras</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Search Trend Signals</div>
+        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Conflict Zone Overlays</div>
+        <div class="signal-pill"><span class="signal-dot dot-land"></span>Country Profile Intelligence</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Air Quality (OpenAQ)</div>
+        <div class="signal-pill"><span class="signal-dot dot-sea"></span>Wikipedia Geo-context</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Alliance &amp; Route Layers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOVEREIGN MODE ── -->
+  <section class="sovereign-section" id="sovereign">
+    <div class="sovereign-bg"></div>
+    <div class="sovereign-inner">
+      <div>
+        <div class="section-label">Sovereign Mode</div>
+        <h2 class="section-title">Your intelligence<br /><em>stays yours.</em></h2>
+        <p class="section-body">Most intelligence platforms send your queries, documents, and analysis to cloud servers. Sentinel is different. In Sovereign Mode, every byte stays on your hardware.</p>
+        <div class="sovereign-checklist">
+          <div class="sovereign-check">
+            <div class="check-mark">✓</div>
+            <div class="check-text"><strong>Local LLM via Ollama</strong> — Qwen 3 32B runs entirely on-device. No OpenAI account required.</div>
           </div>
-          <div class="legend-feed-body">
-            <div class="temperature-legend" aria-label="Temperature and pressure legend">
-              <strong>TEMP / PRESSURE</strong>
-              <label class="weather-toggle"><input data-weather-overlay type="checkbox" /> Weather overlay</label>
-              <span>40C</span>
-              <div class="legend-gradient"></div>
-              <span>-30C</span>
-            </div>
-            <small class="pressure-note">H/L markers show high or low pressure systems in hPa. White rings approximate pressure fields.</small>
-            <section class="feed-monitor" id="feed-monitor" aria-label="Connected live feeds"></section>
+          <div class="sovereign-check">
+            <div class="check-mark">✓</div>
+            <div class="check-text"><strong>Local Speech</strong> — Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
           </div>
-        </section>
-        <section class="map-event-popup hidden" id="map-event-popup" aria-live="polite"></section>
-        <section class="key-modal hidden" id="key-modal" aria-live="polite" aria-label="Secret key management"></section>
-        <section class="file-modal hidden" id="file-modal" aria-live="polite" aria-label="Private file management"></section>
-        <section class="ai-settings-modal hidden" id="ai-settings-modal" aria-live="polite" aria-label="AI settings"></section>
-        <section class="mode-modal hidden" id="mode-modal" aria-live="polite" aria-label="Sentinel operating mode workspace"></section>
-        <section class="stream-modal hidden" id="stream-modal" aria-live="polite" aria-label="Streaming source viewer"></section>
-      </section>
-
-      <header class="top-bar">
-        <div>
-          <div class="title-row">
-            <div class="brand-command">
-              <h1 class="brand-wordmark"><img class="brand-mark" src="./assets/sentinel-mark.png?v=20260526-logo-cut-1" alt="Sentinel mark" /><span>entinel</span></h1>
-              <div class="voice-button-row">
-                <button id="voice-toggle" class="voice-toggle" type="button" aria-pressed="false" title="Voice mode">VOICE</button>
-                <button id="ai-memory-clear" class="ai-memory-clear" type="button" title="Clear Sentinel AI memory">CLEAR MEMORY</button>
-              </div>
-            </div>
-            <div id="voice-wave" class="voice-wave" aria-live="polite" aria-label="Voice activity monitor">
-              <div class="voice-sphere" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
-              </div>
-              <em>VOICE STANDBY</em>
-            </div>
+          <div class="sovereign-check">
+            <div class="check-mark">✓</div>
+            <div class="check-text"><strong>Encrypted vault</strong> — All data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
+          </div>
+          <div class="sovereign-check">
+            <div class="check-mark">✓</div>
+            <div class="check-text"><strong>Localhost-only binding</strong> — Server refuses non-local connections by design.</div>
+          </div>
+          <div class="sovereign-check">
+            <div class="check-mark">✓</div>
+            <div class="check-text"><strong>Air-gap ready</strong> — Public signal feeds are optional. Core analysis works fully disconnected.</div>
           </div>
         </div>
-        <div class="top-control-stack">
-          <div class="mode-switch" role="group" aria-label="Time window">
-            <button class="mode-button active" data-window="24h" type="button">24H</button>
-            <button class="mode-button" data-window="72h" type="button">72H</button>
-            <button class="mode-button" data-window="30d" type="button">30D</button>
-            <button class="mode-button refresh-button" id="refresh-all" type="button">REFRESH</button>
-          </div>
-          <div class="settings-switch" role="group" aria-label="Sentinel settings">
-            <button class="mode-button visibility-button active" id="global-ui-toggle" type="button" aria-pressed="true" title="Show interface panels">
-              <span class="eye-glyph" aria-hidden="true"></span>
-              <span class="sr-only">Toggle interface panels</span>
-            </button>
-            <button class="mode-button ai-settings-button" id="ai-settings-toggle" type="button">AI SETTINGS</button>
-            <button class="mode-button key-button" id="key-manager-toggle" type="button">KEYS</button>
-            <button class="mode-button file-button" id="file-manager-toggle" type="button">FILES</button>
-          </div>
-        </div>
-      </header>
+      </div>
+      <div class="sovereign-terminal">
+        <div class="term-title">SENTINEL VAULT — LAUNCH SEQUENCE</div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="kw">Sentinel.cmd</span></div>
+        <div class="term-line comment">  # Unlocking encrypted vault…</div>
+        <div class="term-line">  <span class="kw">vault</span>   <span class="val">SentinelVault/ [encrypted]</span></div>
+        <div class="term-line">  <span class="kw">backend</span> <span class="val">127.0.0.1:5173 [localhost only]</span></div>
+        <div class="term-line">  <span class="kw">ai</span>      <span class="val">qwen3:32b [on-device]</span></div>
+        <div class="term-line">  <span class="kw">voice</span>   <span class="val">whisper-large [on-device]</span></div>
+        <div class="term-line">  <span class="kw">tts</span>     <span class="val">kokoro [on-device]</span></div>
+        <div class="term-line comment">  # No outbound auth required.</div>
+        <div class="term-line comment">  # No telemetry. No cloud keys.</div>
+        <br/>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="kw">status</span></div>
+        <div class="term-line">  <span class="val">✓ SOVEREIGN MODE ACTIVE</span></div>
+        <div class="term-line">  <span class="val">✓ ALL SYSTEMS OPERATIONAL</span><span class="cursor">_</span></div>
+      </div>
+    </div>
+  </section>
 
-      <aside class="left-panel control-panel collapsed" aria-label="Map filters">
-        <div class="panel-header">
-          <span>MAP_VIEW</span>
-          <button id="wiki-mode-toggle" class="wiki-mode-toggle" type="button" aria-pressed="false" title="Country wiki mode">i</button>
-          <button class="panel-collapse" data-panel-toggle="left" type="button" aria-label="Expand left panel">›</button>
-          <strong id="selected-view">COMMON</strong>
-        </div>
-        <div class="map-toggle-row">
-          <label class="map-toggle"><input data-map-toggle="alliance-mode" type="checkbox" /> Alliance view</label>
-          <label class="map-toggle"><input data-map-toggle="conflict" type="checkbox" /> In conflict</label>
-        </div>
-        <div class="view-grid">
-          <button class="view-button continent-view-button active" data-view="global" type="button">
-            <span>GLOBAL</span>
-            <small>World signals</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="northAmerica" type="button">
-            <span>N AMER</span>
-            <small>North America</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="southAmerica" type="button">
-            <span>S AMER</span>
-            <small>South America</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="europe" type="button">
-            <span>EUROPE</span>
-            <small>Europe</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="africa" type="button">
-            <span>AFRICA</span>
-            <small>Africa</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="asia" type="button">
-            <span>ASIA</span>
-            <small>Asia</small>
-          </button>
-          <button class="view-button continent-view-button" data-view="oceania" type="button">
-            <span>OCEANIA</span>
-            <small>Oceania</small>
-          </button>
-          <button class="view-button alliance-view-button hidden active" data-alliance="all" type="button"><span>ALL</span><small>All alliances</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="nato" type="button"><span>NATO</span><small>Military</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="eu" type="button"><span>EU</span><small>Economic</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="g7" type="button"><span>G7</span><small>Economic</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="brics" type="button"><span>BRICS</span><small>Economic</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="asean" type="button"><span>ASEAN</span><small>Economic</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="gcc" type="button"><span>GCC</span><small>Economic</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="au" type="button"><span>AU</span><small>African Union</small></button>
-          <button class="view-button alliance-view-button hidden" data-alliance="quad" type="button"><span>QUAD</span><small>Security</small></button>
-        </div>
-
-        <div class="layer-block">
-          <div class="layer-heading">
-            <p class="section-label">PUBLIC_LAYERS</p>
-            <span>
-              <button data-layer-action="all" type="button">All</button>
-              <button data-layer-action="none" type="button">None</button>
-            </span>
-          </div>
-          <div class="layer-columns">
-            <div class="layer-column">
-              <span>SIGNALS</span>
-              <label><input data-layer="politics" type="checkbox" /> Politics</label>
-              <label><input data-layer="security" type="checkbox" /> Security</label>
-              <label><input data-layer="finance" type="checkbox" /> Finance</label>
-              <label><input data-layer="business" type="checkbox" /> Business</label>
-              <label><input data-layer="energy" type="checkbox" /> Energy</label>
-              <label><input data-layer="weather" type="checkbox" /> Weather</label>
-              <label><input data-layer="technology" type="checkbox" /> Technology</label>
-              <label><input data-layer="health" type="checkbox" /> Health</label>
-              <label><input data-layer="sports" type="checkbox" /> Sports</label>
-              <label><input data-layer="culture" type="checkbox" /> Culture</label>
-              <label><input data-layer="disaster" type="checkbox" /> Disasters</label>
-              <label><input data-layer="infrastructure" type="checkbox" /> Infrastructure</label>
-            </div>
-            <div class="layer-column">
-              <span>SENSORS</span>
-              <label><input data-layer="camera" type="checkbox" /> Cameras</label>
-              <label><input data-layer="broadcast" type="checkbox" /> Broadcasts</label>
-              <label><input data-layer="sensor" type="checkbox" /> Air Quality</label>
-              <label><input data-layer="moving_asset" type="checkbox" /> Moving Assets</label>
-            </div>
+  <!-- ── AI SECTION ── -->
+  <section id="ai">
+    <div class="section-inner">
+      <div class="section-label">AI Integration</div>
+      <h2 class="section-title"><em>OpenAI</em> in the cloud.<br /><em>Qwen 3 32B</em> on your machine.</h2>
+      <p class="section-body">Two AI modes. One interface. Switch without changing how you work.</p>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <div class="ai-card-label">Cloud · Requires API key</div>
+          <div class="ai-card-title">OpenAI</div>
+          <div class="ai-card-body">Connect your own OpenAI key. Sentinel sends your question, with full signal and map context, and returns the answer. Nothing is stored beyond the single request.</div>
+          <div class="ai-model-list">
+            <div class="ai-model"><span class="ai-model-name">OpenAI</span><span class="ai-model-badge badge-cloud">CLOUD</span></div>
           </div>
         </div>
-        <div class="left-event-block">
-          <p class="section-label">IMPACT_SIGNALS</p>
-          <small class="impact-note">Impact scale I1-I5; I5 is the most impactful.</small>
-          <div class="asset-list" id="event-list"></div>
+        <div class="ai-card">
+          <div class="ai-card-label">Local · Zero data egress · No API key</div>
+          <div class="ai-card-title">Qwen 3 32B</div>
+          <div class="ai-card-body">Qwen 3 32B runs entirely on your hardware via Ollama. No internet, no API key, no data leaving your machine. Full sovereign operation, including air-gapped environments.</div>
+          <div class="ai-model-list">
+            <div class="ai-model"><span class="ai-model-name">Qwen 3 32B</span><span class="ai-model-badge badge-local">LOCAL</span></div>
+          </div>
         </div>
-      </aside>
+      </div>
+      <p style="margin-top:28px; font-size:13.5px; color:var(--muted); font-family:'Roboto Mono',monospace; border-left: 2px solid var(--line-strong); padding-left: 16px;">
+        Enterprise deployments can be configured to use any compatible model, on-premise, private cloud, or custom endpoints. <a href="#contact" style="color:var(--accent);">Contact us</a> to discuss your requirements.
+      </p>
+    </div>
+  </section>
 
-      <aside class="right-panel telemetry-panel collapsed" aria-label="Signal telemetry">
-        <div class="panel-header">
-          <span>SIGNAL_STATUS</span>
-          <button class="panel-collapse" data-panel-toggle="right" type="button" aria-label="Expand right panel">‹</button>
-          <strong id="sync-clock">--:--:--Z</strong>
+  <!-- ── PRICING ── -->
+  <section class="pricing-section" id="pricing">
+    <div class="section-inner">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">One price.<br /><em>Yours forever.</em></h2>
+      <p class="section-body">No subscriptions. No per-seat fees. No cloud lock-in. A perpetual licence that runs on your hardware indefinitely.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Solo Analyst</div>
+          <div class="pricing-price"><sup>€</sup>699</div>
+          <div class="pricing-period">one-time licence · Windows 10/11 only</div>
+          <div class="pricing-desc">For individual researchers, journalists, and OSINT practitioners.</div>
+          <div class="pricing-features">
+            <div class="pricing-feature">Full Sentinel application (download)</div>
+            <div class="pricing-feature">Thousands of signals from hundreds of sources</div>
+            <div class="pricing-feature">OpenAI integration (your key)</div>
+            <div class="pricing-feature">Private knowledge base</div>
+            <div class="pricing-feature">Voice interface</div>
+            <div class="pricing-feature">Licence bound to one PC</div>
+            <div class="pricing-feature">Email support</div>
+          </div>
+          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Solo%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20" class="pricing-cta">GET STARTED →</a>
         </div>
-        <div class="metric-grid">
-          <article>
-            <span>Signals</span>
-            <strong id="metric-tracks">00</strong>
-          </article>
-          <article>
-            <span>Live</span>
-            <strong id="metric-live">00</strong>
-          </article>
-          <article>
-            <span>High Impact</span>
-            <strong id="metric-impact">00</strong>
-          </article>
-          <article>
-            <span>Quality</span>
-            <strong id="metric-region">ALL</strong>
-          </article>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">MOST POPULAR</div>
+          <div class="pricing-tier">Sovereign Edition</div>
+          <div class="pricing-price"><sup>€</sup>999</div>
+          <div class="pricing-period">one-time licence + pre-loaded drive · Windows 10/11 only</div>
+          <div class="pricing-desc">Everything in Solo, plus pre-configured encrypted 2TB SSD, plug into any Windows PC and go.</div>
+          <div class="pricing-features">
+            <div class="pricing-feature">Everything in Solo</div>
+            <div class="pricing-feature">Pre-loaded 2TB encrypted SSD</div>
+            <div class="pricing-feature">Works on any Windows PC — just plug in</div>
+            <div class="pricing-feature">Sovereign Mode pre-configured</div>
+            <div class="pricing-feature">Qwen 3 32B bundled on-device</div>
+            <div class="pricing-feature">Whisper + Kokoro offline voice</div>
+            <div class="pricing-feature">Priority support</div>
+          </div>
+          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="pricing-cta">ORDER SOVEREIGN EDITION →</a>
         </div>
-        <div class="correlation-panel" id="correlation-panel" aria-label="Signal correlations"></div>
-        <section class="briefing-panel" id="briefing-panel" aria-label="Draft intelligence briefing"></section>
-      </aside>
-
-      <section class="chatter-strip collapsed" id="chatter-strip" aria-label="Public chatter pulse">
-        <div class="chatter-head">
-          <button class="pulse-collapse" data-pulse-toggle="chatter" type="button" aria-label="Expand chatter pulse">+</button>
-          <span>CHATTER_PULSE</span>
-          <strong id="chatter-status">OPEN_WEB</strong>
+        <div class="pricing-card">
+          <div class="pricing-tier">Enterprise / On-Prem</div>
+          <div class="pricing-price" style="font-size:28px;padding-top:6px;">Custom</div>
+          <div class="pricing-period">annual licence</div>
+          <div class="pricing-desc">For security teams, government agencies, and intelligence units requiring multi-user deployment.</div>
+          <div class="pricing-features">
+            <div class="pricing-feature">Multi-user deployment</div>
+            <div class="pricing-feature">On-premise installation support</div>
+            <div class="pricing-feature">Custom signal source integration</div>
+            <div class="pricing-feature">Compliance documentation</div>
+            <div class="pricing-feature">SLA &amp; dedicated support</div>
+            <div class="pricing-feature">Security review access</div>
+          </div>
+          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="pricing-cta">CONTACT US →</a>
         </div>
-        <div class="chatter-tape" id="chatter-tape"></div>
-        <section class="chatter-popup hidden" id="chatter-popup" aria-live="polite"></section>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="market-strip collapsed" id="market-strip" aria-label="Live market pulse">
-        <div class="market-head">
-          <button class="pulse-collapse" data-pulse-toggle="market" type="button" aria-label="Expand market pulse">+</button>
-          <span>MARKET_PULSE</span>
-          <strong id="market-status">ALPHAVANTAGE</strong>
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">In Sovereign Mode, Sentinel runs entirely offline. Live signal feeds (news, AIS, weather, etc.) require internet, but AI analysis via Qwen, voice, and the private knowledge base work fully air-gapped.</div>
         </div>
-        <div class="market-tape" id="market-tape"></div>
-        <form id="market-form" class="market-search">
-          <label for="market-input">Market lookup</label>
-          <input id="market-input" autocomplete="off" placeholder="symbol / company / commodity ETF" />
-        </form>
-        <section class="market-popup hidden" id="market-popup" aria-live="polite"></section>
-      </section>
-
-      <section class="reserved-strip collapsed" id="reserved-strip" aria-label="Google search trends pulse">
-        <div class="reserved-head">
-          <button class="pulse-collapse" data-pulse-toggle="reserved" type="button" aria-label="Expand reserved pulse">+</button>
-          <span>SEARCH_TRENDS</span>
-          <strong id="reserved-status">GOOGLE</strong>
+        <div class="faq-item">
+          <button class="faq-q">What operating systems does it support? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Sentinel currently runs on Windows 10 and Windows 11 only. No installation is required, the portable build bundles Python, Chromium, and Ollama. macOS and Linux builds are on the roadmap.</div>
         </div>
-        <div class="reserved-tape" id="reserved-tape"></div>
-        <section class="trends-popup hidden" id="trends-popup" aria-live="polite"></section>
-      </section>
+        <div class="faq-item">
+          <button class="faq-q">Do I need an OpenAI account? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">No. In Sovereign Mode, Sentinel runs Qwen 3 32B locally via Ollama, no OpenAI account or API key is required. If you prefer OpenAI, you connect your own key and it is stored locally in your encrypted vault.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What hardware do I need for Sovereign Mode? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">For OpenAI mode, any modern laptop works. For local Qwen 3 32B, we recommend 32GB RAM and an NVIDIA GPU (16GB VRAM+) for best performance.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is the pre-loaded drive encrypted? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">The Sovereign Edition ships with a VeraCrypt-compatible vault structure. We recommend enabling full-disk encryption (BitLocker or VeraCrypt) before first use. The launcher integrates with an encrypted container unlock step.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I copy or share the drive? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">The Solo licence (€699) is bound to one PC, it will not run on a different machine. The Sovereign Edition (€999) is bound to the physical drive, not the PC — plug it into any Windows machine and it works. You can move between computers freely; you cannot clone the drive and run two instances simultaneously.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <footer class="console-strip" aria-label="Sentinel AI workspace">
-        <form id="command-form">
-          <label class="sr-only" for="command-input">Ask Sentinel AI</label>
-          <input id="command-input" autocomplete="off" placeholder="ask Sentinel AI" />
-          <button class="sentinel-mode-button daily-intel-icon" data-mode-workspace="daily" type="button" aria-label="Open Shift Analyzer" title="Shift Analyzer">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 19h16" />
-              <path d="M7 16V9" />
-              <path d="M12 16V5" />
-              <path d="M17 16v-7" />
-            </svg>
-          </button>
-        </form>
-        <section class="ai-answer hidden" id="ai-answer" aria-live="polite"></section>
-      </footer>
-    </main>
+  <!-- ── CTA BAND ── -->
+  <section class="cta-band" id="contact">
+    <div class="cta-band-inner">
+      <h2>Ready to own your <em>intelligence</em>?</h2>
+      <p>Join analysts, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
+      <div class="hero-actions">
+        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL — €999</a>
+        <a href="mailto:alessio@rabbitholetech.io?subject=Demo%20Request&body=Name%3A%20%0ACompany%3A%20" class="btn-ghost">REQUEST A DEMO</a>
+        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="btn-ghost">ENTERPRISE ENQUIRY</a>
+      </div>
+    </div>
+  </section>
 
-    <script src="./world-map.js?v=20260524-country-polygons-1"></script>
-    <script src="./app.js?v=20260529-osint-cameras-1"></script>
-  </body>
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand">SENTINEL © 2026</div>
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:alessio@rabbitholetech.io">Contact</a>
+    </div>
+    <div class="footer-copy">Sovereign Intelligence Workspace</div>
+  </footer>
+
+</div><!-- /content-wrap -->
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+  // Nav becomes opaque on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
 </html>
