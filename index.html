@@ -407,6 +407,26 @@
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .cursor { animation: blink 1s step-end infinite; }
+
+    /* ── VIDEO MODAL ── */
+    .video-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(2,5,6,0.92); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center;
+    }
+    .video-modal-overlay.active { display: flex; }
+    .video-modal {
+      position: relative; width: 90vw; max-width: 960px;
+      aspect-ratio: 16/9;
+    }
+    .video-modal iframe { width: 100%; height: 100%; border: 1px solid var(--line-strong); }
+    .video-modal-close {
+      position: absolute; top: -40px; right: 0;
+      background: none; border: none; color: var(--accent);
+      font-size: 28px; cursor: pointer; line-height: 1;
+      font-family: "Roboto Mono", monospace;
+    }
+    .video-modal-close:hover { color: var(--ink); }
   </style>
 </head>
 <body>
@@ -430,7 +450,7 @@
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="mailto:alessio@rabbitholetech.io?subject=Demo%20Request&body=Name%3A%20%0ACompany%3A%20">Request Demo</a>
+    <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
   </div>
 </nav>
@@ -727,7 +747,7 @@
       <p>Join analysts, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
       <div class="hero-actions">
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL — €999</a>
-        <a href="mailto:alessio@rabbitholetech.io?subject=Demo%20Request&body=Name%3A%20%0ACompany%3A%20" class="btn-ghost">REQUEST A DEMO</a>
+        <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="btn-ghost">ENTERPRISE ENQUIRY</a>
       </div>
     </div>
@@ -764,6 +784,29 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+</script>
+
+<!-- ── DEMO VIDEO MODAL ── -->
+<div class="video-modal-overlay" id="demoModal" onclick="closeDemoModal(event)">
+  <div class="video-modal">
+    <button class="video-modal-close" onclick="closeDemoModal()">✕</button>
+    <iframe id="demoIframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Sentinel Demo"></iframe>
+  </div>
+</div>
+
+<script>
+  function openDemoModal() {
+    document.getElementById('demoIframe').src = 'https://www.youtube.com/embed/NB0B6vacOzA?autoplay=1';
+    document.getElementById('demoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDemoModal(e) {
+    if (e && e.target !== document.getElementById('demoModal') && !e.target.classList.contains('video-modal-close')) return;
+    document.getElementById('demoIframe').src = '';
+    document.getElementById('demoModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDemoModal({ target: document.getElementById('demoModal') }); });
 </script>
 </body>
 </html>
