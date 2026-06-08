@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENTINEL — Sovereign Intelligence Workspace</title>
+  <title>SENTINEL - Sovereign Intelligence Workspace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── NAV ── */
+    /* -- NAV -- */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
@@ -69,7 +69,7 @@
     }
     .nav-cta:hover { background: rgba(139,255,222,0.14) !important; border-color: var(--accent) !important; text-decoration: none !important; }
 
-    /* ── FIXED VIDEO BACKGROUND ── */
+    /* -- FIXED VIDEO BACKGROUND -- */
     /* Video is fixed to viewport so it persists while scrolling */
     .video-fixed {
       position: fixed; inset: 0; z-index: 0;
@@ -91,7 +91,7 @@
       pointer-events: none;
     }
 
-    /* ── HERO ── */
+    /* -- HERO -- */
     /* Hero sits above the fixed video, transparent bg so video shows through */
     .hero {
       position: relative; z-index: 10;
@@ -100,9 +100,9 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 100px;
-      /* No background — video shows through */
+      /* No background -- video shows through */
     }
-    /* Subtle fade at bottom of hero — transparent so video shows through */
+    /* Subtle fade at bottom of hero -- transparent so video shows through */
     .hero::after {
       content: "";
       position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
@@ -179,13 +179,13 @@
       50% { opacity: 1; transform: scaleY(1.3); }
     }
 
-    /* ── CONTENT SECTIONS ── */
+    /* -- CONTENT SECTIONS -- */
     /* Semi-transparent backgrounds so the fixed video shows through while scrolling */
     .content-wrap {
       position: relative; z-index: 10;
     }
 
-    /* Base for all sections — transparent so video bleeds through */
+    /* Base for all sections -- transparent so video bleeds through */
     section { padding: 100px 24px; background: transparent; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -200,7 +200,7 @@
     .section-title em { font-style: normal; color: var(--accent); }
     .section-body { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
 
-    /* ── FEATURE GRID ── */
+    /* -- FEATURE GRID -- */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -228,7 +228,7 @@
       font-size: 10.5px; color: var(--muted); letter-spacing: 0.08em;
     }
 
-    /* ── SIGNALS ── */
+    /* -- SIGNALS -- */
     .signals-section { background: transparent; padding: 80px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .signals-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
     .signal-pill {
@@ -244,7 +244,7 @@
     .dot-warn    { background: var(--warn);     box-shadow: 0 0 6px var(--warn); }
     .dot-accent  { background: var(--accent);   box-shadow: 0 0 6px var(--accent); }
 
-    /* ── SOVEREIGN ── */
+    /* -- SOVEREIGN -- */
     .sovereign-section {
       position: relative; overflow: hidden;
       background: rgba(3,10,12,0.78);
@@ -287,7 +287,7 @@
       border-bottom: 1px solid var(--line); padding-bottom: 10px;
     }
 
-    /* ── AI SECTION ── */
+    /* -- AI SECTION -- */
     .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
     .ai-card { padding: 32px; border: 1px solid var(--line); background: rgba(6,16,19,0.82); backdrop-filter: blur(12px); }
     .ai-card-label {
@@ -308,7 +308,7 @@
     .badge-cloud { border-color: var(--air);  color: var(--air); }
     .badge-local { border-color: var(--land); color: var(--land); }
 
-    /* ── PRICING ── */
+    /* -- PRICING -- */
     .pricing-section { background: rgba(6,16,19,0.78); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
     .pricing-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -335,7 +335,7 @@
     .pricing-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
     .pricing-features { display: flex; flex-direction: column; gap: 11px; margin-bottom: 36px; }
     .pricing-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--muted); }
-    .pricing-feature::before { content: "—"; color: var(--accent); flex-shrink: 0; font-family: "Roboto Mono", monospace; }
+    .pricing-feature::before { content: "-"; color: var(--accent); flex-shrink: 0; font-family: "Roboto Mono", monospace; }
     .pricing-cta {
       display: block; width: 100%; padding: 13px; text-align: center;
       border: 1px solid var(--line-strong); background: transparent;
@@ -346,7 +346,7 @@
     .pricing-card.featured .pricing-cta { background: var(--accent); border-color: var(--accent); color: #020506; font-weight: 700; }
     .pricing-card.featured .pricing-cta:hover { opacity: 0.88; }
 
-    /* ── FAQ ── */
+    /* -- FAQ -- */
     .faq-list { margin-top: 60px; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
@@ -366,7 +366,7 @@
     }
     .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
 
-    /* ── CTA BAND ── */
+    /* -- CTA BAND -- */
     .cta-band {
       padding: 100px 24px; text-align: center;
       background: rgba(3,10,12,0.8); backdrop-filter: blur(14px);
@@ -382,7 +382,7 @@
     .cta-band h2 em { font-style: normal; color: var(--accent); }
     .cta-band p { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
 
-    /* ── FOOTER ── */
+    /* -- FOOTER -- */
     footer {
       padding: 48px 40px; border-top: 1px solid var(--line);
       display: flex; justify-content: space-between; align-items: center;
@@ -395,7 +395,7 @@
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-size: 12px; color: rgba(126,165,155,0.4); font-family: "Roboto Mono", monospace; }
 
-    /* ── RESPONSIVE ── */
+    /* -- RESPONSIVE -- */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -408,7 +408,7 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .cursor { animation: blink 1s step-end infinite; }
 
-    /* ── CHANGELOG ── */
+    /* -- CHANGELOG -- */
     .changelog-section { background: rgba(2,5,6,0.88); backdrop-filter: blur(14px); border-top: 1px solid var(--line); padding: 80px 24px; }
     .changelog-list { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
     .changelog-entry {
@@ -437,7 +437,7 @@
       .changelog-entry { grid-template-columns: 1fr; gap: 8px; }
     }
 
-    /* ── VIDEO MODAL ── */
+    /* -- VIDEO MODAL -- */
     .video-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
       background: rgba(2,5,6,0.92); backdrop-filter: blur(12px);
@@ -460,7 +460,7 @@
 </head>
 <body>
 
-<!-- Fixed video layer — sits behind everything, persists on scroll -->
+<!-- Fixed video layer - sits behind everything, persists on scroll -->
 <div class="video-fixed">
   <iframe
     src="https://player.vimeo.com/video/1197139785?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
@@ -470,7 +470,7 @@
 </div>
 <div class="video-overlay"></div>
 
-<!-- ── NAV ── -->
+<!-- -- NAV -- -->
 <nav id="mainNav">
   <div class="nav-brand">SENTINEL</div>
   <div class="nav-links">
@@ -485,7 +485,7 @@
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- -- HERO -- -->
 <section class="hero" id="hero">
   <div class="hero-eyebrow">Sovereign Intelligence Workspace</div>
   <h1>Your world.<br /><em>Your intelligence.</em><br />No cloud required.</h1>
@@ -493,7 +493,7 @@
     Sentinel aggregates global signals, news, markets, maritime, aviation, disasters, chatter, into a single live operational map. Analysed by AI. Runs entirely on your hardware.
   </p>
   <div class="hero-actions">
-    <a href="#pricing" class="btn-primary">GET SENTINEL — &euro;999</a>
+    <a href="#pricing" class="btn-primary">GET SENTINEL &mdash; &euro;999</a>
     <a href="#features" class="btn-ghost">SEE HOW IT WORKS</a>
   </div>
   <div class="hero-stats">
@@ -523,7 +523,7 @@
 <!-- All content below scrolls over the fixed video -->
 <div class="content-wrap">
 
-  <!-- ── FEATURES ── -->
+  <!-- -- FEATURES -- -->
   <section id="features" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
@@ -557,7 +557,7 @@
         <div class="feature-card">
           <div class="feature-icon">&#11034;</div>
           <div class="feature-title">Market Intelligence Engine</div>
-          <div class="feature-body">Five-layer quality gate scores every market idea across catalyst freshness, historical edge calibration, live desk reliability, liquidity profile, and execution readiness — only surfaces opportunities that pass all checks.</div>
+          <div class="feature-body">Five-layer quality gate scores every market idea across catalyst freshness, historical edge calibration, live desk reliability, liquidity profile, and execution readiness - only surfaces opportunities that pass all checks.</div>
           <div class="feature-tag">QUALITY-GATED &middot; LIVE</div>
         </div>
         <div class="feature-card">
@@ -570,7 +570,7 @@
     </div>
   </section>
 
-  <!-- ── SIGNALS ── -->
+  <!-- -- SIGNALS -- -->
   <section class="signals-section" id="signals">
     <div class="section-inner">
       <div class="section-label">Signal Sources</div>
@@ -581,7 +581,7 @@
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>GDELT Event Database</div>
         <div class="signal-pill"><span class="signal-dot dot-sea"></span>AIS Maritime (AISstream)</div>
         <div class="signal-pill"><span class="signal-dot dot-air"></span>Live Flight Tracking</div>
-        <div class="signal-pill"><span class="signal-dot dot-special"></span>Market Data (Alpha Vantage)</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Live Market Feed</div>
         <div class="signal-pill"><span class="signal-dot dot-warn"></span>GDACS Disaster Alerts</div>
         <div class="signal-pill"><span class="signal-dot dot-land"></span>Weather &amp; Pressure</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Social Chatter Trends</div>
@@ -597,7 +597,7 @@
     </div>
   </section>
 
-  <!-- ── SOVEREIGN MODE ── -->
+  <!-- -- SOVEREIGN MODE -- -->
   <section class="sovereign-section" id="sovereign">
     <div class="sovereign-bg"></div>
     <div class="sovereign-inner">
@@ -608,28 +608,28 @@
         <div class="sovereign-checklist">
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local LLM via Ollama</strong> &mdash; Qwen 3 32B runs entirely on-device. No OpenAI account required.</div>
+            <div class="check-text"><strong>Local LLM via Ollama</strong> - Qwen 3 32B runs entirely on-device. No OpenAI account required.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local Speech</strong> &mdash; Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
+            <div class="check-text"><strong>Local Speech</strong> - Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Encrypted vault</strong> &mdash; All data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
+            <div class="check-text"><strong>Encrypted vault</strong> - All data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Localhost-only binding</strong> &mdash; Server refuses non-local connections by design.</div>
+            <div class="check-text"><strong>Localhost-only binding</strong> - Server refuses non-local connections by design.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Air-gap ready</strong> &mdash; Public signal feeds are optional. Core analysis works fully disconnected.</div>
+            <div class="check-text"><strong>Air-gap ready</strong> - Public signal feeds are optional. Core analysis works fully disconnected.</div>
           </div>
         </div>
       </div>
       <div class="sovereign-terminal">
-        <div class="term-title">SENTINEL VAULT &mdash; LAUNCH SEQUENCE</div>
+        <div class="term-title">SENTINEL VAULT - LAUNCH SEQUENCE</div>
         <div class="term-line"><span class="term-prompt">$</span> <span class="kw">Sentinel.cmd</span></div>
         <div class="term-line comment">  # Unlocking encrypted vault&hellip;</div>
         <div class="term-line">  <span class="kw">vault</span>   <span class="val">SentinelVault/ [encrypted]</span></div>
@@ -647,7 +647,7 @@
     </div>
   </section>
 
-  <!-- ── AI SECTION ── -->
+  <!-- -- AI SECTION -- -->
   <section id="ai">
     <div class="section-inner">
       <div class="section-label">AI Integration</div>
@@ -677,7 +677,7 @@
     </div>
   </section>
 
-  <!-- ── PRICING ── -->
+  <!-- -- PRICING -- -->
   <section class="pricing-section" id="pricing">
     <div class="section-inner">
       <div class="section-label">Pricing</div>
@@ -709,7 +709,7 @@
           <div class="pricing-features">
             <div class="pricing-feature">Everything in Solo</div>
             <div class="pricing-feature">Pre-loaded 2TB encrypted SSD</div>
-            <div class="pricing-feature">Works on any Windows PC &mdash; just plug in</div>
+            <div class="pricing-feature">Works on any Windows PC - just plug in</div>
             <div class="pricing-feature">Sovereign Mode pre-configured</div>
             <div class="pricing-feature">Qwen 3 32B bundled on-device</div>
             <div class="pricing-feature">Whisper + Kokoro offline voice</div>
@@ -736,7 +736,7 @@
     </div>
   </section>
 
-  <!-- ── FAQ ── -->
+  <!-- -- FAQ -- -->
   <section id="faq">
     <div class="section-inner">
       <div class="section-label">FAQ</div>
@@ -764,24 +764,24 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Can I copy or share the drive? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">The Solo licence (&euro;699) is bound to one PC, it will not run on a different machine. The Sovereign Edition (&euro;999) is bound to the physical drive, not the PC &mdash; plug it into any Windows machine and it works. You can move between computers freely; you cannot clone the drive and run two instances simultaneously.</div>
+          <div class="faq-a">The Solo licence (&euro;699) is bound to one PC, it will not run on a different machine. The Sovereign Edition (&euro;999) is bound to the physical drive, not the PC - plug it into any Windows machine and it works. You can move between computers freely; you cannot clone the drive and run two instances simultaneously.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CHANGELOG ── -->
+  <!-- -- CHANGELOG -- -->
   <section class="changelog-section" id="changelog">
     <div class="section-inner">
       <div class="section-label">Updates</div>
       <h2 class="section-title">What's new in <em>Sentinel.</em></h2>
-      <p class="section-body">Recent additions to the intelligence engine &mdash; pushed directly from the product repository.</p>
+      <p class="section-body">Recent additions to the intelligence engine - pushed directly from the product repository.</p>
       <div class="changelog-list">
 
         <div class="changelog-entry">
           <div class="changelog-date">08 Jun 2026 &middot; Latest</div>
           <div class="changelog-right">
-            <div class="changelog-title">Market Feeds Panel &mdash; Refined Display &amp; Performance</div>
+            <div class="changelog-title">Market Feeds Panel - Refined Display &amp; Performance</div>
             <div class="changelog-body">The market feeds panel has been updated with improved visual layout and smarter state retention. Computed market scores and intelligence context are now preserved more efficiently across sessions, reducing wait times when revisiting symbols or setups already processed by the quality gate pipeline.</div>
             <div class="changelog-tags">
               <span class="changelog-tag improve">IMPROVEMENT</span>
@@ -793,7 +793,7 @@
         <div class="changelog-entry">
           <div class="changelog-date">08 Jun 2026</div>
           <div class="changelog-right">
-            <div class="changelog-title">Market Intelligence Engine &mdash; Quality-Gated Signal Pipeline</div>
+            <div class="changelog-title">Market Intelligence Engine - Quality-Gated Signal Pipeline</div>
             <div class="changelog-body">A complete overhaul of how Sentinel evaluates and surfaces market opportunities. Seven commits shipping a five-layer assessment framework: Sentinel now scores every market idea across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness before it reaches your screen.</div>
             <div class="changelog-tags">
               <span class="changelog-tag new">NEW</span>
@@ -829,7 +829,7 @@
           <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
           <div class="changelog-right">
             <div class="changelog-title">Live Desk Reliability Scoring</div>
-            <div class="changelog-body">The system now tracks the live performance of past market alerts per symbol and direction &mdash; hit rates, average P&amp;L, and unrealised marks &mdash; from the Sentinel local database. Ideas backed by a proven live track record are ranked higher; thin or unobserved symbols are labelled accordingly.</div>
+            <div class="changelog-body">The system now tracks the live performance of past market alerts per symbol and direction - hit rates, average P&amp;L, and unrealised marks - from the Sentinel local database. Ideas backed by a proven live track record are ranked higher; thin or unobserved symbols are labelled accordingly.</div>
             <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
           </div>
         </div>
@@ -847,20 +847,20 @@
     </div>
   </section>
 
-  <!-- ── CTA BAND ── -->
+  <!-- -- CTA BAND -- -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
       <h2>Ready to own your <em>intelligence</em>?</h2>
       <p>Join analysts, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
       <div class="hero-actions">
-        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL &mdash; &euro;999</a>
+        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL - &euro;999</a>
         <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="btn-ghost">ENTERPRISE ENQUIRY</a>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- -- FOOTER -- -->
   <footer>
     <div class="footer-brand">SENTINEL &copy; 2026</div>
     <div class="footer-links">
@@ -894,7 +894,7 @@
   });
 </script>
 
-<!-- ── DEMO VIDEO MODAL ── -->
+<!-- -- DEMO VIDEO MODAL -- -->
 <div class="video-modal-overlay" id="demoModal" onclick="closeDemoModal(event)">
   <div class="video-modal">
     <button class="video-modal-close" onclick="closeDemoModal()">&#x2715;</button>
