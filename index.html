@@ -346,6 +346,29 @@
     .pricing-card.featured .pricing-cta { background: var(--accent); border-color: var(--accent); color: #020506; font-weight: 700; }
     .pricing-card.featured .pricing-cta:hover { opacity: 0.88; }
 
+    /* ── CHANGELOG ── */
+    .changelog-entry {
+      display: flex; gap: 32px; padding: 24px;
+      border: 1px solid var(--line); background: rgba(6,16,19,0.82);
+      backdrop-filter: blur(12px);
+    }
+    .changelog-date {
+      flex-shrink: 0; font-family: "Roboto Mono", monospace;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.08em;
+      padding-top: 3px; min-width: 90px;
+    }
+    .changelog-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .changelog-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .changelog-tag {
+      display: inline-block; margin-top: 10px; padding: 3px 9px;
+      border: 1px solid var(--line);
+      font-family: "Roboto Mono", monospace;
+      font-size: 10.5px; letter-spacing: 0.08em;
+    }
+    .tag-new     { border-color: var(--accent); color: var(--accent); }
+    .tag-improve { border-color: var(--muted);  color: var(--muted); }
+    .tag-fix     { border-color: var(--warn);   color: var(--warn); }
+
     /* ── FAQ ── */
     .faq-list { margin-top: 60px; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -403,6 +426,7 @@
       .ai-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 28px; }
       footer { flex-direction: column; align-items: flex-start; }
+      .changelog-entry { flex-direction: column; gap: 8px; }
     }
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -449,6 +473,7 @@
     <a href="#signals">Signals</a>
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
+    <a href="#changelog">What's New</a>
     <a href="#faq">FAQ</a>
     <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
@@ -527,8 +552,8 @@
         <div class="feature-card">
           <div class="feature-icon">⬚</div>
           <div class="feature-title">Market &amp; Chatter Pulse</div>
-          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
-          <div class="feature-tag">LIVE DATA</div>
+          <div class="feature-body">Real-time market data with multi-horizon edge analysis across short, medium, and long-range windows. Social chatter trends and sentiment signals correlated with geopolitical events on the map timeline.</div>
+          <div class="feature-tag">LIVE DATA · MULTI-HORIZON</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">◎</div>
@@ -706,6 +731,45 @@
     </div>
   </section>
 
+  <!-- ── WHAT'S NEW ── -->
+  <section id="changelog" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);border-top:1px solid var(--line);">
+    <div class="section-inner">
+      <div class="section-label">What's New</div>
+      <h2 class="section-title">Latest <em>updates.</em></h2>
+      <p class="section-body">Recent improvements shipped to the Sentinel product, reflected automatically from the development repository.</p>
+      <div style="margin-top:48px;display:flex;flex-direction:column;gap:16px;">
+
+        <div class="changelog-entry">
+          <div class="changelog-date">2026-06-08</div>
+          <div>
+            <div class="changelog-title">Multi-Horizon Market Edge Analysis</div>
+            <div class="changelog-body">The Market Pulse engine now evaluates signals across multiple time horizons simultaneously — short, medium, and long-range windows — applying a conviction gate before surfacing any opportunity. Only the highest-confidence market edges make it through to the interface.</div>
+            <span class="changelog-tag tag-new">NEW FEATURE</span>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">2026-06-08</div>
+          <div>
+            <div class="changelog-title">Improved Market Opportunity Validation</div>
+            <div class="changelog-body">Market signal validation has been significantly strengthened across the ingestion pipeline. Tighter quality gates reduce noise before signals reach the analysis layer, improving overall signal-to-noise ratio and the reliability of market-correlated intelligence.</div>
+            <span class="changelog-tag tag-improve">IMPROVEMENT</span>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">2026-06-08</div>
+          <div>
+            <div class="changelog-title">Market Feeds Panel — Display Fix</div>
+            <div class="changelog-body">Resolved a layout issue where the market feeds panel did not clear correctly when switching between signal sources. The panel now resets cleanly on every transition, ensuring users always see an accurate and current view of the selected feed.</div>
+            <span class="changelog-tag tag-fix">FIX</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── FAQ ── -->
   <section id="faq">
     <div class="section-inner">
@@ -759,6 +823,7 @@
     <div class="footer-links">
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
+      <a href="#changelog">What's New</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
