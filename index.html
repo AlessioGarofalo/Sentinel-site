@@ -408,6 +408,34 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .cursor { animation: blink 1s step-end infinite; }
 
+    /* ── CHANGELOG ── */
+    .changelog-section { background: rgba(2,5,6,0.88); backdrop-filter: blur(14px); border-top: 1px solid var(--line); padding: 80px 24px; }
+    .changelog-list { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+    .changelog-entry {
+      display: grid; grid-template-columns: 160px 1fr; gap: 32px;
+      padding: 24px 0; border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .changelog-entry:last-child { border-bottom: none; }
+    .changelog-date {
+      font-family: "Roboto Mono", monospace; font-size: 11.5px;
+      color: var(--muted); letter-spacing: 0.08em; padding-top: 2px;
+    }
+    .changelog-right { display: flex; flex-direction: column; gap: 6px; }
+    .changelog-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .changelog-body { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+    .changelog-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .changelog-tag {
+      padding: 2px 9px; border: 1px solid var(--line);
+      font-family: "Roboto Mono", monospace; font-size: 10.5px;
+      color: var(--muted); letter-spacing: 0.07em;
+    }
+    .changelog-tag.new { border-color: var(--accent); color: var(--accent); }
+    .changelog-tag.fix { border-color: var(--land); color: var(--land); }
+    @media (max-width: 600px) {
+      .changelog-entry { grid-template-columns: 1fr; gap: 8px; }
+    }
+
     /* ── VIDEO MODAL ── */
     .video-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
@@ -450,6 +478,7 @@
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
+    <a href="#changelog">Updates</a>
     <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
   </div>
@@ -526,9 +555,9 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">⬚</div>
-          <div class="feature-title">Market &amp; Chatter Pulse</div>
-          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
-          <div class="feature-tag">LIVE DATA</div>
+          <div class="feature-title">Market Intelligence Engine</div>
+          <div class="feature-body">Five-layer quality gate scores every market idea across catalyst freshness, historical edge calibration, live desk reliability, liquidity profile, and execution readiness — only surfaces opportunities that pass all checks.</div>
+          <div class="feature-tag">QUALITY-GATED · LIVE</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">◎</div>
@@ -740,6 +769,71 @@
     </div>
   </section>
 
+  <!-- ── CHANGELOG ── -->
+  <section class="changelog-section" id="changelog">
+    <div class="section-inner">
+      <div class="section-label">Updates</div>
+      <h2 class="section-title">What's new in <em>Sentinel.</em></h2>
+      <p class="section-body">Recent additions to the intelligence engine — pushed directly from the product repository.</p>
+      <div class="changelog-list">
+
+        <div class="changelog-entry">
+          <div class="changelog-date">08 Jun 2026</div>
+          <div class="changelog-right">
+            <div class="changelog-title">Market Intelligence Engine — Quality-Gated Signal Pipeline</div>
+            <div class="changelog-body">A complete overhaul of how Sentinel evaluates and surfaces market opportunities. Seven commits shipping a five-layer assessment framework: Sentinel now scores every market idea across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness before it reaches your screen.</div>
+            <div class="changelog-tags">
+              <span class="changelog-tag new">NEW</span>
+              <span class="changelog-tag">Catalyst Quality Gate</span>
+              <span class="changelog-tag">Historical Edge Calibration</span>
+              <span class="changelog-tag">Live Reliability Scoring</span>
+              <span class="changelog-tag">Execution Readiness</span>
+              <span class="changelog-tag fix">FIX</span>
+              <span class="changelog-tag">Market Feeds Panel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">08 Jun 2026 · Detail</div>
+          <div class="changelog-right">
+            <div class="changelog-title">Catalyst Quality Gate</div>
+            <div class="changelog-body">Each market idea is now audited for the freshness, directness, and source diversity of its supporting catalysts. Stale or single-source catalyst bundles are flagged before any idea is promoted, preventing low-conviction noise from reaching the desk.</div>
+            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">08 Jun 2026 · Detail</div>
+          <div class="changelog-right">
+            <div class="changelog-title">Historical Edge Calibration</div>
+            <div class="changelog-body">Sentinel backtests each chart setup against similar historical configurations across four horizons (3, 5, 8, and 13 bars). Win rates, average P&amp;L, consistency scores, and statistical lower bounds are computed before a setup is ranked, giving every idea a track-record context.</div>
+            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">08 Jun 2026 · Detail</div>
+          <div class="changelog-right">
+            <div class="changelog-title">Live Desk Reliability Scoring</div>
+            <div class="changelog-body">The system now tracks the live performance of past market alerts per symbol and direction — hit rates, average P&amp;L, and unrealised marks — from the Sentinel local database. Ideas backed by a proven live track record are ranked higher; thin or unobserved symbols are labelled accordingly.</div>
+            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          </div>
+        </div>
+
+        <div class="changelog-entry">
+          <div class="changelog-date">08 Jun 2026 · Detail</div>
+          <div class="changelog-right">
+            <div class="changelog-title">Execution Readiness &amp; Opportunity Gate</div>
+            <div class="changelog-body">A composite readiness tier (Ready / Conditional / Defer / Reject) now gates every idea through liquidity, catalyst evidence, historical edge consistency, and live reliability before it appears in the Market Opportunity Report. Multi-horizon edge detection adds short-, medium-, and longer-term perspective in a single pass.</div>
+            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── CTA BAND ── -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
@@ -760,6 +854,7 @@
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
     <div class="footer-copy">Sovereign Intelligence Workspace</div>
