@@ -70,7 +70,6 @@
     .nav-cta:hover { background: rgba(139,255,222,0.14) !important; border-color: var(--accent) !important; text-decoration: none !important; }
 
     /* ── FIXED VIDEO BACKGROUND ── */
-    /* Video is fixed to viewport so it persists while scrolling */
     .video-fixed {
       position: fixed; inset: 0; z-index: 0;
       pointer-events: none; overflow: hidden;
@@ -84,7 +83,6 @@
       transform: translate(-50%, -50%);
       border: none;
     }
-    /* Persistent dark overlay behind all content */
     .video-overlay {
       position: fixed; inset: 0; z-index: 1;
       background: rgba(2,5,6,0.62);
@@ -92,7 +90,6 @@
     }
 
     /* ── HERO ── */
-    /* Hero sits above the fixed video, transparent bg so video shows through */
     .hero {
       position: relative; z-index: 10;
       min-height: 100vh;
@@ -100,9 +97,7 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 100px;
-      /* No background — video shows through */
     }
-    /* Subtle fade at bottom of hero — transparent so video shows through */
     .hero::after {
       content: "";
       position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
@@ -180,12 +175,10 @@
     }
 
     /* ── CONTENT SECTIONS ── */
-    /* Semi-transparent backgrounds so the fixed video shows through while scrolling */
     .content-wrap {
       position: relative; z-index: 10;
     }
 
-    /* Base for all sections — transparent so video bleeds through */
     section { padding: 100px 24px; background: transparent; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -408,6 +401,32 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .cursor { animation: blink 1s step-end infinite; }
 
+    /* ── CHANGELOG ── */
+    .changelog-list { margin-top: 56px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+    .changelog-entry {
+      display: grid; grid-template-columns: 200px 1fr; gap: 32px;
+      padding: 28px 0; border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .changelog-meta { display: flex; flex-direction: column; gap: 10px; padding-top: 2px; }
+    .changelog-date {
+      font-family: "Roboto Mono", monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 0.1em;
+    }
+    .changelog-badge {
+      display: inline-block; padding: 3px 10px;
+      font-family: "Roboto Mono", monospace; font-size: 10px; letter-spacing: 0.1em;
+      border: 1px solid; width: fit-content;
+    }
+    .badge-new      { border-color: var(--accent); color: var(--accent); }
+    .badge-improved { border-color: var(--land);   color: var(--land); }
+    .badge-fix      { border-color: var(--special); color: var(--special); }
+    .changelog-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+    .changelog-body  { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    @media (max-width: 768px) {
+      .changelog-entry { grid-template-columns: 1fr; gap: 12px; }
+    }
+
     /* ── VIDEO MODAL ── */
     .video-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
@@ -450,6 +469,7 @@
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
+    <a href="#changelog">What's New</a>
     <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
   </div>
@@ -527,8 +547,8 @@
         <div class="feature-card">
           <div class="feature-icon">⬚</div>
           <div class="feature-title">Market &amp; Chatter Pulse</div>
-          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
-          <div class="feature-tag">LIVE DATA</div>
+          <div class="feature-body">Real-time market data with multi-horizon edge detection, reliability scoring, and catalyst quality gates. Stocks, ETFs, FX, crypto, commodities, and bonds correlated with geopolitical events on the map timeline. Social chatter trends and sentiment signals complete the picture.</div>
+          <div class="feature-tag">LIVE DATA · MULTI-HORIZON</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">◎</div>
@@ -740,6 +760,87 @@
     </div>
   </section>
 
+  <!-- ── CHANGELOG ── -->
+  <section id="changelog" style="background:rgba(2,5,6,0.85);backdrop-filter:blur(16px);border-top:1px solid var(--line);">
+    <div class="section-inner">
+      <div class="section-label">What's New</div>
+      <h2 class="section-title">Latest updates.<br /><em>8 June 2026.</em></h2>
+      <p class="section-body">Market intelligence engine — 7 improvements shipped overnight.</p>
+      <div class="changelog-list">
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-new">NEW</span>
+          </div>
+          <div>
+            <div class="changelog-title">Multi-Horizon Market Edge Gate</div>
+            <div class="changelog-body">Edge detection now runs simultaneously across intraday, daily, and weekly timeframes. A setup is only surfaced in the Market Pulse panel when edges align across multiple horizons, significantly reducing false positives and noise.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-new">NEW</span>
+          </div>
+          <div>
+            <div class="changelog-title">Market Catalyst Quality Gate</div>
+            <div class="changelog-body">News events are now scored for market-moving potential before being surfaced. The catalyst gate filters out low-conviction stories, so only genuine, high-quality market catalysts appear in the CATALYST setup filter.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-new">NEW</span>
+          </div>
+          <div>
+            <div class="changelog-title">Live Market Reliability Scoring</div>
+            <div class="changelog-body">Every live market signal now carries a reliability score accounting for feed quality, liquidity conditions, and time-of-day factors. Low-reliability signals are visually flagged in the Market Pulse tape so you always know how much to trust what you're seeing.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-new">NEW</span>
+          </div>
+          <div>
+            <div class="changelog-title">Execution Tape Gate</div>
+            <div class="changelog-body">A new analysis layer reads the real-time trade tape to check whether price action confirms or contradicts current signals. Opportunities are validated against actual execution flow before being promoted to the panel.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-new">NEW</span>
+          </div>
+          <div>
+            <div class="changelog-title">Historical Market Setup Calibration</div>
+            <div class="changelog-body">Market patterns are now calibrated against historical setups. The engine learns which configurations reliably precede significant moves and weights current signals accordingly, improving the quality of MOVERS and BREAKOUT detections.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-improved">IMPROVED</span>
+          </div>
+          <div>
+            <div class="changelog-title">Market Opportunity Validation</div>
+            <div class="changelog-body">Stricter thresholds and cross-asset correlation checks have been applied to the opportunity detection logic. Only high-conviction setups where market, macro, and geopolitical signals converge will now appear in the Market Pulse panel.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <span class="changelog-date">2026-06-08</span>
+            <span class="changelog-badge badge-fix">FIX</span>
+          </div>
+          <div>
+            <div class="changelog-title">Market Feeds Panel Clearance</div>
+            <div class="changelog-body">Resolved a UI issue where stale data from the previous refresh cycle was not fully cleared from the market feeds panel before new data loaded, causing occasional visual artefacts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── CTA BAND ── -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
@@ -760,6 +861,7 @@
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="#changelog">What's New</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
     <div class="footer-copy">Sovereign Intelligence Workspace</div>
