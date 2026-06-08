@@ -346,6 +346,26 @@
     .pricing-card.featured .pricing-cta { background: var(--accent); border-color: var(--accent); color: #020506; font-weight: 700; }
     .pricing-card.featured .pricing-cta:hover { opacity: 0.88; }
 
+    /* ── CHANGELOG ── */
+    .changelog-list { margin-top: 48px; display: flex; flex-direction: column; border: 1px solid var(--line); }
+    .changelog-entry {
+      padding: 24px 28px; border-bottom: 1px solid var(--line);
+      display: grid; grid-template-columns: 140px 1fr; gap: 24px; align-items: start;
+    }
+    .changelog-entry:last-child { border-bottom: none; }
+    .changelog-meta { display: flex; flex-direction: column; gap: 8px; }
+    .changelog-date { font-family: "Roboto Mono", monospace; font-size: 10.5px; color: var(--muted); letter-spacing: 0.08em; }
+    .changelog-type {
+      display: inline-block; padding: 2px 8px; border: 1px solid;
+      font-family: "Roboto Mono", monospace; font-size: 10px; letter-spacing: 0.06em;
+    }
+    .type-feat { border-color: var(--accent); color: var(--accent); }
+    .type-fix  { border-color: var(--land);   color: var(--land); }
+    .type-impr { border-color: var(--special); color: var(--special); }
+    .changelog-content-title { font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+    .changelog-content-body  { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+    @media (max-width: 600px) { .changelog-entry { grid-template-columns: 1fr; gap: 8px; } }
+
     /* ── FAQ ── */
     .faq-list { margin-top: 60px; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
@@ -449,6 +469,7 @@
     <a href="#signals">Signals</a>
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
+    <a href="#changelog">Updates</a>
     <a href="#faq">FAQ</a>
     <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
@@ -527,7 +548,7 @@
         <div class="feature-card">
           <div class="feature-icon">⬚</div>
           <div class="feature-title">Market &amp; Chatter Pulse</div>
-          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
+          <div class="feature-body">Real-time market data with multi-horizon edge gating, per-feed reliability scoring, and historical setup calibration. Social chatter and sentiment signals correlated with geopolitical events on the map timeline.</div>
           <div class="feature-tag">LIVE DATA</div>
         </div>
         <div class="feature-card">
@@ -706,6 +727,67 @@
     </div>
   </section>
 
+  <!-- ── CHANGELOG ── -->
+  <section id="changelog" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);border-top:1px solid var(--line);">
+    <div class="section-inner">
+      <div class="section-label">Latest Updates</div>
+      <h2 class="section-title">What's <em>new.</em></h2>
+      <p class="section-body">Recent improvements shipped to the Sentinel platform.</p>
+      <div class="changelog-list">
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <div class="changelog-date">8 JUN 2026</div>
+            <span class="changelog-type type-feat">FEATURE</span>
+          </div>
+          <div>
+            <div class="changelog-content-title">Historical Market Setup Calibration</div>
+            <div class="changelog-content-body">Market analysis setups can now be calibrated against historical data. Tune signal parameters against known past market conditions to sharpen detection accuracy for current environments.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <div class="changelog-date">8 JUN 2026</div>
+            <span class="changelog-type type-feat">FEATURE</span>
+          </div>
+          <div>
+            <div class="changelog-content-title">Live Market Reliability Scoring</div>
+            <div class="changelog-content-body">Each market data feed now carries a live reliability score. Sentinel scores feeds in real time based on data freshness, consistency, and source quality — so you can instantly see which signals to trust.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <div class="changelog-date">8 JUN 2026</div>
+            <span class="changelog-type type-feat">FEATURE</span>
+          </div>
+          <div>
+            <div class="changelog-content-title">Multi-Horizon Market Edge Gate</div>
+            <div class="changelog-content-body">A new filtering layer gates market signals across short-, medium-, and long-horizon windows simultaneously. Only opportunities that align across multiple timeframes surface as actionable edges, reducing noise significantly.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <div class="changelog-date">8 JUN 2026</div>
+            <span class="changelog-type type-impr">IMPROVEMENT</span>
+          </div>
+          <div>
+            <div class="changelog-content-title">Improved Market Opportunity Validation</div>
+            <div class="changelog-content-body">Market opportunity validation logic has been overhauled with tighter criteria and richer context signals. Fewer false positives, higher-confidence alerts when genuine opportunities are detected.</div>
+          </div>
+        </div>
+        <div class="changelog-entry">
+          <div class="changelog-meta">
+            <div class="changelog-date">8 JUN 2026</div>
+            <span class="changelog-type type-fix">FIX</span>
+          </div>
+          <div>
+            <div class="changelog-content-title">Market Feeds Panel Clearance Fix</div>
+            <div class="changelog-content-body">Resolved a layout issue where the market feeds panel did not clear correctly when switching between feed sources. The panel now resets cleanly on every feed transition.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── FAQ ── -->
   <section id="faq">
     <div class="section-inner">
@@ -759,6 +841,7 @@
     <div class="footer-links">
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
+      <a href="#changelog">Updates</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
