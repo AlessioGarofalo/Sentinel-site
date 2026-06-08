@@ -70,7 +70,6 @@
     .nav-cta:hover { background: rgba(139,255,222,0.14) !important; border-color: var(--accent) !important; text-decoration: none !important; }
 
     /* ── FIXED VIDEO BACKGROUND ── */
-    /* Video is fixed to viewport so it persists while scrolling */
     .video-fixed {
       position: fixed; inset: 0; z-index: 0;
       pointer-events: none; overflow: hidden;
@@ -84,7 +83,6 @@
       transform: translate(-50%, -50%);
       border: none;
     }
-    /* Persistent dark overlay behind all content */
     .video-overlay {
       position: fixed; inset: 0; z-index: 1;
       background: rgba(2,5,6,0.62);
@@ -92,7 +90,6 @@
     }
 
     /* ── HERO ── */
-    /* Hero sits above the fixed video, transparent bg so video shows through */
     .hero {
       position: relative; z-index: 10;
       min-height: 100vh;
@@ -100,9 +97,7 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 100px;
-      /* No background — video shows through */
     }
-    /* Subtle fade at bottom of hero — transparent so video shows through */
     .hero::after {
       content: "";
       position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
@@ -180,12 +175,10 @@
     }
 
     /* ── CONTENT SECTIONS ── */
-    /* Semi-transparent backgrounds so the fixed video shows through while scrolling */
     .content-wrap {
       position: relative; z-index: 10;
     }
 
-    /* Base for all sections — transparent so video bleeds through */
     section { padding: 100px 24px; background: transparent; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -450,6 +443,7 @@
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
+    <a href="#whats-new">What's New</a>
     <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL →</a>
   </div>
@@ -527,8 +521,8 @@
         <div class="feature-card">
           <div class="feature-icon">⬚</div>
           <div class="feature-title">Market &amp; Chatter Pulse</div>
-          <div class="feature-body">Real-time market data, social chatter trends, and sentiment signals aggregated and correlated with geopolitical events on the map timeline.</div>
-          <div class="feature-tag">LIVE DATA</div>
+          <div class="feature-body">AI-validated market intelligence across multiple time horizons. Live price data, execution tape analysis, catalyst quality gates, and feed reliability scoring — all correlated with geopolitical events on the map timeline. Only high-confidence signals surface.</div>
+          <div class="feature-tag">LIVE DATA · AI-VALIDATED</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">◎</div>
@@ -702,6 +696,58 @@
           </div>
           <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="pricing-cta">CONTACT US →</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT'S NEW ── -->
+  <section id="whats-new" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);border-top:1px solid var(--line);">
+    <div class="section-inner">
+      <div class="section-label">What's New · June 2026</div>
+      <h2 class="section-title">Market Intelligence<br /><em>Upgraded.</em></h2>
+      <p class="section-body">Sentinel's Market Pulse module received a major update this week — bringing AI-validated, multi-layer signal analysis to every market feed.</p>
+      <div style="margin-top:48px;border:1px solid var(--line);">
+
+        <div style="padding:24px 28px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:flex-start;background:rgba(6,16,19,0.82);backdrop-filter:blur(12px);">
+          <div style="flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--line-strong);padding:3px 9px;">NEW</div>
+          <div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Multi-Horizon Market Edge Detection</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.65;">Market signals are now analysed simultaneously across intraday, daily, and weekly timeframes. Edge gates surface only high-confidence setups that align across multiple horizons — reducing false positives and analyst fatigue.</div>
+          </div>
+        </div>
+
+        <div style="padding:24px 28px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:flex-start;background:rgba(6,16,19,0.72);">
+          <div style="flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--line-strong);padding:3px 9px;">NEW</div>
+          <div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Live Feed Reliability Scoring</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.65;">Each market data feed is now scored for reliability in real time. Stale or degraded feeds are flagged before they reach the analyst view — so the picture stays clean even when upstream sources are noisy.</div>
+          </div>
+        </div>
+
+        <div style="padding:24px 28px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:flex-start;background:rgba(6,16,19,0.82);backdrop-filter:blur(12px);">
+          <div style="flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--line-strong);padding:3px 9px;">NEW</div>
+          <div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Historical Market Setup Calibration</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.65;">The AI engine now calibrates current market conditions against historical setups, giving analysts immediate context on whether a pattern is typical, anomalous, or a recognisable historical analogue.</div>
+          </div>
+        </div>
+
+        <div style="padding:24px 28px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:flex-start;background:rgba(6,16,19,0.72);">
+          <div style="flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--line-strong);padding:3px 9px;">NEW</div>
+          <div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Execution Tape Analysis</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.65;">Intraday trade flow is now parsed through an execution tape gate, distinguishing genuine institutional positioning from noise at the tick level before it influences AI analysis.</div>
+          </div>
+        </div>
+
+        <div style="padding:24px 28px;display:flex;gap:24px;align-items:flex-start;background:rgba(6,16,19,0.82);backdrop-filter:blur(12px);">
+          <div style="flex-shrink:0;font-family:'Roboto Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--line-strong);padding:3px 9px;">NEW</div>
+          <div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:6px;">Catalyst Quality Gate</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.65;">Market catalysts — news events, macro releases, geopolitical signals — are now scored for quality before being correlated with price action. Only high-signal catalysts surface in the analyst view, sharpening market-to-event linkage.</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
