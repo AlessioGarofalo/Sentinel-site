@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENTINEL - Sovereign Intelligence Workspace</title>
+  <title>SENTINEL - Sovereign Intelligence &amp; Market Analysis Workspace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -36,7 +36,6 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* -- NAV -- */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
@@ -69,8 +68,6 @@
     }
     .nav-cta:hover { background: rgba(139,255,222,0.14) !important; border-color: var(--accent) !important; text-decoration: none !important; }
 
-    /* -- FIXED VIDEO BACKGROUND -- */
-    /* Video is fixed to viewport so it persists while scrolling */
     .video-fixed {
       position: fixed; inset: 0; z-index: 0;
       pointer-events: none; overflow: hidden;
@@ -84,15 +81,12 @@
       transform: translate(-50%, -50%);
       border: none;
     }
-    /* Persistent dark overlay behind all content */
     .video-overlay {
       position: fixed; inset: 0; z-index: 1;
       background: rgba(2,5,6,0.62);
       pointer-events: none;
     }
 
-    /* -- HERO -- */
-    /* Hero sits above the fixed video, transparent bg so video shows through */
     .hero {
       position: relative; z-index: 10;
       min-height: 100vh;
@@ -100,16 +94,13 @@
       align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 100px;
-      /* No background -- video shows through */
     }
-    /* Subtle fade at bottom of hero -- transparent so video shows through */
     .hero::after {
       content: "";
       position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
       background: linear-gradient(0deg, rgba(2,5,6,0.45) 0%, transparent 100%);
       pointer-events: none;
     }
-
     .hero-eyebrow {
       display: inline-block; margin-bottom: 24px;
       padding: 5px 14px;
@@ -129,7 +120,7 @@
     .hero h1 em { font-style: normal; color: var(--accent); }
     .hero-sub {
       font-size: 18px; color: rgba(217,255,244,0.8); line-height: 1.75;
-      max-width: 600px; margin: 0 auto 48px;
+      max-width: 660px; margin: 0 auto 48px;
       text-shadow: 0 1px 20px rgba(0,0,0,0.6);
     }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -179,13 +170,7 @@
       50% { opacity: 1; transform: scaleY(1.3); }
     }
 
-    /* -- CONTENT SECTIONS -- */
-    /* Semi-transparent backgrounds so the fixed video shows through while scrolling */
-    .content-wrap {
-      position: relative; z-index: 10;
-    }
-
-    /* Base for all sections -- transparent so video bleeds through */
+    .content-wrap { position: relative; z-index: 10; }
     section { padding: 100px 24px; background: transparent; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -200,7 +185,7 @@
     .section-title em { font-style: normal; color: var(--accent); }
     .section-body { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
 
-    /* -- FEATURE GRID -- */
+    /* Feature grid */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -212,6 +197,32 @@
       border: 1px solid var(--line); margin: -1px; transition: background 0.2s;
     }
     .feature-card:hover { background: rgba(6,16,19,0.94); }
+    /* Full-width featured card */
+    .feature-card-wide {
+      grid-column: 1 / -1;
+      padding: 40px 40px;
+      background: rgba(6,16,19,0.92);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--line-strong);
+      margin: -1px;
+    }
+    .feature-card-wide .feature-wide-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .feature-gates {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px;
+    }
+    .feature-gate {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: rgba(139,255,222,0.03);
+    }
+    .feature-gate-num {
+      font-family: "Roboto Mono", monospace; font-size: 10px;
+      color: var(--accent); letter-spacing: 0.1em; margin-bottom: 4px;
+    }
+    .feature-gate-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .feature-gate-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
     .feature-icon {
       width: 40px; height: 40px; margin-bottom: 20px;
       display: flex; align-items: center; justify-content: center;
@@ -227,8 +238,67 @@
       font-family: "Roboto Mono", monospace;
       font-size: 10.5px; color: var(--muted); letter-spacing: 0.08em;
     }
+    .feature-tag-accent {
+      display: inline-block; margin-top: 14px; padding: 3px 9px;
+      border: 1px solid var(--accent);
+      font-family: "Roboto Mono", monospace;
+      font-size: 10.5px; color: var(--accent); letter-spacing: 0.08em;
+    }
 
-    /* -- SIGNALS -- */
+    /* Market callout band */
+    .market-callout {
+      background: rgba(3,10,12,0.88);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+      padding: 64px 24px;
+      position: relative; overflow: hidden;
+    }
+    .market-callout::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(255,184,92,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .market-callout-inner {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 1px;
+      border: 1px solid var(--line);
+    }
+    .market-gate-pill {
+      padding: 28px 22px;
+      background: rgba(2,5,6,0.7);
+      border: 1px solid var(--line);
+      margin: -1px;
+      text-align: center;
+    }
+    .market-gate-pill:hover { background: rgba(6,16,19,0.9); }
+    .market-gate-n {
+      font-family: "Roboto Mono", monospace; font-size: 22px;
+      font-weight: 700; color: var(--special); margin-bottom: 8px;
+    }
+    .market-gate-label {
+      font-size: 12px; font-weight: 600; color: var(--ink);
+      margin-bottom: 6px; line-height: 1.3;
+    }
+    .market-gate-desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+    .market-callout-header {
+      max-width: 1100px; margin: 0 auto 32px;
+      display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .market-callout-header h3 {
+      font-size: 20px; font-weight: 600;
+    }
+    .market-callout-header h3 em { font-style: normal; color: var(--special); }
+    .market-callout-header p { font-size: 14px; color: var(--muted); max-width: 420px; }
+    @media (max-width: 900px) {
+      .market-callout-inner { grid-template-columns: 1fr 1fr; }
+      .feature-card-wide .feature-wide-inner { grid-template-columns: 1fr; gap: 28px; }
+      .feature-gates { grid-template-columns: 1fr; }
+    }
+
+    /* Signals */
     .signals-section { background: transparent; padding: 80px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .signals-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
     .signal-pill {
@@ -236,6 +306,7 @@
       padding: 8px 16px; border: 1px solid var(--line); background: rgba(2,8,10,0.6);
       font-family: "Roboto Mono", monospace; font-size: 12px; color: var(--ink); letter-spacing: 0.05em;
     }
+    .signal-pill.highlighted { border-color: var(--special); background: rgba(255,184,92,0.05); }
     .signal-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
     .dot-air     { background: var(--air);      box-shadow: 0 0 6px var(--air); }
     .dot-land    { background: var(--land);     box-shadow: 0 0 6px var(--land); }
@@ -244,7 +315,7 @@
     .dot-warn    { background: var(--warn);     box-shadow: 0 0 6px var(--warn); }
     .dot-accent  { background: var(--accent);   box-shadow: 0 0 6px var(--accent); }
 
-    /* -- SOVEREIGN -- */
+    /* Sovereign */
     .sovereign-section {
       position: relative; overflow: hidden;
       background: rgba(3,10,12,0.78);
@@ -287,7 +358,7 @@
       border-bottom: 1px solid var(--line); padding-bottom: 10px;
     }
 
-    /* -- AI SECTION -- */
+    /* AI */
     .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
     .ai-card { padding: 32px; border: 1px solid var(--line); background: rgba(6,16,19,0.82); backdrop-filter: blur(12px); }
     .ai-card-label {
@@ -308,7 +379,7 @@
     .badge-cloud { border-color: var(--air);  color: var(--air); }
     .badge-local { border-color: var(--land); color: var(--land); }
 
-    /* -- PRICING -- */
+    /* Pricing */
     .pricing-section { background: rgba(6,16,19,0.78); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
     .pricing-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -346,7 +417,7 @@
     .pricing-card.featured .pricing-cta { background: var(--accent); border-color: var(--accent); color: #020506; font-weight: 700; }
     .pricing-card.featured .pricing-cta:hover { opacity: 0.88; }
 
-    /* -- FAQ -- */
+    /* FAQ */
     .faq-list { margin-top: 60px; border-top: 1px solid var(--line); }
     .faq-item { border-bottom: 1px solid var(--line); }
     .faq-q {
@@ -366,7 +437,7 @@
     }
     .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
 
-    /* -- CTA BAND -- */
+    /* CTA band */
     .cta-band {
       padding: 100px 24px; text-align: center;
       background: rgba(3,10,12,0.8); backdrop-filter: blur(14px);
@@ -382,7 +453,7 @@
     .cta-band h2 em { font-style: normal; color: var(--accent); }
     .cta-band p { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
 
-    /* -- FOOTER -- */
+    /* Footer */
     footer {
       padding: 48px 40px; border-top: 1px solid var(--line);
       display: flex; justify-content: space-between; align-items: center;
@@ -395,7 +466,6 @@
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-size: 12px; color: rgba(126,165,155,0.4); font-family: "Roboto Mono", monospace; }
 
-    /* -- RESPONSIVE -- */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -408,9 +478,20 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .cursor { animation: blink 1s step-end infinite; }
 
-    /* -- CHANGELOG -- */
+    /* Changelog - scrollable */
     .changelog-section { background: rgba(2,5,6,0.88); backdrop-filter: blur(14px); border-top: 1px solid var(--line); padding: 80px 24px; }
-    .changelog-list { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+    .changelog-scroll {
+      margin-top: 48px;
+      max-height: 540px;
+      overflow-y: auto;
+      padding-right: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line-strong) transparent;
+    }
+    .changelog-scroll::-webkit-scrollbar { width: 4px; }
+    .changelog-scroll::-webkit-scrollbar-track { background: transparent; }
+    .changelog-scroll::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 2px; }
+    .changelog-list { display: flex; flex-direction: column; gap: 0; }
     .changelog-entry {
       display: grid; grid-template-columns: 160px 1fr; gap: 32px;
       padding: 24px 0; border-bottom: 1px solid var(--line);
@@ -437,7 +518,7 @@
       .changelog-entry { grid-template-columns: 1fr; gap: 8px; }
     }
 
-    /* -- VIDEO MODAL -- */
+    /* Video modal */
     .video-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 1000;
       background: rgba(2,5,6,0.92); backdrop-filter: blur(12px);
@@ -460,7 +541,6 @@
 </head>
 <body>
 
-<!-- Fixed video layer - sits behind everything, persists on scroll -->
 <div class="video-fixed">
   <iframe
     src="https://player.vimeo.com/video/1197139785?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0"
@@ -470,11 +550,11 @@
 </div>
 <div class="video-overlay"></div>
 
-<!-- -- NAV -- -->
 <nav id="mainNav">
   <div class="nav-brand">SENTINEL</div>
   <div class="nav-links">
     <a href="#features">Features</a>
+    <a href="#market">Market Intelligence</a>
     <a href="#signals">Signals</a>
     <a href="#sovereign">Sovereign Mode</a>
     <a href="#pricing">Pricing</a>
@@ -485,12 +565,11 @@
   </div>
 </nav>
 
-<!-- -- HERO -- -->
 <section class="hero" id="hero">
-  <div class="hero-eyebrow">Sovereign Intelligence Workspace</div>
+  <div class="hero-eyebrow">Sovereign Intelligence &amp; Market Analysis Workspace</div>
   <h1>Your world.<br /><em>Your intelligence.</em><br />No cloud required.</h1>
   <p class="hero-sub">
-    Sentinel aggregates global signals, news, markets, maritime, aviation, disasters, chatter, into a single live operational map. Analysed by AI. Runs entirely on your hardware.
+    Sentinel aggregates global signals, live financial markets, maritime, aviation, disasters, and geopolitical chatter into a single operational picture. A quality-gated market intelligence engine surfaces only the opportunities worth acting on. All analysed by AI, running entirely on your hardware.
   </p>
   <div class="hero-actions">
     <a href="#pricing" class="btn-primary">GET SENTINEL &mdash; &euro;999</a>
@@ -500,6 +579,10 @@
     <div class="hero-stat">
       <div class="hero-stat-val">1000s</div>
       <div class="hero-stat-label">Daily Signals Ingested</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">5</div>
+      <div class="hero-stat-label">Market Quality Gates</div>
     </div>
     <div class="hero-stat">
       <div class="hero-stat-val">100%</div>
@@ -520,16 +603,62 @@
   </div>
 </section>
 
-<!-- All content below scrolls over the fixed video -->
 <div class="content-wrap">
 
-  <!-- -- FEATURES -- -->
+  <!-- FEATURES -->
   <section id="features" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
       <h2 class="section-title">Everything an analyst needs.<br /><em>Nothing they don't.</em></h2>
       <p class="section-body">Purpose-built for professionals who need to understand the world in real time, without feeding their intelligence to a third-party cloud.</p>
       <div class="features-grid">
+
+        <!-- Market Intelligence Engine - full width, prominent -->
+        <div class="feature-card-wide">
+          <div class="feature-wide-inner">
+            <div>
+              <div class="feature-icon">&#11034;</div>
+              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Market Intelligence Engine</div>
+              <div class="feature-body" style="font-size:15px;">Sentinel doesn't just show you market data, it evaluates every opportunity through a five-layer quality gate before it reaches your screen. Only ideas that pass all checks are surfaced, cutting noise and surfacing only high-conviction setups ready to act on.</div>
+              <div style="margin-top:16px;">
+                <span class="feature-tag-accent">QUALITY-GATED</span>
+                <span class="feature-tag" style="margin-left:8px;">LIVE MARKET FEED</span>
+                <span class="feature-tag" style="margin-left:8px;">AI-SCORED</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">Five-Layer Quality Framework</div>
+              <div class="feature-gates">
+                <div class="feature-gate">
+                  <div class="feature-gate-num">GATE 01</div>
+                  <div class="feature-gate-name">Catalyst Quality</div>
+                  <div class="feature-gate-body">Freshness, directness, and source diversity of supporting catalysts.</div>
+                </div>
+                <div class="feature-gate">
+                  <div class="feature-gate-num">GATE 02</div>
+                  <div class="feature-gate-name">Historical Edge</div>
+                  <div class="feature-gate-body">Win rates and average P&amp;L across four backtested horizons.</div>
+                </div>
+                <div class="feature-gate">
+                  <div class="feature-gate-num">GATE 03</div>
+                  <div class="feature-gate-name">Live Desk Reliability</div>
+                  <div class="feature-gate-body">Real performance of past alerts per symbol tracked in the local database.</div>
+                </div>
+                <div class="feature-gate">
+                  <div class="feature-gate-num">GATE 04</div>
+                  <div class="feature-gate-name">Liquidity Profile</div>
+                  <div class="feature-gate-body">Confirms execution feasibility before any idea is ranked.</div>
+                </div>
+                <div class="feature-gate" style="grid-column:1/-1;">
+                  <div class="feature-gate-num">GATE 05</div>
+                  <div class="feature-gate-name">Execution Readiness</div>
+                  <div class="feature-gate-body">Composite tier (Ready / Conditional / Defer / Reject) gating every idea before it appears in the Market Opportunity Report.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="feature-card">
           <div class="feature-icon">&oplus;</div>
           <div class="feature-title">Global Awareness Map</div>
@@ -555,12 +684,6 @@
           <div class="feature-tag">WHISPER + KOKORO</div>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">&#11034;</div>
-          <div class="feature-title">Market Intelligence Engine</div>
-          <div class="feature-body">Five-layer quality gate scores every market idea across catalyst freshness, historical edge calibration, live desk reliability, liquidity profile, and execution readiness - only surfaces opportunities that pass all checks.</div>
-          <div class="feature-tag">QUALITY-GATED &middot; LIVE</div>
-        </div>
-        <div class="feature-card">
           <div class="feature-icon">&#9678;</div>
           <div class="feature-title">Portable Appliance</div>
           <div class="feature-body">Entire workspace runs from an encrypted external drive. Double-click to launch, browser, backend, and vault all self-contained. No install, no cloud account.</div>
@@ -570,7 +693,45 @@
     </div>
   </section>
 
-  <!-- -- SIGNALS -- -->
+  <!-- MARKET INTELLIGENCE CALLOUT -->
+  <section class="market-callout" id="market">
+    <div class="market-callout-header">
+      <div>
+        <div class="section-label">Market Intelligence</div>
+        <h3>A <em>quality-gated</em> edge on every trade idea.</h3>
+      </div>
+      <p>Most platforms show you data. Sentinel tells you whether it's worth acting on, scoring every opportunity across five independent layers before it surfaces to your desk.</p>
+    </div>
+    <div class="market-callout-inner">
+      <div class="market-gate-pill">
+        <div class="market-gate-n">01</div>
+        <div class="market-gate-label">Catalyst Quality Gate</div>
+        <div class="market-gate-desc">Flags stale or thin catalyst bundles before any idea is promoted.</div>
+      </div>
+      <div class="market-gate-pill">
+        <div class="market-gate-n">02</div>
+        <div class="market-gate-label">Historical Edge Calibration</div>
+        <div class="market-gate-desc">Backtested win rates and P&amp;L across 3, 5, 8, and 13-bar horizons.</div>
+      </div>
+      <div class="market-gate-pill">
+        <div class="market-gate-n">03</div>
+        <div class="market-gate-label">Live Desk Reliability</div>
+        <div class="market-gate-desc">Real alert performance per symbol tracked in your local database.</div>
+      </div>
+      <div class="market-gate-pill">
+        <div class="market-gate-n">04</div>
+        <div class="market-gate-label">Liquidity Profile</div>
+        <div class="market-gate-desc">Execution feasibility confirmed before ranking any opportunity.</div>
+      </div>
+      <div class="market-gate-pill">
+        <div class="market-gate-n">05</div>
+        <div class="market-gate-label">Execution Readiness</div>
+        <div class="market-gate-desc">Composite Ready / Conditional / Defer / Reject tier gating every idea.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNALS -->
   <section class="signals-section" id="signals">
     <div class="section-inner">
       <div class="section-label">Signal Sources</div>
@@ -581,7 +742,9 @@
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>GDELT Event Database</div>
         <div class="signal-pill"><span class="signal-dot dot-sea"></span>AIS Maritime (AISstream)</div>
         <div class="signal-pill"><span class="signal-dot dot-air"></span>Live Flight Tracking</div>
-        <div class="signal-pill"><span class="signal-dot dot-special"></span>Live Market Feed</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Live Market Feed</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Market Opportunity Reports</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Quality-Gated Trade Ideas</div>
         <div class="signal-pill"><span class="signal-dot dot-warn"></span>GDACS Disaster Alerts</div>
         <div class="signal-pill"><span class="signal-dot dot-land"></span>Weather &amp; Pressure</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Social Chatter Trends</div>
@@ -597,7 +760,7 @@
     </div>
   </section>
 
-  <!-- -- SOVEREIGN MODE -- -->
+  <!-- SOVEREIGN MODE -->
   <section class="sovereign-section" id="sovereign">
     <div class="sovereign-bg"></div>
     <div class="sovereign-inner">
@@ -608,23 +771,23 @@
         <div class="sovereign-checklist">
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local LLM via Ollama</strong> - Qwen 3 32B runs entirely on-device. No OpenAI account required.</div>
+            <div class="check-text"><strong>Local LLM via Ollama,</strong> Qwen 3 32B runs entirely on-device. No OpenAI account required.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local Speech</strong> - Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
+            <div class="check-text"><strong>Local Speech,</strong> Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Encrypted vault</strong> - All data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
+            <div class="check-text"><strong>Encrypted vault,</strong> all data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Localhost-only binding</strong> - Server refuses non-local connections by design.</div>
+            <div class="check-text"><strong>Localhost-only binding,</strong> server refuses non-local connections by design.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Air-gap ready</strong> - Public signal feeds are optional. Core analysis works fully disconnected.</div>
+            <div class="check-text"><strong>Air-gap ready,</strong> public signal feeds are optional. Core analysis works fully disconnected.</div>
           </div>
         </div>
       </div>
@@ -647,7 +810,7 @@
     </div>
   </section>
 
-  <!-- -- AI SECTION -- -->
+  <!-- AI SECTION -->
   <section id="ai">
     <div class="section-inner">
       <div class="section-label">AI Integration</div>
@@ -677,7 +840,7 @@
     </div>
   </section>
 
-  <!-- -- PRICING -- -->
+  <!-- PRICING -->
   <section class="pricing-section" id="pricing">
     <div class="section-inner">
       <div class="section-label">Pricing</div>
@@ -692,6 +855,7 @@
           <div class="pricing-features">
             <div class="pricing-feature">Full Sentinel application (download)</div>
             <div class="pricing-feature">Thousands of signals from hundreds of sources</div>
+            <div class="pricing-feature">Market Intelligence Engine with 5-layer quality gate</div>
             <div class="pricing-feature">OpenAI integration (your key)</div>
             <div class="pricing-feature">Private knowledge base</div>
             <div class="pricing-feature">Voice interface</div>
@@ -709,7 +873,7 @@
           <div class="pricing-features">
             <div class="pricing-feature">Everything in Solo</div>
             <div class="pricing-feature">Pre-loaded 2TB encrypted SSD</div>
-            <div class="pricing-feature">Works on any Windows PC - just plug in</div>
+            <div class="pricing-feature">Works on any Windows PC, just plug in</div>
             <div class="pricing-feature">Sovereign Mode pre-configured</div>
             <div class="pricing-feature">Qwen 3 32B bundled on-device</div>
             <div class="pricing-feature">Whisper + Kokoro offline voice</div>
@@ -736,7 +900,7 @@
     </div>
   </section>
 
-  <!-- -- FAQ -- -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="section-inner">
       <div class="section-label">FAQ</div>
@@ -764,126 +928,127 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Can I copy or share the drive? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">The Solo licence (&euro;699) is bound to one PC, it will not run on a different machine. The Sovereign Edition (&euro;999) is bound to the physical drive, not the PC - plug it into any Windows machine and it works. You can move between computers freely; you cannot clone the drive and run two instances simultaneously.</div>
+          <div class="faq-a">The Solo licence (&euro;699) is bound to one PC, it will not run on a different machine. The Sovereign Edition (&euro;999) is bound to the physical drive, not the PC, plug it into any Windows machine and it works. You can move between computers freely; you cannot clone the drive and run two instances simultaneously.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- -- CHANGELOG -- -->
+  <!-- CHANGELOG -->
   <section class="changelog-section" id="changelog">
     <div class="section-inner">
       <div class="section-label">Updates</div>
       <h2 class="section-title">What's new in <em>Sentinel.</em></h2>
-      <p class="section-body">Recent additions to the intelligence engine - pushed directly from the product repository.</p>
-      <div class="changelog-list">
+      <p class="section-body">Recent additions to the intelligence engine, pushed directly from the product repository.</p>
+      <div class="changelog-scroll">
+        <div class="changelog-list">
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026 &middot; Latest</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Market Feeds Panel - Refined Display &amp; Performance</div>
-            <div class="changelog-body">The market feeds panel has been updated with improved visual layout and smarter state retention. Computed market scores and intelligence context are now preserved more efficiently across sessions, reducing wait times when revisiting symbols or setups already processed by the quality gate pipeline.</div>
-            <div class="changelog-tags">
-              <span class="changelog-tag improve">IMPROVEMENT</span>
-              <span class="changelog-tag">Market Pulse</span>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Market Feeds Panel, Refined Display &amp; Performance</div>
+              <div class="changelog-body">The market feeds panel has been updated with improved visual layout and smarter state retention. Computed market scores and intelligence context are now preserved more efficiently across sessions, reducing wait times when revisiting symbols or setups already processed by the quality gate pipeline.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Market Pulse</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Market Intelligence Engine - Quality-Gated Signal Pipeline</div>
-            <div class="changelog-body">A complete overhaul of how Sentinel evaluates and surfaces market opportunities. Seven commits shipping a five-layer assessment framework: Sentinel now scores every market idea across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness before it reaches your screen.</div>
-            <div class="changelog-tags">
-              <span class="changelog-tag new">NEW</span>
-              <span class="changelog-tag">Catalyst Quality Gate</span>
-              <span class="changelog-tag">Historical Edge Calibration</span>
-              <span class="changelog-tag">Live Reliability Scoring</span>
-              <span class="changelog-tag">Execution Readiness</span>
-              <span class="changelog-tag fix">FIX</span>
-              <span class="changelog-tag">Market Feeds Panel</span>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Market Intelligence Engine, Quality-Gated Signal Pipeline</div>
+              <div class="changelog-body">A complete overhaul of how Sentinel evaluates and surfaces market opportunities. Seven commits shipping a five-layer assessment framework: Sentinel now scores every market idea across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness before it reaches your screen.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Catalyst Quality Gate</span>
+                <span class="changelog-tag">Historical Edge Calibration</span>
+                <span class="changelog-tag">Live Reliability Scoring</span>
+                <span class="changelog-tag">Execution Readiness</span>
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Market Feeds Panel</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Catalyst Quality Gate</div>
-            <div class="changelog-body">Each market idea is now audited for the freshness, directness, and source diversity of its supporting catalysts. Stale or single-source catalyst bundles are flagged before any idea is promoted, preventing low-conviction noise from reaching the desk.</div>
-            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Catalyst Quality Gate</div>
+              <div class="changelog-body">Each market idea is now audited for the freshness, directness, and source diversity of its supporting catalysts. Stale or single-source catalyst bundles are flagged before any idea is promoted, preventing low-conviction noise from reaching the desk.</div>
+              <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+            </div>
           </div>
-        </div>
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Historical Edge Calibration</div>
-            <div class="changelog-body">Sentinel backtests each chart setup against similar historical configurations across four horizons (3, 5, 8, and 13 bars). Win rates, average P&amp;L, consistency scores, and statistical lower bounds are computed before a setup is ranked, giving every idea a track-record context.</div>
-            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Historical Edge Calibration</div>
+              <div class="changelog-body">Sentinel backtests each chart setup against similar historical configurations across four horizons (3, 5, 8, and 13 bars). Win rates, average P&amp;L, consistency scores, and statistical lower bounds are computed before a setup is ranked, giving every idea a track-record context.</div>
+              <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+            </div>
           </div>
-        </div>
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Live Desk Reliability Scoring</div>
-            <div class="changelog-body">The system now tracks the live performance of past market alerts per symbol and direction - hit rates, average P&amp;L, and unrealised marks - from the Sentinel local database. Ideas backed by a proven live track record are ranked higher; thin or unobserved symbols are labelled accordingly.</div>
-            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Live Desk Reliability Scoring</div>
+              <div class="changelog-body">The system now tracks the live performance of past market alerts per symbol and direction, hit rates, average P&amp;L, and unrealised marks, from the Sentinel local database. Ideas backed by a proven live track record are ranked higher; thin or unobserved symbols are labelled accordingly.</div>
+              <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+            </div>
           </div>
-        </div>
 
-        <div class="changelog-entry">
-          <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
-          <div class="changelog-right">
-            <div class="changelog-title">Execution Readiness &amp; Opportunity Gate</div>
-            <div class="changelog-body">A composite readiness tier (Ready / Conditional / Defer / Reject) now gates every idea through liquidity, catalyst evidence, historical edge consistency, and live reliability before it appears in the Market Opportunity Report. Multi-horizon edge detection adds short-, medium-, and longer-term perspective in a single pass.</div>
-            <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Execution Readiness &amp; Opportunity Gate</div>
+              <div class="changelog-body">A composite readiness tier (Ready / Conditional / Defer / Reject) now gates every idea through liquidity, catalyst evidence, historical edge consistency, and live reliability before it appears in the Market Opportunity Report. Multi-horizon edge detection adds short-, medium-, and longer-term perspective in a single pass.</div>
+              <div class="changelog-tags"><span class="changelog-tag new">NEW</span><span class="changelog-tag">Market Pulse</span></div>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- -- CTA BAND -- -->
+  <!-- CTA BAND -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
       <h2>Ready to own your <em>intelligence</em>?</h2>
-      <p>Join analysts, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
+      <p>Join analysts, traders, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
       <div class="hero-actions">
-        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL - &euro;999</a>
+        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL &mdash; &euro;999</a>
         <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="btn-ghost">ENTERPRISE ENQUIRY</a>
       </div>
     </div>
   </section>
 
-  <!-- -- FOOTER -- -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-brand">SENTINEL &copy; 2026</div>
     <div class="footer-links">
       <a href="#features">Features</a>
+      <a href="#market">Market Intelligence</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
-    <div class="footer-copy">Sovereign Intelligence Workspace</div>
+    <div class="footer-copy">Sovereign Intelligence &amp; Market Analysis Workspace</div>
   </footer>
 
-</div><!-- /content-wrap -->
+</div>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
-  // Nav becomes opaque on scroll
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 80);
   }, { passive: true });
 
-  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -894,7 +1059,6 @@
   });
 </script>
 
-<!-- -- DEMO VIDEO MODAL -- -->
 <div class="video-modal-overlay" id="demoModal" onclick="closeDemoModal(event)">
   <div class="video-modal">
     <button class="video-modal-close" onclick="closeDemoModal()">&#x2715;</button>
