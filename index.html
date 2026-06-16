@@ -945,7 +945,96 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">10 Jun 2026 &middot; Latest</div>
+            <div class="changelog-date">16 Jun 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Staged Paper Trade Exits &amp; Cross-Device Report Sharing</div>
+              <div class="changelog-body">Two significant additions to the Opportunity Desk. Paper trades can now exit in stages: multiple targets are tracked independently, allowing partial profit-taking at different price levels while the remaining position runs. Separately, Market Opportunity Desk reports can now be shared and synced across devices, so the same analysis is accessible from any machine running Sentinel without manual re-runs. The market desk also received responsiveness and scan coverage improvements widening the set of products evaluated per cycle.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Paper Trading</span>
+                <span class="changelog-tag">Staged Exits</span>
+                <span class="changelog-tag">Report Sharing</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Opportunity Desk</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">16 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Mobile Map Pinch Zoom &amp; Ledger Refresh</div>
+              <div class="changelog-body">The world map now supports native pinch-to-zoom on touch devices, making the geospatial intelligence layer fully usable on tablets and phones. A concurrent fix resolves an issue where the paper trade ledger on mobile was not refreshing correctly after a position update.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Mobile</span>
+                <span class="changelog-tag">World Map</span>
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Paper Trading</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">15 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Mobile Layouts, Desk Gating &amp; Gate Configuration UI</div>
+              <div class="changelog-body">A broad mobile pass corrects layout breakpoints across the main views, including the Opportunity Desk panels on narrow screens. Desk gating logic received fixes to ensure gate enable/disable state is respected correctly during live scans. The gate configuration interface was substantially updated with richer visual feedback — active gate status, pass/fail indicators, and configuration changes now reflect immediately without requiring a full report refresh.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Mobile</span>
+                <span class="changelog-tag">Opportunity Desk</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Gate Configuration</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">13 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Compact Responsive UI, Brief Email &amp; Trade Ledger Fixes</div>
+              <div class="changelog-body">A new compact UI mode adapts the Sentinel workspace to smaller viewports and dense screen layouts, keeping all panels accessible without sacrificing information density. Brief email and alert notification delivery was corrected — feedback messages now accurately reflect send/failure state. The closed paper trade statistics ledger was also fixed to correctly aggregate and display historical performance data.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Compact UI</span>
+                <span class="changelog-tag">Responsive</span>
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Brief &amp; Alerts</span>
+                <span class="changelog-tag">Paper Trading</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">12 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Paper Trade Ledger Display &amp; Performance Summary</div>
+              <div class="changelog-body">The paper trade memory ledger received a comprehensive display fix — trade history, open positions, and P&amp;L rows now render consistently across all states. A separate fix resolves cases where the performance summary was silently skipping resolved trades when computing aggregate hit-rate and expectancy metrics, causing understated statistics in the desk overview.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Paper Trading</span>
+                <span class="changelog-tag">Performance Memory</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">11 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Paper Trade Trigger Lifecycle Overhaul</div>
+              <div class="changelog-body">The paper trade trigger and lifecycle management system was substantially reworked. Entry conditions, pending-to-active transitions, and position state machines are now handled through a more rigorous flow, eliminating edge cases where trades could get stuck in pending state, double-trigger on refreshes, or fail to advance to active when entry conditions were met.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Paper Trading</span>
+                <span class="changelog-tag">Trade Lifecycle</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">10 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Expanded Market Universe, Global Feeds &amp; Security Hardening</div>
               <div class="changelog-body">A broad sweep of data coverage and reliability improvements. Crypto classification is now correct for all major assets — SOL, XRP and BNB are properly tracked alongside BTC and ETH, with chart history loading from the right data source. Seven new FX pairs expand emerging-market exposure (USD/BRL, USD/INR, USD/MXN, USD/TRY, USD/ZAR, USD/KRW, EUR/GBP). Four Asian indices join the live market tape: Hang Seng, KOSPI, ASX 200 and Taiwan TAIEX. The OpenSky aircraft feed now covers the full globe — South America, Sub-Saharan Africa, South-East Asia, Australia and the Pacific were previously missing. USGS seismic alerts widened from M4.5+ to M2.5+ to surface smaller but geopolitically significant events. Thirty sector and regional ETF profiles were added (XLK, XLF, XLE, EWZ, FXI, INDA, EWY, EWT and more). The launcher's license fingerprint binding is now hardened against edge cases where hardware queries fail silently.</div>
