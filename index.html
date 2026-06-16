@@ -1054,6 +1054,76 @@
             </div>
           </div>
 
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Desk Calibration Gate</div>
+              <div class="changelog-body">A fifth assessment layer reviews each idea's historical desk performance per symbol and direction over a 180-day window. Calibration scoring rewards strategies with consistent positive expectancy and penalises those with weak hit-rate lower bounds or negative average P&amp;L, creating a feedback loop between past desk decisions and new recommendations.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Market Pulse</span>
+                <span class="changelog-tag">Desk Calibration</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Opportunity Desk Gate Funnel</div>
+              <div class="changelog-body">A visual diagnostic panel now appears inside the Opportunity Desk showing exactly how many instruments pass each of the 14 quality gates — from raw market universe through directional setups, each assessment layer, and the final displayed book. The funnel makes it immediately clear where the pipeline is tightening and why candidates are filtered out.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Opportunity Desk</span>
+                <span class="changelog-tag">Gate Funnel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Market Product Profiles, Cached &amp; AI-Enriched</div>
+              <div class="changelog-body">Product descriptions are now fetched once and persisted in the local SQLite store. For symbols not covered by Sentinel's built-in profiles, an AI-generated summary is produced on first analysis and cached, eliminating repeated calls for known products and keeping analysis fast across sessions.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Market Pulse</span>
+                <span class="changelog-tag">Product Profiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Path-Aware Trade Performance Resolver</div>
+              <div class="changelog-body">Paper trade outcomes are now resolved against actual OHLC bar history rather than a single latest price snapshot. The resolver walks each daily bar between entry and evaluation, checking whether the stop-loss or take-profit was touched first. When both levels appear inside the same bar, the stop is assumed to have triggered first — a conservative default that prevents overstated P&amp;L in volatile sessions.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Paper Trading</span>
+                <span class="changelog-tag">Performance Tracking</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">05 Jun 2026</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Sovereign Installer, License System &amp; Technical Documentation</div>
+              <div class="changelog-body">A major foundational release. Sentinel now ships with a proper Windows installer built with Inno Setup, delivering a clean install, uninstall, and start-menu integration. The license system was fully redesigned: RSA-signed license files bind to the physical SSD serial and, optionally, the machine's hardware fingerprint, making the sovereign edition truly hardware-locked. A complete Technical Documentation package (HTML + PDF) was added to the distribution. The portable build pipeline was overhauled, styles received a comprehensive refresh, and the launcher was substantially hardened.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Installer</span>
+                <span class="changelog-tag">License System</span>
+                <span class="changelog-tag">Technical Docs</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Portable Build</span>
+                <span class="changelog-tag">Launcher</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
