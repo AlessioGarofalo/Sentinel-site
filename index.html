@@ -947,6 +947,22 @@
           <div class="changelog-entry">
             <div class="changelog-date">16 Jun 2026 &middot; Latest</div>
             <div class="changelog-right">
+              <div class="changelog-title">Sovereign Local Runtime Hardening</div>
+              <div class="changelog-body">A focused hardening pass on the sovereign (offline) AI path. The bundled Ollama runtime now detects and preserves GPU accelerator folders — CUDA, ROCm, Vulkan, and MLX/CUDA backends are automatically kept when staging a portable build, and the launcher warns at startup when the bundled runtime is CPU-only. AI timeouts are now model-aware: requests to 32B models allow up to 5 minutes, 14B models 4 minutes, and smaller models 3 minutes, replacing the flat 2-minute cap that caused spurious timeouts on larger local models. Voice provider and voice ID handling was normalised across the full stack — switching AI providers no longer leaves a stale voice selection that could cause TTS errors, and invalid cross-provider voice IDs are resolved to a safe default automatically. The runtime status API now reports acceleration backend availability so the AI Settings panel can surface hardware capability at a glance.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Sovereign AI</span>
+                <span class="changelog-tag">Ollama</span>
+                <span class="changelog-tag fix">FIX</span>
+                <span class="changelog-tag">Voice / TTS</span>
+                <span class="changelog-tag">Local Runtime</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">16 Jun 2026</div>
+            <div class="changelog-right">
               <div class="changelog-title">Staged Paper Trade Exits &amp; Cross-Device Report Sharing</div>
               <div class="changelog-body">Two significant additions to the Opportunity Desk. Paper trades can now exit in stages: multiple targets are tracked independently, allowing partial profit-taking at different price levels while the remaining position runs. Separately, Market Opportunity Desk reports can now be shared and synced across devices, so the same analysis is accessible from any machine running Sentinel without manual re-runs. The market desk also received responsiveness and scan coverage improvements widening the set of products evaluated per cycle.</div>
               <div class="changelog-tags">
