@@ -1520,19 +1520,6 @@
           <div class="changelog-entry">
             <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
             <div class="changelog-right">
-              <div class="changelog-title">Opportunity Desk Gate Funnel</div>
-              <div class="changelog-body">A visual diagnostic panel now appears inside the Opportunity Desk showing exactly how many instruments pass each of the 14 quality gates — from raw market universe through directional setups, each assessment layer, and the final displayed book. The funnel makes it immediately clear where the pipeline is tightening and why candidates are filtered out.</div>
-              <div class="changelog-tags">
-                <span class="changelog-tag new">NEW</span>
-                <span class="changelog-tag">Opportunity Desk</span>
-                <span class="changelog-tag">Gate Funnel</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="changelog-entry">
-            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
-            <div class="changelog-right">
               <div class="changelog-title">Market Product Profiles, Cached &amp; AI-Enriched</div>
               <div class="changelog-body">Product descriptions are now fetched once and persisted in the local SQLite store. For symbols not covered by Sentinel's built-in profiles, an AI-generated summary is produced on first analysis and cached, eliminating repeated calls for known products and keeping analysis fast across sessions.</div>
               <div class="changelog-tags">
@@ -1540,6 +1527,19 @@
                 <span class="changelog-tag improve">IMPROVEMENT</span>
                 <span class="changelog-tag">Market Pulse</span>
                 <span class="changelog-tag">Product Profiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Path-Aware Trade Performance Resolver</div>
+              <div class="changelog-body">Paper trade outcomes are now resolved against actual OHLC bar history rather than a single latest price snapshot. The resolver walks each daily bar between entry and evaluation, checking whether the stop-loss or take-profit was touched first. When both levels appear inside the same bar, the stop is assumed to have triggered first — a conservative default that prevents overstated P&amp;L in volatile sessions.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Paper Trading</span>
+                <span class="changelog-tag">Performance Tracking</span>
               </div>
             </div>
           </div>
