@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENTINEL - Sovereign Intelligence &amp; Market Analysis Workspace</title>
+  <title>SENTINEL - Sovereign Opportunity Intelligence &amp; Autonomous Analyst</title>
+  <meta name="description" content="Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on — all running on your own hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -125,6 +126,14 @@
       text-shadow: 0 1px 20px rgba(0,0,0,0.6);
     }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .hero-aura {
+      position: absolute; top: 4%; left: 50%; width: min(900px, 92vw); height: 540px;
+      transform: translateX(-50%); z-index: 1; pointer-events: none; filter: blur(6px);
+      background:
+        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(139,255,222,0.10), transparent 62%),
+        radial-gradient(ellipse 42% 46% at 30% 60%, rgba(88,166,255,0.08), transparent 60%);
+    }
 
     .btn-primary {
       padding: 15px 38px;
@@ -538,9 +547,136 @@
       font-family: "Roboto Mono", monospace;
     }
     .video-modal-close:hover { color: var(--ink); }
+
+    /* ============================================================
+       MOTION & DYNAMISM  (parallax, scroll-reveal, progress)
+       ============================================================ */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      z-index: 300; background: linear-gradient(90deg, var(--accent), var(--air));
+      box-shadow: 0 0 10px var(--accent); will-change: width;
+    }
+
+    /* Parallax decorative layers */
+    .parallax-layer { will-change: transform; }
+
+    /* Scroll reveal — only active when JS is on (html.js) so no-JS users see everything */
+    html.js .content-wrap .section-label,
+    html.js .content-wrap .section-title,
+    html.js .content-wrap .section-body,
+    html.js .feature-card, html.js .feature-card-wide,
+    html.js .opp-flow, html.js .opp-step, html.js .opp-card,
+    html.js .market-callout-header, html.js .market-gate-pill,
+    html.js .signal-pill,
+    html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
+    html.js .sovereign-check, html.js .sovereign-terminal,
+    html.js .ai-card,
+    html.js .pricing-card,
+    html.js .faq-item,
+    html.js .changelog-entry,
+    html.js .cta-band-inner {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1);
+      will-change: opacity, transform;
+    }
+    html.js .reveal-in { opacity: 1 !important; transform: none !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      html.js .content-wrap .section-label,
+      html.js .content-wrap .section-title,
+      html.js .content-wrap .section-body,
+      html.js .feature-card, html.js .feature-card-wide,
+      html.js .opp-flow, html.js .opp-step, html.js .opp-card,
+      html.js .market-callout-header, html.js .market-gate-pill,
+      html.js .signal-pill,
+      html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
+      html.js .sovereign-check, html.js .sovereign-terminal,
+      html.js .ai-card, html.js .pricing-card, html.js .faq-item,
+      html.js .changelog-entry, html.js .cta-band-inner {
+        opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+      html.js .ts-line { opacity: 1 !important; transform: none !important; }
+      .scroll-arrow, .cursor, .agent-loop-pill .dot, .ts-live::before { animation: none !important; }
+      .parallax-layer { transform: none !important; }
+    }
+
+    /* ============================================================
+       OPPORTUNITY INTELLIGENCE
+       ============================================================ */
+    .opp-section { position: relative; overflow: hidden; background: rgba(2,7,9,0.82); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+    .opp-aura {
+      position: absolute; inset: -25% -10% auto -10%; height: 90%; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 40% 60% at 18% 30%, rgba(139,255,222,0.08), transparent 60%),
+        radial-gradient(ellipse 50% 60% at 86% 38%, rgba(88,166,255,0.07), transparent 60%);
+    }
+    .opp-section .section-inner { position: relative; z-index: 1; }
+
+    .opp-flow { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 56px; border: 1px solid var(--line); }
+    .opp-step { position: relative; padding: 22px 12px; text-align: center; border-right: 1px solid var(--line); background: rgba(2,5,6,0.5); }
+    .opp-step:last-child { border-right: none; }
+    .opp-step-n { font-family: "Roboto Mono", monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 8px; opacity: 0.85; }
+    .opp-step-name { font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+    .opp-step::after {
+      content: "\2192"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%);
+      color: var(--accent); font-size: 13px; z-index: 2; background: var(--bg); padding: 2px 0;
+    }
+    .opp-step:last-child::after { display: none; }
+    @media (max-width: 820px) {
+      .opp-flow { grid-template-columns: repeat(2, 1fr); }
+      .opp-step { border-bottom: 1px solid var(--line); }
+      .opp-step::after { display: none; }
+    }
+
+    .opp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; margin-top: 48px; border: 1px solid var(--line); }
+    .opp-card { padding: 30px 28px; background: rgba(6,16,19,0.78); border: 1px solid var(--line); margin: -1px; transition: background 0.2s; }
+    .opp-card:hover { background: rgba(6,16,19,0.95); }
+    .opp-card-icon { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); background: rgba(139,255,222,0.05); color: var(--accent); font-size: 17px; margin-bottom: 16px; }
+    .opp-card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+    .opp-card-body { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+    /* ============================================================
+       AUTONOMOUS ANALYST AGENT
+       ============================================================ */
+    .agent-section { position: relative; overflow: hidden; background: rgba(3,10,12,0.8); backdrop-filter: blur(14px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .agent-aura {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 45% 70% at 82% 18%, rgba(139,255,222,0.07), transparent 60%),
+        radial-gradient(ellipse 50% 60% at 8% 82%, rgba(255,184,92,0.05), transparent 60%);
+    }
+    .agent-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 1100px; margin: 0 auto; align-items: center; }
+    .agent-loop { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 4px; }
+    .agent-loop-pill { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--line-strong); background: rgba(139,255,222,0.04); font-family: "Roboto Mono", monospace; font-size: 11.5px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; }
+    .agent-loop-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+    .agent-checklist { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .agent-check { display: flex; align-items: flex-start; gap: 13px; }
+    .agent-check .cm { flex-shrink: 0; width: 20px; height: 20px; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--accent); margin-top: 2px; }
+    .agent-check-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .agent-check-text strong { color: var(--ink); font-weight: 500; }
+    .agent-approve { margin-top: 24px; padding: 14px 16px; border: 1px solid var(--special); background: rgba(255,184,92,0.06); font-size: 13px; color: var(--ink); line-height: 1.6; }
+    .agent-approve strong { color: var(--special); }
+
+    .thought-stream { background: rgba(2,5,6,0.86); border: 1px solid var(--line-strong); padding: 24px; font-family: "Roboto Mono", monospace; font-size: 12px; line-height: 1.7; min-height: 360px; }
+    .ts-title { font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; border-bottom: 1px solid var(--line); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .ts-live { color: var(--accent); }
+    .ts-live::before { content: "\25CF"; margin-right: 6px; animation: pulse 1.5s ease-in-out infinite; }
+    .ts-line { color: var(--muted); margin: 3px 0; }
+    html.js .ts-line { opacity: 0; transform: translateY(4px); }
+    .ts-line.show { opacity: 1; transform: none; transition: opacity 0.4s, transform 0.4s; }
+    .ts-watch { color: var(--air); } .ts-hunt { color: var(--accent); }
+    .ts-val { color: var(--land); } .ts-report { color: var(--special); }
+    .ts-think { color: rgba(126,165,155,0.7); font-style: italic; }
+    .ts-prompt { color: var(--special); }
+    @media (max-width: 860px) { .agent-inner { grid-template-columns: 1fr; gap: 36px; } }
   </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <div class="video-fixed">
   <iframe
@@ -554,48 +690,50 @@
 <nav id="mainNav">
   <a href="https://app.sentinel.info" class="nav-brand" target="_blank" rel="noopener noreferrer">SENTINEL</a>
   <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#market">Market Intelligence</a>
-    <a href="#signals">Signals</a>
-    <a href="#sovereign">Sovereign Mode</a>
+    <a href="#opportunity">Opportunity Engine</a>
+    <a href="#agent">Analyst Agent</a>
+    <a href="#market">Market</a>
+    <a href="#sovereign">Sovereign</a>
     <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
     <a href="#changelog">Updates</a>
-    <a href="#" onclick="openDemoModal();return false;">Check Our Demo</a>
+    <a href="#" onclick="openDemoModal();return false;">Demo</a>
     <a href="#pricing" class="nav-cta">GET SENTINEL &rarr;</a>
   </div>
 </nav>
 
 <section class="hero" id="hero">
-  <div class="hero-eyebrow">Sovereign Intelligence &amp; Market Analysis Workspace</div>
-  <h1>Your world.<br /><em>Your intelligence.</em><br />No cloud required.</h1>
-  <p class="hero-sub">
-    Sentinel aggregates global signals, live financial markets, maritime, aviation, disasters, and geopolitical chatter into a single operational picture. A quality-gated market intelligence engine surfaces only the opportunities worth acting on. All analysed by AI, running entirely on your hardware.
-  </p>
-  <div class="hero-actions">
-    <a href="#pricing" class="btn-primary">GET SENTINEL &mdash; &euro;12000</a>
-    <a href="#features" class="btn-ghost">SEE HOW IT WORKS</a>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-val">1000s</div>
-      <div class="hero-stat-label">Daily Signals Ingested</div>
+  <div class="hero-aura parallax-layer" data-parallax-speed="0.18" aria-hidden="true"></div>
+  <div class="hero-inner" id="heroInner">
+    <div class="hero-eyebrow">Sovereign Opportunity Intelligence</div>
+    <h1>From raw signal<br /><em>to acted-on opportunity.</em><br />Autonomously.</h1>
+    <p class="hero-sub">
+      Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on &mdash; all running entirely on your hardware.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">GET SENTINEL &mdash; &euro;12000</a>
+      <a href="#opportunity" class="btn-ghost">EXPLORE THE ENGINE</a>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">5</div>
-      <div class="hero-stat-label">Market Quality Gates</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">100%</div>
-      <div class="hero-stat-label">Offline Capable</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">0</div>
-      <div class="hero-stat-label">Cloud Dependencies</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">&infin;</div>
-      <div class="hero-stat-label">Private Knowledge</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">24/7</div>
+        <div class="hero-stat-label">Autonomous Analyst</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">1000s</div>
+        <div class="hero-stat-label">Signals Correlated Daily</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">100%</div>
+        <div class="hero-stat-label">Sovereign / On-Device</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">0</div>
+        <div class="hero-stat-label">Cloud Dependencies</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">&infin;</div>
+        <div class="hero-stat-label">Goals &amp; Living Theories</div>
+      </div>
     </div>
   </div>
   <div class="scroll-hint">
@@ -611,55 +749,67 @@
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
       <h2 class="section-title">Everything an analyst needs.<br /><em>Nothing they don't.</em></h2>
-      <p class="section-body">Purpose-built for professionals who need to understand the world in real time, without feeding their intelligence to a third-party cloud.</p>
+      <p class="section-body">Purpose-built for professionals who need to turn the chaos of the world into a short list of opportunities worth acting on &mdash; without feeding their intelligence to a third-party cloud.</p>
       <div class="features-grid">
 
-        <!-- Market Intelligence Engine - full width, prominent -->
+        <!-- Opportunity Intelligence Engine - full width, flagship -->
         <div class="feature-card-wide">
           <div class="feature-wide-inner">
             <div>
-              <div class="feature-icon">&#11034;</div>
-              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Market Intelligence Engine</div>
-              <div class="feature-body" style="font-size:15px;">Sentinel doesn't just show you market data, it evaluates every opportunity through a five-layer quality gate before it reaches your screen. Only ideas that pass all checks are surfaced, cutting noise and surfacing only high-conviction setups ready to act on.</div>
+              <div class="feature-icon">&#9678;</div>
+              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Opportunity Intelligence Engine</div>
+              <div class="feature-body" style="font-size:15px;">Sentinel's core is no longer a dashboard you read &mdash; it's an engine that hunts. Define a Goal and the engine continuously pulls relevant signals, connects the faint, easy-to-miss dots into living theories, gathers evidence and contradictions, and validates each idea with AI before promoting it to an actionable opportunity packet. Noise stays out; only what matters to your Goal reaches you.</div>
               <div style="margin-top:16px;">
-                <span class="feature-tag-accent">QUALITY-GATED</span>
-                <span class="feature-tag" style="margin-left:8px;">LIVE MARKET FEED</span>
-                <span class="feature-tag" style="margin-left:8px;">AI-SCORED</span>
+                <span class="feature-tag-accent">GOAL-LED</span>
+                <span class="feature-tag" style="margin-left:8px;">SELF-VALIDATING</span>
+                <span class="feature-tag" style="margin-left:8px;">EVIDENCE-BACKED</span>
               </div>
             </div>
             <div>
-              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">Five-Layer Quality Framework</div>
+              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">From Goal to Opportunity</div>
               <div class="feature-gates">
                 <div class="feature-gate">
-                  <div class="feature-gate-num">GATE 01</div>
-                  <div class="feature-gate-name">Catalyst Quality</div>
-                  <div class="feature-gate-body">Freshness, directness, and source diversity of supporting catalysts.</div>
+                  <div class="feature-gate-num">01 &middot; GOAL</div>
+                  <div class="feature-gate-name">You set the intent</div>
+                  <div class="feature-gate-body">Persistent Goals focus every scan on what you actually care about.</div>
                 </div>
                 <div class="feature-gate">
-                  <div class="feature-gate-num">GATE 02</div>
-                  <div class="feature-gate-name">Historical Edge</div>
-                  <div class="feature-gate-body">Win rates and average P&amp;L across four backtested horizons.</div>
+                  <div class="feature-gate-num">02 &middot; CONNECT</div>
+                  <div class="feature-gate-name">Invisible dots</div>
+                  <div class="feature-gate-body">Faint, scattered signals are linked into emerging patterns.</div>
                 </div>
                 <div class="feature-gate">
-                  <div class="feature-gate-num">GATE 03</div>
-                  <div class="feature-gate-name">Live Desk Reliability</div>
-                  <div class="feature-gate-body">Real performance of past alerts per symbol tracked in the local database.</div>
+                  <div class="feature-gate-num">03 &middot; THEORISE</div>
+                  <div class="feature-gate-name">Living theories</div>
+                  <div class="feature-gate-body">Theories accumulate supporting evidence and contradictions over time.</div>
                 </div>
                 <div class="feature-gate">
-                  <div class="feature-gate-num">GATE 04</div>
-                  <div class="feature-gate-name">Liquidity Profile</div>
-                  <div class="feature-gate-body">Confirms execution feasibility before any idea is ranked.</div>
+                  <div class="feature-gate-num">04 &middot; VALIDATE</div>
+                  <div class="feature-gate-name">AI prevalidation</div>
+                  <div class="feature-gate-body">Weak ideas are rejected before they ever reach your desk.</div>
                 </div>
                 <div class="feature-gate" style="grid-column:1/-1;">
-                  <div class="feature-gate-num">GATE 05</div>
-                  <div class="feature-gate-name">Execution Readiness</div>
-                  <div class="feature-gate-body">Composite tier (Ready / Conditional / Defer / Reject) gating every idea before it appears in the Market Opportunity Report.</div>
+                  <div class="feature-gate-num">05 &middot; PACKET</div>
+                  <div class="feature-gate-name">Opportunity packet</div>
+                  <div class="feature-gate-body">A validated, evidence-linked, lifecycle-tracked opportunity &mdash; ready to act on, with full provenance.</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="feature-card">
+          <div class="feature-icon">&#9881;</div>
+          <div class="feature-title">Autonomous Analyst Agent</div>
+          <div class="feature-body">An agent that works your Goals around the clock &mdash; watch, hunt, validate, report &mdash; with a visible chain of thought and approval-gated self-improvement. It even proposes its own upgrades, but never changes code without your sign-off.</div>
+          <div class="feature-tag-accent">SELF-IMPROVING</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#11034;</div>
+          <div class="feature-title">Market Intelligence Engine</div>
+          <div class="feature-body">A quality-gated trading desk feeds the opportunity engine: every market idea is scored across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness &mdash; now with global, not just US, coverage.</div>
+          <div class="feature-tag">QUALITY-GATED &middot; GLOBAL</div>
+        </div>
         <div class="feature-card">
           <div class="feature-icon">&oplus;</div>
           <div class="feature-title">Global Awareness Map</div>
@@ -694,6 +844,100 @@
     </div>
   </section>
 
+  <!-- OPPORTUNITY INTELLIGENCE -->
+  <section class="opp-section" id="opportunity">
+    <div class="opp-aura parallax-layer" data-parallax-speed="-0.06" aria-hidden="true"></div>
+    <div class="section-inner">
+      <div class="section-label">The New Direction</div>
+      <h2 class="section-title">It doesn't just watch the world.<br /><em>It connects the dots.</em></h2>
+      <p class="section-body">Sentinel has been rebuilt around a single idea: opportunities rarely arrive as headlines. They emerge from faint, scattered signals that only mean something once you link them together. The opportunity engine does exactly that &mdash; continuously, and only for the Goals you set.</p>
+
+      <div class="opp-flow">
+        <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Goal</div></div>
+        <div class="opp-step"><div class="opp-step-n">02</div><div class="opp-step-name">Signals</div></div>
+        <div class="opp-step"><div class="opp-step-n">03</div><div class="opp-step-name">Invisible Dots</div></div>
+        <div class="opp-step"><div class="opp-step-n">04</div><div class="opp-step-name">Living Theory</div></div>
+        <div class="opp-step"><div class="opp-step-n">05</div><div class="opp-step-name">Validation</div></div>
+        <div class="opp-step"><div class="opp-step-n">06</div><div class="opp-step-name">Packet</div></div>
+        <div class="opp-step"><div class="opp-step-n">07</div><div class="opp-step-name">Report</div></div>
+      </div>
+
+      <div class="opp-grid">
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9678;</div>
+          <div class="opp-card-title">Persistent Goals</div>
+          <div class="opp-card-body">Tell Sentinel what you're hunting for. Goals persist across sessions and steer every scan, so the engine works on your agenda &mdash; not a generic feed.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9673;</div>
+          <div class="opp-card-title">Opportunity Radar</div>
+          <div class="opp-card-body">A live radar of emerging opportunities ranked by relevance to your Goals, so the most promising leads rise to the top automatically.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#10022;</div>
+          <div class="opp-card-title">Invisible Dots</div>
+          <div class="opp-card-body">A connect-the-dots view that surfaces weak, easily-missed signals and the links between them &mdash; the raw material of an edge before it's obvious.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9784;</div>
+          <div class="opp-card-title">Living Theories</div>
+          <div class="opp-card-body">Hypotheses that grow over time, accumulating supporting evidence and explicit contradictions so you can watch conviction strengthen &mdash; or break.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9707;</div>
+          <div class="opp-card-title">Opportunity Packets</div>
+          <div class="opp-card-body">Each validated idea becomes a packet: thesis, evidence, contradictions, and lifecycle state in one place, with full provenance back to source.</div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#8987;</div>
+          <div class="opp-card-title">Temporal Memory</div>
+          <div class="opp-card-body">Sentinel remembers. Signals, theories, and outcomes are retained over time, so today's analysis is informed by everything that came before.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTONOMOUS ANALYST AGENT -->
+  <section class="agent-section" id="agent">
+    <div class="agent-aura parallax-layer" data-parallax-speed="0.05" aria-hidden="true"></div>
+    <div class="agent-inner">
+      <div class="agent-col">
+        <div class="section-label">Autonomous Analyst</div>
+        <h2 class="section-title">An analyst that never<br /><em>clocks off</em> &mdash; and improves itself.</h2>
+        <p class="section-body">The Sentinel Analyst Agent runs an hourly loop against your Goals. You watch it think in real time, and nothing ever leaves your machine.</p>
+        <div class="agent-loop">
+          <div class="agent-loop-pill"><span class="dot"></span>Watch</div>
+          <div class="agent-loop-pill"><span class="dot"></span>Hunt</div>
+          <div class="agent-loop-pill"><span class="dot"></span>Validate</div>
+          <div class="agent-loop-pill"><span class="dot"></span>Report</div>
+        </div>
+        <div class="agent-checklist">
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Hourly watch / hunt / validate / report.</strong> The agent monitors signals, hunts new opportunities, validates theories, and delivers reports on a schedule.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Visible chain of thought.</strong> A live Qwen / local thought stream and tool-loop telemetry show exactly what the agent is doing, and why.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Report delivery.</strong> Findings can be delivered straight to you, so you wake up to a briefing rather than a backlog.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Monitored runner.</strong> Agent status and health are always visible, with a runner you can start, pause, and inspect.</div></div>
+        </div>
+        <div class="agent-approve">
+          <strong>Self-improving &mdash; with your permission.</strong> The agent can propose its own upgrades as bounded implementation manifests, but every code change is gated behind explicit operator approval. It never rewrites itself behind your back.
+        </div>
+      </div>
+      <div class="agent-col">
+        <div class="thought-stream" id="thoughtStream">
+          <div class="ts-title"><span>SENTINEL ANALYST &middot; THOUGHT STREAM</span><span class="ts-live">live</span></div>
+          <div class="ts-line"><span class="ts-tag">[goal]</span> Hunt asymmetric setups in EM energy</div>
+          <div class="ts-line"><span class="ts-watch">[watch]</span> 1,284 signals scanned &middot; 17 relevant</div>
+          <div class="ts-line ts-think">thinking: three signals cluster around Gulf shipping insurance&hellip;</div>
+          <div class="ts-line"><span class="ts-hunt">[hunt]</span> connecting invisible dots &rarr; theory #42</div>
+          <div class="ts-line ts-think">thinking: tanker re-routing + premium spike + refinery note</div>
+          <div class="ts-line"><span class="ts-val">[validate]</span> evidence &times;6 &middot; contradiction &times;1 &middot; AI: PASS</div>
+          <div class="ts-line"><span class="ts-tag">[packet]</span> opportunity packet #42 promoted &middot; Ready</div>
+          <div class="ts-line"><span class="ts-report">[report]</span> brief delivered &middot; next run in 60:00</div>
+          <div class="ts-line"><span class="ts-prompt">[self-improve]</span> proposed: add freight-rate source &mdash; <span class="ts-report">awaiting approval</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MARKET INTELLIGENCE CALLOUT -->
   <section class="market-callout" id="market">
     <div class="market-callout-header">
@@ -701,7 +945,7 @@
         <div class="section-label">Market Intelligence</div>
         <h3>A <em>quality-gated</em> edge on every trade idea.</h3>
       </div>
-      <p>Most platforms show you data. Sentinel tells you whether it's worth acting on, scoring every opportunity across five independent layers before it surfaces to your desk.</p>
+      <p>The market desk is one of the engine's sharpest senses. Every trade idea is scored across five independent layers &mdash; now with global, not just US, coverage &mdash; before it's promoted into an opportunity packet.</p>
     </div>
     <div class="market-callout-inner">
       <div class="market-gate-pill">
@@ -737,8 +981,11 @@
     <div class="section-inner">
       <div class="section-label">Signal Sources</div>
       <h2 class="section-title">Thousands of signals.<br /><em>Hundreds of sources.</em></h2>
-      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more, unified into a single operational picture.</p>
+      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more &mdash; all feeding the opportunity engine, with resilient fallback and stale-cache behaviour when a provider goes quiet.</p>
       <div class="signals-row">
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>News Hub (multi-provider)</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Targeted Internet Search</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Global ETFs &amp; Local Listings</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Global News (NewsAPI)</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>GDELT Event Database</div>
         <div class="signal-pill"><span class="signal-dot dot-sea"></span>AIS Maritime (AISstream)</div>
@@ -854,10 +1101,10 @@
           <div class="pricing-period">/month &middot; or &euro;1200/year (save 33%)</div>
           <div class="pricing-desc">Live market and geopolitical signal alerts for analysts who need the intelligence feed without the full workspace.</div>
           <div class="pricing-features">
-            <div class="pricing-feature">Live market intelligence alerts</div>
+            <div class="pricing-feature">Live opportunity &amp; market alerts</div>
             <div class="pricing-feature">Geopolitical signal feed</div>
             <div class="pricing-feature">Weather, disaster, and crisis signals</div>
-            <div class="pricing-feature">Market Intelligence Engine scoring</div>
+            <div class="pricing-feature">Opportunity &amp; market engine scoring</div>
             <div class="pricing-feature">Email delivery &amp; web dashboard</div>
             <div class="pricing-feature">Alert-only &mdash; no full workspace</div>
           </div>
@@ -871,7 +1118,9 @@
           <div class="pricing-desc">The full Sentinel workspace for analysts and professional operators. Complete intelligence environment with AI, voice, and market intelligence.</div>
           <div class="pricing-features">
             <div class="pricing-feature">Full Sentinel application (download)</div>
-            <div class="pricing-feature">Market Intelligence Engine, 11-score framework</div>
+            <div class="pricing-feature">Opportunity Intelligence Engine &amp; Goals</div>
+            <div class="pricing-feature">Autonomous Analyst Agent (approval-gated)</div>
+            <div class="pricing-feature">Market Intelligence Engine &mdash; global coverage</div>
             <div class="pricing-feature">Shift Analyzer &amp; brief workspace</div>
             <div class="pricing-feature">OpenAI integration (your key)</div>
             <div class="pricing-feature">Private knowledge base &amp; RAG</div>
@@ -890,6 +1139,7 @@
             <div class="pricing-feature">Everything in Professional</div>
             <div class="pricing-feature">Pre-configured encrypted SSD</div>
             <div class="pricing-feature">Qwen 3 32B on-device (no cloud)</div>
+            <div class="pricing-feature">Autonomous analyst runs fully on-device</div>
             <div class="pricing-feature">Whisper + Kokoro offline voice</div>
             <div class="pricing-feature">Private setup &amp; onboarding session</div>
             <div class="pricing-feature">Air-gapped sovereign operation</div>
@@ -907,6 +1157,14 @@
       <div class="section-label">FAQ</div>
       <h2 class="section-title">Common questions.</h2>
       <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">What is the Opportunity Intelligence Engine? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">It's Sentinel's core. You define Goals describing what you want to find; the engine then continuously pulls relevant signals, connects faint "invisible dots" into living theories, gathers evidence and contradictions, validates each idea with AI, and promotes only the strongest into actionable, fully-sourced opportunity packets.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can the Analyst Agent really change its own code? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Only with your explicit approval. The agent can propose self-improvements as bounded implementation manifests, but every code change is gated behind operator sign-off and runs through a monitored implementation runner. Nothing is applied autonomously, and the agent operates entirely on your hardware.</div>
+        </div>
         <div class="faq-item">
           <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
           <div class="faq-a">In Sovereign Mode, Sentinel runs entirely offline. Live signal feeds (news, AIS, weather, etc.) require internet, but AI analysis via Qwen, voice, and the private knowledge base work fully air-gapped.</div>
@@ -945,7 +1203,94 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">16 Jun 2026 &middot; Latest</div>
+            <div class="changelog-date">20 Jun 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Sentinel Reborn: Goal-Led Opportunity Intelligence &amp; an Autonomous, Self-Improving Analyst</div>
+              <div class="changelog-body">The largest release in Sentinel's history &mdash; a complete change of direction. Sentinel moves from a market-first dashboard to a Goal-led opportunity-intelligence system built on a new modular backend (sources, signals, memory, opportunities, markets, agent scheduling, reports, and storage). Two new pillars define the product: a unified Opportunity Intelligence Engine that turns faint signals into validated, evidence-backed opportunity packets, and an Autonomous Analyst Agent that hunts your Goals around the clock and can even propose its own upgrades &mdash; always behind explicit operator approval. The frontend was rebuilt into shared modules with an Opportunity Radar, Invisible Dots / connect-the-dots views, living theories, packet details, a Goal manager, and mobile full-screen sheets.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Opportunity Engine</span>
+                <span class="changelog-tag">Autonomous Analyst Agent</span>
+                <span class="changelog-tag">Goals &amp; Living Theories</span>
+                <span class="changelog-tag">Opportunity Radar</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">New Modular Backend</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Opportunity Intelligence Engine</div>
+              <div class="changelog-body">A unified engine with persistent Goals, opportunity packets, temporal memory, and evidence / contradiction / lifecycle records. A Qwen-first Agent Tool Planner drives targeted internet-search enrichment and AI validation, with planner prevalidation rejecting weak ideas before they surface. Shift Analyzer signals now hand off directly into opportunity discovery.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Opportunity Packets</span>
+                <span class="changelog-tag">Temporal Memory</span>
+                <span class="changelog-tag">Tool Planner</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Autonomous, Self-Improving Analyst Agent</div>
+              <div class="changelog-body">A new autonomous agent runs an hourly watch / hunt / validate / report loop with a visible Qwen / local thought stream and full tool-loop telemetry. It supports report delivery and a monitored runner you can inspect. Critically, its self-improvement is approval-gated: the agent proposes bounded implementation manifests, but explicit operator approval is required before any code change is made.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Analyst Agent</span>
+                <span class="changelog-tag">Thought Stream</span>
+                <span class="changelog-tag">Approval-Gated Self-Improvement</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Market Intelligence Goes Global</div>
+              <div class="changelog-body">Market intelligence expands well beyond US-only products with global ETFs, local listings, and an actionable proxy fallback, plus a non-US reserve in deep review. A market-to-opportunity adapter feeds the engine directly, paper-setup filtering is improved, and new global-coverage telemetry plus clearer alert / brief actionability round out the desk.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Global ETFs</span>
+                <span class="changelog-tag">Local Listings</span>
+                <span class="changelog-tag">Market Adapter</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Source Resilience &amp; News Hub</div>
+              <div class="changelog-body">A new News Hub adds provider-readiness checks, fallback and stale-cache behaviour, and optional keyed providers, with GDELT repositioned as enrichment and richer source-health display. Optional live feeds now activate only when relevant to a Goal, keeping the system focused and resilient when individual providers go quiet.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">News Hub</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Source Health</span>
+                <span class="changelog-tag">Goal-Gated Feeds</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Modular Backend &amp; Smoke Coverage</div>
+              <div class="changelog-body">Under the hood, Sentinel is now organised into a modular sentinel backend package spanning sources, signals, memory, opportunities, markets, agent scheduling, AI prompts, API route helpers, and storage. New smoke coverage exercises the opportunity engine and frontend contracts &mdash; global market coverage, source fallback, Qwen / OpenAI validation telemetry, planner rejection, Shift Analyzer handoff, Goal filtering, optional feeds, lifecycle actions, report / email paths, mobile UI rules, and approval-runner monitoring.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Architecture</span>
+                <span class="changelog-tag">Test Coverage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">16 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Sovereign Local Runtime Hardening</div>
               <div class="changelog-body">A focused hardening pass on the sovereign (offline) AI path. The bundled Ollama runtime now detects and preserves GPU accelerator folders — CUDA, ROCm, Vulkan, and MLX/CUDA backends are automatically kept when staging a portable build, and the launcher warns at startup when the bundled runtime is CPU-only. AI timeouts are now model-aware: requests to 32B models allow up to 5 minutes, 14B models 4 minutes, and smaller models 3 minutes, replacing the flat 2-minute cap that caused spurious timeouts on larger local models. Voice provider and voice ID handling was normalised across the full stack — switching AI providers no longer leaves a stale voice selection that could cause TTS errors, and invalid cross-provider voice IDs are resolved to a safe default automatically. The runtime status API now reports acceleration backend availability so the AI Settings panel can surface hardware capability at a glance.</div>
@@ -1251,14 +1596,14 @@
   <footer>
     <div class="footer-brand">SENTINEL &copy; 2026</div>
     <div class="footer-links">
-      <a href="#features">Features</a>
-      <a href="#market">Market Intelligence</a>
+      <a href="#opportunity">Opportunity Engine</a>
+      <a href="#agent">Analyst Agent</a>
+      <a href="#market">Market</a>
       <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
       <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
-    <div class="footer-copy">Sovereign Intelligence &amp; Market Analysis Workspace</div>
+    <div class="footer-copy">Sovereign Opportunity Intelligence &amp; Autonomous Analyst</div>
   </footer>
 
 </div>
@@ -1300,6 +1645,131 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDemoModal({ target: document.getElementById('demoModal') }); });
+</script>
+
+<!-- Motion & dynamism: scroll progress, parallax, scroll-reveal, count-up, thought stream -->
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var revealSelector = [
+    '.content-wrap .section-label', '.content-wrap .section-title', '.content-wrap .section-body',
+    '.feature-card', '.feature-card-wide',
+    '.opp-flow', '.opp-step', '.opp-card',
+    '.market-callout-header', '.market-gate-pill',
+    '.signal-pill',
+    '.agent-loop', '.agent-check', '.agent-approve', '.thought-stream',
+    '.sovereign-check', '.sovereign-terminal',
+    '.ai-card', '.pricing-card', '.faq-item', '.changelog-entry', '.cta-band-inner'
+  ].join(',');
+
+  // ---- Stagger within grouped rows/grids ----
+  if (!reduce) {
+    ['.feature-card', '.opp-card', '.opp-step', '.market-gate-pill', '.signal-pill', '.ai-card', '.pricing-card', '.agent-check', '.sovereign-check'].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        var p = el.parentNode; if (!p) return;
+        if (p.__sidx == null) p.__sidx = 0;
+        var idx = p.__sidx++;
+        el.style.transitionDelay = Math.min(idx * 55, 330) + 'ms';
+      });
+    });
+  }
+
+  // ---- Scroll reveal ----
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('reveal-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll(revealSelector).forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll(revealSelector).forEach(function (el) { el.classList.add('reveal-in'); });
+  }
+
+  // ---- Scroll progress + parallax ----
+  var bar = document.getElementById('scrollProgress');
+  var heroInner = document.getElementById('heroInner');
+  var pxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax-speed]'));
+  var ticking = false;
+  function frame() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var docH = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+    if (bar) bar.style.width = Math.max(0, Math.min(100, (y / docH) * 100)) + '%';
+    if (!reduce) {
+      for (var i = 0; i < pxEls.length; i++) {
+        var el = pxEls[i];
+        var sp = parseFloat(el.getAttribute('data-parallax-speed')) || 0;
+        el.style.transform = 'translate3d(0,' + (y * sp).toFixed(1) + 'px,0)';
+      }
+      if (heroInner) {
+        var vh = window.innerHeight || 1;
+        var p = Math.min(y / vh, 1);
+        heroInner.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+        heroInner.style.opacity = (1 - p * 0.85).toFixed(3);
+      }
+    }
+    ticking = false;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  frame();
+
+  // ---- Hero stat count-up ----
+  if (!reduce && 'IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target; cio.unobserve(el);
+        var m = (el.textContent || '').trim().match(/^(\d[\d,]*)(.*)$/);
+        if (!m) return;
+        var target = parseInt(m[1].replace(/,/g, ''), 10);
+        if (isNaN(target)) return;
+        var suffix = m[2] || '', dur = 1100, t0 = null;
+        function ease(x) { return 1 - Math.pow(1 - x, 3); }
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var pr = Math.min((ts - t0) / dur, 1);
+          el.textContent = Math.floor(target * ease(pr)).toLocaleString() + suffix;
+          if (pr < 1) requestAnimationFrame(step); else el.textContent = target.toLocaleString() + suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.hero-stat-val').forEach(function (el) { cio.observe(el); });
+  }
+
+  // ---- Analyst thought stream (sequential, looping) ----
+  if (!reduce && 'IntersectionObserver' in window) {
+    var ts = document.getElementById('thoughtStream');
+    if (ts) {
+      var lines = Array.prototype.slice.call(ts.querySelectorAll('.ts-line'));
+      var running = false;
+      function runStream() {
+        if (running || !lines.length) return;
+        running = true;
+        lines.forEach(function (l) { l.classList.remove('show'); });
+        var i = 0;
+        (function next() {
+          if (i >= lines.length) {
+            setTimeout(function () {
+              lines.forEach(function (l) { l.classList.remove('show'); });
+              running = false; runStream();
+            }, 3400);
+            return;
+          }
+          lines[i].classList.add('show'); i++;
+          setTimeout(next, 640);
+        })();
+      }
+      var tio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) runStream(); });
+      }, { threshold: 0.35 });
+      tio.observe(ts);
+    }
+  }
+})();
 </script>
 </body>
 </html>
