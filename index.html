@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SENTINEL - Sovereign Opportunity Intelligence &amp; Autonomous Analyst</title>
-  <meta name="description" content="Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on — all running on your own hardware." />
+  <meta name="description" content="Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on, all running on your own hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -560,7 +560,7 @@
     /* Parallax decorative layers */
     .parallax-layer { will-change: transform; }
 
-    /* Scroll reveal — only active when JS is on (html.js) so no-JS users see everything */
+    /* Scroll reveal, only active when JS is on (html.js) so no-JS users see everything */
     html.js .content-wrap .section-label,
     html.js .content-wrap .section-title,
     html.js .content-wrap .section-body,
@@ -670,6 +670,9 @@
     .ts-val { color: var(--land); } .ts-report { color: var(--special); }
     .ts-think { color: rgba(126,165,155,0.7); font-style: italic; }
     .ts-prompt { color: var(--special); }
+    .ts-body { overflow: hidden; }
+    .ts-cursor { color: var(--accent); font-weight: 700; animation: tsBlink 0.75s step-end infinite; }
+    @keyframes tsBlink { 0%,100%{opacity:1;} 50%{opacity:0;} }
     @media (max-width: 860px) { .agent-inner { grid-template-columns: 1fr; gap: 36px; } }
   </style>
 </head>
@@ -694,10 +697,9 @@
     <a href="#agent">Analyst Agent</a>
     <a href="#market">Market</a>
     <a href="#sovereign">Sovereign</a>
-    <a href="#pricing">Pricing</a>
     <a href="#changelog">Updates</a>
     <a href="#" onclick="openDemoModal();return false;">Demo</a>
-    <a href="#pricing" class="nav-cta">GET SENTINEL &rarr;</a>
+    <a href="#contact" class="nav-cta">REQUEST INFO &rarr;</a>
   </div>
 </nav>
 
@@ -707,10 +709,10 @@
     <div class="hero-eyebrow">Sovereign Opportunity Intelligence</div>
     <h1>From raw signal<br /><em>to acted-on opportunity.</em><br />Autonomously.</h1>
     <p class="hero-sub">
-      Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on &mdash; all running entirely on your hardware.
+      Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on, all running entirely on your hardware.
     </p>
     <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">GET SENTINEL &mdash; &euro;12000</a>
+      <a href="#contact" class="btn-primary">REQUEST INFO</a>
       <a href="#opportunity" class="btn-ghost">EXPLORE THE ENGINE</a>
     </div>
     <div class="hero-stats">
@@ -749,7 +751,7 @@
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
       <h2 class="section-title">Everything an analyst needs.<br /><em>Nothing they don't.</em></h2>
-      <p class="section-body">Purpose-built for professionals who need to turn the chaos of the world into a short list of opportunities worth acting on &mdash; without feeding their intelligence to a third-party cloud.</p>
+      <p class="section-body">Purpose-built for professionals who need to turn the chaos of the world into a short list of opportunities worth acting on, without feeding their intelligence to a third-party cloud.</p>
       <div class="features-grid">
 
         <!-- Opportunity Intelligence Engine - full width, flagship -->
@@ -758,7 +760,7 @@
             <div>
               <div class="feature-icon">&#9678;</div>
               <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Opportunity Intelligence Engine</div>
-              <div class="feature-body" style="font-size:15px;">Sentinel's core is no longer a dashboard you read &mdash; it's an engine that hunts. Define a Goal and the engine continuously pulls relevant signals, connects the faint, easy-to-miss dots into living theories, gathers evidence and contradictions, and validates each idea with AI before promoting it to an actionable opportunity packet. Noise stays out; only what matters to your Goal reaches you.</div>
+              <div class="feature-body" style="font-size:15px;">Sentinel's core is no longer a dashboard you read, it's an engine that hunts. Define a Goal and the engine continuously pulls relevant signals, connects the faint, easy-to-miss dots into living theories, gathers evidence and contradictions, and validates each idea with AI before promoting it to an actionable opportunity packet. Noise stays out; only what matters to your Goal reaches you.</div>
               <div style="margin-top:16px;">
                 <span class="feature-tag-accent">GOAL-LED</span>
                 <span class="feature-tag" style="margin-left:8px;">SELF-VALIDATING</span>
@@ -791,7 +793,7 @@
                 <div class="feature-gate" style="grid-column:1/-1;">
                   <div class="feature-gate-num">05 &middot; PACKET</div>
                   <div class="feature-gate-name">Opportunity packet</div>
-                  <div class="feature-gate-body">A validated, evidence-linked, lifecycle-tracked opportunity &mdash; ready to act on, with full provenance.</div>
+                  <div class="feature-gate-body">A validated, evidence-linked, lifecycle-tracked opportunity, ready to act on, with full provenance.</div>
                 </div>
               </div>
             </div>
@@ -801,13 +803,13 @@
         <div class="feature-card">
           <div class="feature-icon">&#9881;</div>
           <div class="feature-title">Autonomous Analyst Agent</div>
-          <div class="feature-body">An agent that works your Goals around the clock &mdash; watch, hunt, validate, report &mdash; with a visible chain of thought and approval-gated self-improvement. It even proposes its own upgrades, but never changes code without your sign-off.</div>
+          <div class="feature-body">An agent that works your Goals around the clock, watch, hunt, validate, report, with a visible chain of thought and approval-gated self-improvement. It even proposes its own upgrades, but never changes code without your sign-off.</div>
           <div class="feature-tag-accent">SELF-IMPROVING</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#11034;</div>
           <div class="feature-title">Market Intelligence Engine</div>
-          <div class="feature-body">A quality-gated trading desk feeds the opportunity engine: every market idea is scored across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness &mdash; now with global, not just US, coverage.</div>
+          <div class="feature-body">A quality-gated trading desk feeds the opportunity engine: every market idea is scored across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness, now with global, not just US, coverage.</div>
           <div class="feature-tag">QUALITY-GATED &middot; GLOBAL</div>
         </div>
         <div class="feature-card">
@@ -850,7 +852,7 @@
     <div class="section-inner">
       <div class="section-label">The New Direction</div>
       <h2 class="section-title">It doesn't just watch the world.<br /><em>It connects the dots.</em></h2>
-      <p class="section-body">Sentinel has been rebuilt around a single idea: opportunities rarely arrive as headlines. They emerge from faint, scattered signals that only mean something once you link them together. The opportunity engine does exactly that &mdash; continuously, and only for the Goals you set.</p>
+      <p class="section-body">Sentinel has been rebuilt around a single idea: opportunities rarely arrive as headlines. They emerge from faint, scattered signals that only mean something once you link them together. The opportunity engine does exactly that, continuously, and only for the Goals you set.</p>
 
       <div class="opp-flow">
         <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Goal</div></div>
@@ -866,7 +868,7 @@
         <div class="opp-card">
           <div class="opp-card-icon">&#9678;</div>
           <div class="opp-card-title">Persistent Goals</div>
-          <div class="opp-card-body">Tell Sentinel what you're hunting for. Goals persist across sessions and steer every scan, so the engine works on your agenda &mdash; not a generic feed.</div>
+          <div class="opp-card-body">Tell Sentinel what you're hunting for. Goals persist across sessions and steer every scan, so the engine works on your agenda, not a generic feed.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9673;</div>
@@ -876,12 +878,12 @@
         <div class="opp-card">
           <div class="opp-card-icon">&#10022;</div>
           <div class="opp-card-title">Invisible Dots</div>
-          <div class="opp-card-body">A connect-the-dots view that surfaces weak, easily-missed signals and the links between them &mdash; the raw material of an edge before it's obvious.</div>
+          <div class="opp-card-body">A connect-the-dots view that surfaces weak, easily-missed signals and the links between them, the raw material of an edge before it's obvious.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9784;</div>
           <div class="opp-card-title">Living Theories</div>
-          <div class="opp-card-body">Hypotheses that grow over time, accumulating supporting evidence and explicit contradictions so you can watch conviction strengthen &mdash; or break.</div>
+          <div class="opp-card-body">Hypotheses that grow over time, accumulating supporting evidence and explicit contradictions so you can watch conviction strengthen, or break.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9707;</div>
@@ -903,7 +905,7 @@
     <div class="agent-inner">
       <div class="agent-col">
         <div class="section-label">Autonomous Analyst</div>
-        <h2 class="section-title">An analyst that never<br /><em>clocks off</em> &mdash; and improves itself.</h2>
+        <h2 class="section-title">An analyst that never<br /><em>clocks off</em>, and improves itself.</h2>
         <p class="section-body">The Sentinel Analyst Agent runs an hourly loop against your Goals. You watch it think in real time, and nothing ever leaves your machine.</p>
         <div class="agent-loop">
           <div class="agent-loop-pill"><span class="dot"></span>Watch</div>
@@ -918,7 +920,7 @@
           <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Monitored runner.</strong> Agent status and health are always visible, with a runner you can start, pause, and inspect.</div></div>
         </div>
         <div class="agent-approve">
-          <strong>Self-improving &mdash; with your permission.</strong> The agent can propose its own upgrades as bounded implementation manifests, but every code change is gated behind explicit operator approval. It never rewrites itself behind your back.
+          <strong>Self-improving, with your permission.</strong> The agent can propose its own upgrades as bounded implementation manifests, but every code change is gated behind explicit operator approval. It never rewrites itself behind your back.
         </div>
       </div>
       <div class="agent-col">
@@ -932,7 +934,7 @@
           <div class="ts-line"><span class="ts-val">[validate]</span> evidence &times;6 &middot; contradiction &times;1 &middot; AI: PASS</div>
           <div class="ts-line"><span class="ts-tag">[packet]</span> opportunity packet #42 promoted &middot; Ready</div>
           <div class="ts-line"><span class="ts-report">[report]</span> brief delivered &middot; next run in 60:00</div>
-          <div class="ts-line"><span class="ts-prompt">[self-improve]</span> proposed: add freight-rate source &mdash; <span class="ts-report">awaiting approval</span></div>
+          <div class="ts-line"><span class="ts-prompt">[self-improve]</span> proposed: add freight-rate source, <span class="ts-report">awaiting approval</span></div>
         </div>
       </div>
     </div>
@@ -945,7 +947,7 @@
         <div class="section-label">Market Intelligence</div>
         <h3>A <em>quality-gated</em> edge on every trade idea.</h3>
       </div>
-      <p>The market desk is one of the engine's sharpest senses. Every trade idea is scored across five independent layers &mdash; now with global, not just US, coverage &mdash; before it's promoted into an opportunity packet.</p>
+      <p>The market desk is one of the engine's sharpest senses. Every trade idea is scored across five independent layers, now with global, not just US, coverage, before it's promoted into an opportunity packet.</p>
     </div>
     <div class="market-callout-inner">
       <div class="market-gate-pill">
@@ -981,7 +983,7 @@
     <div class="section-inner">
       <div class="section-label">Signal Sources</div>
       <h2 class="section-title">Thousands of signals.<br /><em>Hundreds of sources.</em></h2>
-      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more &mdash; all feeding the opportunity engine, with resilient fallback and stale-cache behaviour when a provider goes quiet.</p>
+      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more, all feeding the opportunity engine, with resilient fallback and stale-cache behaviour when a provider goes quiet.</p>
       <div class="signals-row">
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>News Hub (multi-provider)</div>
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Targeted Internet Search</div>
@@ -1083,71 +1085,8 @@
         </div>
       </div>
       <p style="margin-top:28px; font-size:13.5px; color:var(--muted); font-family:'Roboto Mono',monospace; border-left: 2px solid var(--line-strong); padding-left: 16px;">
-        Enterprise deployments can be configured to use any compatible model, on-premise, private cloud, or custom endpoints. <a href="#contact" style="color:var(--accent);">Contact us</a> to discuss your requirements.
+        Deployments can be configured to use any compatible model, on-premise, private cloud, or custom endpoints. <a href="#contact" style="color:var(--accent);">Request info</a> to discuss your requirements.
       </p>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing-section" id="pricing">
-    <div class="section-inner">
-      <div class="section-label">Pricing</div>
-      <h2 class="section-title">Three tiers.<br /><em>One sovereign platform.</em></h2>
-      <p class="section-body">From live market and signal alerts to a full sovereign intelligence workspace. Choose the tier that matches your operational needs.</p>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div class="pricing-tier">Sentinel Signals</div>
-          <div class="pricing-price"><sup>&euro;</sup>149</div>
-          <div class="pricing-period">/month &middot; or &euro;1200/year (save 33%)</div>
-          <div class="pricing-desc">Live market and geopolitical signal alerts for analysts who need the intelligence feed without the full workspace.</div>
-          <div class="pricing-features">
-            <div class="pricing-feature">Live opportunity &amp; market alerts</div>
-            <div class="pricing-feature">Geopolitical signal feed</div>
-            <div class="pricing-feature">Weather, disaster, and crisis signals</div>
-            <div class="pricing-feature">Opportunity &amp; market engine scoring</div>
-            <div class="pricing-feature">Email delivery &amp; web dashboard</div>
-            <div class="pricing-feature">Alert-only &mdash; no full workspace</div>
-          </div>
-          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Signals%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20" class="pricing-cta">GET STARTED &rarr;</a>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">RECOMMENDED</div>
-          <div class="pricing-tier">Sentinel Professional</div>
-          <div class="pricing-price"><sup>&euro;</sup>12,000</div>
-          <div class="pricing-period">/year &middot; Windows 10/11</div>
-          <div class="pricing-desc">The full Sentinel workspace for analysts and professional operators. Complete intelligence environment with AI, voice, and market intelligence.</div>
-          <div class="pricing-features">
-            <div class="pricing-feature">Full Sentinel application (download)</div>
-            <div class="pricing-feature">Opportunity Intelligence Engine &amp; Goals</div>
-            <div class="pricing-feature">Autonomous Analyst Agent (approval-gated)</div>
-            <div class="pricing-feature">Market Intelligence Engine &mdash; global coverage</div>
-            <div class="pricing-feature">Shift Analyzer &amp; brief workspace</div>
-            <div class="pricing-feature">OpenAI integration (your key)</div>
-            <div class="pricing-feature">Private knowledge base &amp; RAG</div>
-            <div class="pricing-feature">Voice interface (cloud &amp; local)</div>
-            <div class="pricing-feature">Performance Memory &amp; paper trades</div>
-            <div class="pricing-feature">Dedicated support</div>
-          </div>
-          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Professional%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20" class="pricing-cta">CONTACT US &rarr;</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-tier">Sentinel Sovereign</div>
-          <div class="pricing-price" style="font-size:28px;padding-top:6px;">&euro;18,000</div>
-          <div class="pricing-period">first year &middot; then &euro;12,000/year</div>
-          <div class="pricing-desc">Full sovereign deployment: private setup, encrypted SSD pre-loaded with local AI, hands-on onboarding, and ongoing support.</div>
-          <div class="pricing-features">
-            <div class="pricing-feature">Everything in Professional</div>
-            <div class="pricing-feature">Pre-configured encrypted SSD</div>
-            <div class="pricing-feature">Qwen 3 32B on-device (no cloud)</div>
-            <div class="pricing-feature">Autonomous analyst runs fully on-device</div>
-            <div class="pricing-feature">Whisper + Kokoro offline voice</div>
-            <div class="pricing-feature">Private setup &amp; onboarding session</div>
-            <div class="pricing-feature">Air-gapped sovereign operation</div>
-            <div class="pricing-feature">Priority &amp; dedicated support</div>
-          </div>
-          <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="pricing-cta">CONTACT US &rarr;</a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1164,6 +1103,14 @@
         <div class="faq-item">
           <button class="faq-q">Can the Analyst Agent really change its own code? <span class="faq-arrow">+</span></button>
           <div class="faq-a">Only with your explicit approval. The agent can propose self-improvements as bounded implementation manifests, but every code change is gated behind operator sign-off and runs through a monitored implementation runner. Nothing is applied autonomously, and the agent operates entirely on your hardware.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does the agent do between scheduled Goal runs? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">It can run a self-directed curiosity loop. On a cadence you control, the analyst generates independent ideas, runs internet and platform research (markets, chatter, search trends, live media, environment, entity-risk, cyber, and country research) and can draft new Goals for your review. Every allowed action is configurable, external actions stay gated, and Sentinel exposes audit summaries and telemetry rather than hidden model chain-of-thought.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I see why the agent surfaced an opportunity? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Yes. Every validated opportunity now carries a full written analyst rationale, the underlying mechanism, and the decision text in expandable drawers. Living theories show a structured "changed since last run" summary, and each idea is traceable back to the Goal, or to autonomous curiosity, that produced it.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
@@ -1186,8 +1133,8 @@
           <div class="faq-a">The Sovereign Edition ships with a VeraCrypt-compatible vault structure. We recommend enabling full-disk encryption (BitLocker or VeraCrypt) before first use. The launcher integrates with an encrypted container unlock step.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">What is included in the Sovereign tier? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Sentinel Sovereign includes a private setup session, a pre-configured encrypted SSD with Qwen 3 32B loaded on-device, offline voice (Whisper + Kokoro), and hands-on onboarding. It runs fully air-gapped, no cloud AI required. First year is &euro;18,000, renewals are &euro;12,000/year.</div>
+          <button class="faq-q">How do I get Sentinel? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Sentinel is delivered as a private engagement rather than an off-the-shelf download. Deployments range from the full workspace on your own hardware to a fully sovereign setup, a pre-configured encrypted SSD with Qwen 3 32B on-device, offline voice (Whisper + Kokoro), and hands-on onboarding that runs entirely air-gapped. Request info and we'll scope the right configuration for you.</div>
         </div>
       </div>
     </div>
@@ -1203,10 +1150,27 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">20 Jun 2026 &middot; Latest</div>
+            <div class="changelog-date">22 Jun 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Self-Directed Curiosity &amp; a More Transparent Analyst Workflow</div>
+              <div class="changelog-body">The Analyst Agent gains a self-directed curiosity loop: between scheduled Goal runs it can generate independent ideas, run internet and platform research (markets, chatter, search trends, live media, environment, entity-risk, cyber, and country research), and draft new Goals for your review, all on a configurable cadence with per-action allow-listing. A new autonomy policy keeps external actions gated and exposes audit summaries and telemetry instead of hidden model chain-of-thought. The opportunity workspace now surfaces full analyst rationale, mechanism, and decision text in expandable drawers, living theories show a structured "changed since last run" summary, and every idea is traceable back to its Goal or to autonomous curiosity. Rounded out with engine and scheduler hardening, weather-quality fallback, source-confidence scoring, market-watch improvements, and mobile layout fixes.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Autonomous Curiosity</span>
+                <span class="changelog-tag">Draft Goals</span>
+                <span class="changelog-tag">Analyst Rationale Drawers</span>
+                <span class="changelog-tag">Audit &amp; Telemetry</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Engine &amp; Scheduler Hardening</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">20 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Sentinel Reborn: Goal-Led Opportunity Intelligence &amp; an Autonomous, Self-Improving Analyst</div>
-              <div class="changelog-body">The largest release in Sentinel's history &mdash; a complete change of direction. Sentinel moves from a market-first dashboard to a Goal-led opportunity-intelligence system built on a new modular backend (sources, signals, memory, opportunities, markets, agent scheduling, reports, and storage). Two new pillars define the product: a unified Opportunity Intelligence Engine that turns faint signals into validated, evidence-backed opportunity packets, and an Autonomous Analyst Agent that hunts your Goals around the clock and can even propose its own upgrades &mdash; always behind explicit operator approval. The frontend was rebuilt into shared modules with an Opportunity Radar, Invisible Dots / connect-the-dots views, living theories, packet details, a Goal manager, and mobile full-screen sheets.</div>
+              <div class="changelog-body">The largest release in Sentinel's history, a complete change of direction. Sentinel moves from a market-first dashboard to a Goal-led opportunity-intelligence system built on a new modular backend (sources, signals, memory, opportunities, markets, agent scheduling, reports, and storage). Two new pillars define the product: a unified Opportunity Intelligence Engine that turns faint signals into validated, evidence-backed opportunity packets, and an Autonomous Analyst Agent that hunts your Goals around the clock and can even propose its own upgrades, always behind explicit operator approval. The frontend was rebuilt into shared modules with an Opportunity Radar, Invisible Dots / connect-the-dots views, living theories, packet details, a Goal manager, and mobile full-screen sheets.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">Opportunity Engine</span>
@@ -1280,7 +1244,7 @@
             <div class="changelog-date">20 Jun 2026 &middot; Detail</div>
             <div class="changelog-right">
               <div class="changelog-title">Modular Backend &amp; Smoke Coverage</div>
-              <div class="changelog-body">Under the hood, Sentinel is now organised into a modular sentinel backend package spanning sources, signals, memory, opportunities, markets, agent scheduling, AI prompts, API route helpers, and storage. New smoke coverage exercises the opportunity engine and frontend contracts &mdash; global market coverage, source fallback, Qwen / OpenAI validation telemetry, planner rejection, Shift Analyzer handoff, Goal filtering, optional feeds, lifecycle actions, report / email paths, mobile UI rules, and approval-runner monitoring.</div>
+              <div class="changelog-body">Under the hood, Sentinel is now organised into a modular sentinel backend package spanning sources, signals, memory, opportunities, markets, agent scheduling, AI prompts, API route helpers, and storage. New smoke coverage exercises the opportunity engine and frontend contracts, global market coverage, source fallback, Qwen / OpenAI validation telemetry, planner rejection, Shift Analyzer handoff, Goal filtering, optional feeds, lifecycle actions, report / email paths, mobile UI rules, and approval-runner monitoring.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag improve">IMPROVEMENT</span>
                 <span class="changelog-tag">Architecture</span>
@@ -1293,7 +1257,7 @@
             <div class="changelog-date">16 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Sovereign Local Runtime Hardening</div>
-              <div class="changelog-body">A focused hardening pass on the sovereign (offline) AI path. The bundled Ollama runtime now detects and preserves GPU accelerator folders — CUDA, ROCm, Vulkan, and MLX/CUDA backends are automatically kept when staging a portable build, and the launcher warns at startup when the bundled runtime is CPU-only. AI timeouts are now model-aware: requests to 32B models allow up to 5 minutes, 14B models 4 minutes, and smaller models 3 minutes, replacing the flat 2-minute cap that caused spurious timeouts on larger local models. Voice provider and voice ID handling was normalised across the full stack — switching AI providers no longer leaves a stale voice selection that could cause TTS errors, and invalid cross-provider voice IDs are resolved to a safe default automatically. The runtime status API now reports acceleration backend availability so the AI Settings panel can surface hardware capability at a glance.</div>
+              <div class="changelog-body">A focused hardening pass on the sovereign (offline) AI path. The bundled Ollama runtime now detects and preserves GPU accelerator folders, CUDA, ROCm, Vulkan, and MLX/CUDA backends are automatically kept when staging a portable build, and the launcher warns at startup when the bundled runtime is CPU-only. AI timeouts are now model-aware: requests to 32B models allow up to 5 minutes, 14B models 4 minutes, and smaller models 3 minutes, replacing the flat 2-minute cap that caused spurious timeouts on larger local models. Voice provider and voice ID handling was normalised across the full stack, switching AI providers no longer leaves a stale voice selection that could cause TTS errors, and invalid cross-provider voice IDs are resolved to a safe default automatically. The runtime status API now reports acceleration backend availability so the AI Settings panel can surface hardware capability at a glance.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag improve">IMPROVEMENT</span>
                 <span class="changelog-tag">Sovereign AI</span>
@@ -1340,7 +1304,7 @@
             <div class="changelog-date">15 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Mobile Layouts, Desk Gating &amp; Gate Configuration UI</div>
-              <div class="changelog-body">A broad mobile pass corrects layout breakpoints across the main views, including the Opportunity Desk panels on narrow screens. Desk gating logic received fixes to ensure gate enable/disable state is respected correctly during live scans. The gate configuration interface was substantially updated with richer visual feedback — active gate status, pass/fail indicators, and configuration changes now reflect immediately without requiring a full report refresh.</div>
+              <div class="changelog-body">A broad mobile pass corrects layout breakpoints across the main views, including the Opportunity Desk panels on narrow screens. Desk gating logic received fixes to ensure gate enable/disable state is respected correctly during live scans. The gate configuration interface was substantially updated with richer visual feedback, active gate status, pass/fail indicators, and configuration changes now reflect immediately without requiring a full report refresh.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag fix">FIX</span>
                 <span class="changelog-tag">Mobile</span>
@@ -1355,7 +1319,7 @@
             <div class="changelog-date">13 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Compact Responsive UI, Brief Email &amp; Trade Ledger Fixes</div>
-              <div class="changelog-body">A new compact UI mode adapts the Sentinel workspace to smaller viewports and dense screen layouts, keeping all panels accessible without sacrificing information density. Brief email and alert notification delivery was corrected — feedback messages now accurately reflect send/failure state. The closed paper trade statistics ledger was also fixed to correctly aggregate and display historical performance data.</div>
+              <div class="changelog-body">A new compact UI mode adapts the Sentinel workspace to smaller viewports and dense screen layouts, keeping all panels accessible without sacrificing information density. Brief email and alert notification delivery was corrected, feedback messages now accurately reflect send/failure state. The closed paper trade statistics ledger was also fixed to correctly aggregate and display historical performance data.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">Compact UI</span>
@@ -1371,7 +1335,7 @@
             <div class="changelog-date">12 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Paper Trade Ledger Display &amp; Performance Summary</div>
-              <div class="changelog-body">The paper trade memory ledger received a comprehensive display fix — trade history, open positions, and P&amp;L rows now render consistently across all states. A separate fix resolves cases where the performance summary was silently skipping resolved trades when computing aggregate hit-rate and expectancy metrics, causing understated statistics in the desk overview.</div>
+              <div class="changelog-body">The paper trade memory ledger received a comprehensive display fix, trade history, open positions, and P&amp;L rows now render consistently across all states. A separate fix resolves cases where the performance summary was silently skipping resolved trades when computing aggregate hit-rate and expectancy metrics, causing understated statistics in the desk overview.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag fix">FIX</span>
                 <span class="changelog-tag">Paper Trading</span>
@@ -1398,7 +1362,7 @@
             <div class="changelog-date">10 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Expanded Market Universe, Global Feeds &amp; Security Hardening</div>
-              <div class="changelog-body">A broad sweep of data coverage and reliability improvements. Crypto classification is now correct for all major assets — SOL, XRP and BNB are properly tracked alongside BTC and ETH, with chart history loading from the right data source. Seven new FX pairs expand emerging-market exposure (USD/BRL, USD/INR, USD/MXN, USD/TRY, USD/ZAR, USD/KRW, EUR/GBP). Four Asian indices join the live market tape: Hang Seng, KOSPI, ASX 200 and Taiwan TAIEX. The OpenSky aircraft feed now covers the full globe — South America, Sub-Saharan Africa, South-East Asia, Australia and the Pacific were previously missing. USGS seismic alerts widened from M4.5+ to M2.5+ to surface smaller but geopolitically significant events. Thirty sector and regional ETF profiles were added (XLK, XLF, XLE, EWZ, FXI, INDA, EWY, EWT and more). The launcher's license fingerprint binding is now hardened against edge cases where hardware queries fail silently.</div>
+              <div class="changelog-body">A broad sweep of data coverage and reliability improvements. Crypto classification is now correct for all major assets, SOL, XRP and BNB are properly tracked alongside BTC and ETH, with chart history loading from the right data source. Seven new FX pairs expand emerging-market exposure (USD/BRL, USD/INR, USD/MXN, USD/TRY, USD/ZAR, USD/KRW, EUR/GBP). Four Asian indices join the live market tape: Hang Seng, KOSPI, ASX 200 and Taiwan TAIEX. The OpenSky aircraft feed now covers the full globe, South America, Sub-Saharan Africa, South-East Asia, Australia and the Pacific were previously missing. USGS seismic alerts widened from M4.5+ to M2.5+ to surface smaller but geopolitically significant events. Thirty sector and regional ETF profiles were added (XLK, XLF, XLE, EWZ, FXI, INDA, EWY, EWT and more). The launcher's license fingerprint binding is now hardened against edge cases where hardware queries fail silently.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">SOL / XRP / BNB</span>
@@ -1521,7 +1485,7 @@
             <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
             <div class="changelog-right">
               <div class="changelog-title">Opportunity Desk Gate Funnel</div>
-              <div class="changelog-body">A visual diagnostic panel now appears inside the Opportunity Desk showing exactly how many instruments pass each of the 14 quality gates — from raw market universe through directional setups, each assessment layer, and the final displayed book. The funnel makes it immediately clear where the pipeline is tightening and why candidates are filtered out.</div>
+              <div class="changelog-body">A visual diagnostic panel now appears inside the Opportunity Desk showing exactly how many instruments pass each of the 14 quality gates, from raw market universe through directional setups, each assessment layer, and the final displayed book. The funnel makes it immediately clear where the pipeline is tightening and why candidates are filtered out.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">Opportunity Desk</span>
@@ -1548,7 +1512,7 @@
             <div class="changelog-date">08 Jun 2026 &middot; Detail</div>
             <div class="changelog-right">
               <div class="changelog-title">Path-Aware Trade Performance Resolver</div>
-              <div class="changelog-body">Paper trade outcomes are now resolved against actual OHLC bar history rather than a single latest price snapshot. The resolver walks each daily bar between entry and evaluation, checking whether the stop-loss or take-profit was touched first. When both levels appear inside the same bar, the stop is assumed to have triggered first — a conservative default that prevents overstated P&amp;L in volatile sessions.</div>
+              <div class="changelog-body">Paper trade outcomes are now resolved against actual OHLC bar history rather than a single latest price snapshot. The resolver walks each daily bar between entry and evaluation, checking whether the stop-loss or take-profit was touched first. When both levels appear inside the same bar, the stop is assumed to have triggered first, a conservative default that prevents overstated P&amp;L in volatile sessions.</div>
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">Paper Trading</span>
@@ -1585,9 +1549,8 @@
       <h2>Ready to own your <em>intelligence</em>?</h2>
       <p>Join analysts, traders, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
       <div class="hero-actions">
-        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Sovereign%20Edition%20Order&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AShipping%20Address%3A%20%0ALine%201%3A%20%0ALine%202%3A%20%0ACity%3A%20%0APostcode%3A%20%0ACountry%3A%20" class="btn-primary">GET SENTINEL &mdash; &euro;12000</a>
+        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AWhat%20would%20you%20like%20to%20know%3F%3A%20" class="btn-primary">REQUEST INFO</a>
         <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
-        <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enterprise%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0ADescribe%20your%20requirements%3A%20" class="btn-ghost">ENTERPRISE ENQUIRY</a>
       </div>
     </div>
   </section>
@@ -1599,7 +1562,6 @@
       <a href="#opportunity">Opportunity Engine</a>
       <a href="#agent">Analyst Agent</a>
       <a href="#market">Market</a>
-      <a href="#pricing">Pricing</a>
       <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
@@ -1740,35 +1702,111 @@
     document.querySelectorAll('.hero-stat-val').forEach(function (el) { cio.observe(el); });
   }
 
-  // ---- Analyst thought stream (sequential, looping) ----
-  if (!reduce && 'IntersectionObserver' in window) {
+  // ---- Analyst thought stream (typewriter, multi-scenario, looping) ----
+  (function () {
     var ts = document.getElementById('thoughtStream');
-    if (ts) {
-      var lines = Array.prototype.slice.call(ts.querySelectorAll('.ts-line'));
-      var running = false;
-      function runStream() {
-        if (running || !lines.length) return;
-        running = true;
-        lines.forEach(function (l) { l.classList.remove('show'); });
-        var i = 0;
-        (function next() {
-          if (i >= lines.length) {
-            setTimeout(function () {
-              lines.forEach(function (l) { l.classList.remove('show'); });
-              running = false; runStream();
-            }, 3400);
-            return;
+    if (!ts || reduce) return;
+    var SCENARIOS = [
+      [
+        { cls: 'ts-tag',    label: '[goal]',        t: ' Hunt asymmetric setups in EM energy' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 1,284 signals across maritime, news, commodities\u2026' },
+        { cls: 'ts-watch',  label: '[watch]',        t: ' 17 relevant signals identified' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: three signals cluster around Gulf shipping insurance\u2026' },
+        { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #42' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: tanker re-routing + premium spike + refinery note' },
+        { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d76 \u00b7 contradiction \u00d71 \u00b7 AI: PASS' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #42 promoted \u00b7 Ready' },
+        { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' },
+        { cls: 'ts-prompt', label: '[self-improve]', t: ' proposed: add freight-rate source, awaiting approval' }
+      ],
+      [
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Track macro divergence in G10 FX' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 2,107 signals across central banks, rates, options\u2026' },
+        { cls: 'ts-watch',  label: '[watch]',        t: ' 23 relevant signals identified' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: USD/JPY momentum diverging from rate differential\u2026' },
+        { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #19' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: BoJ minutes + carry unwind + options skew' },
+        { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d75 \u00b7 contradiction \u00d70 \u00b7 AI: PASS' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #19 promoted \u00b7 Ready' },
+        { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' }
+      ],
+      [
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Monitor geopolitical risk in shipping lanes' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 941 signals across AIS, maritime intel, insurance\u2026' },
+        { cls: 'ts-watch',  label: '[watch]',        t: ' 8 relevant signals identified' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: AIS dark events correlate with insurance premium spike\u2026' },
+        { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #7' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: satellite imagery + Lloyd\'s notice + freight futures' },
+        { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d77 \u00b7 contradiction \u00d71 \u00b7 AI: PASS' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #7 promoted \u00b7 Ready' },
+        { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' }
+      ]
+    ];
+    var scIdx = 0, active = false;
+    var tsTitle = ts.querySelector('.ts-title');
+    ts.innerHTML = '';
+    if (tsTitle) ts.appendChild(tsTitle);
+    var tsBody = document.createElement('div');
+    tsBody.className = 'ts-body';
+    ts.appendChild(tsBody);
+    function runScenario() {
+      if (active) return;
+      active = true;
+      tsBody.innerHTML = '';
+      var sc = SCENARIOS[scIdx % SCENARIOS.length]; scIdx++;
+      var li = 0;
+      function nextLine() {
+        if (li >= sc.length) {
+          setTimeout(function () {
+            var all = tsBody.querySelectorAll('.ts-line');
+            Array.prototype.forEach.call(all, function (l) {
+              l.style.transition = 'opacity 0.7s'; l.style.opacity = '0';
+            });
+            setTimeout(function () { active = false; runScenario(); }, 1000);
+          }, 3000);
+          return;
+        }
+        var item = sc[li++];
+        var row = document.createElement('div');
+        row.className = 'ts-line ' + item.cls;
+        row.style.cssText = 'opacity:0;transform:translateY(5px);';
+        tsBody.appendChild(row);
+        if (item.label) {
+          var tag = document.createElement('span');
+          tag.className = item.cls; tag.textContent = item.label;
+          row.appendChild(tag);
+        }
+        var txt = document.createTextNode('');
+        row.appendChild(txt);
+        var cur = document.createElement('span');
+        cur.className = 'ts-cursor'; cur.textContent = '\u2588';
+        row.appendChild(cur);
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            row.style.transition = 'opacity 0.3s, transform 0.3s';
+            row.style.opacity = '1'; row.style.transform = 'none';
+          });
+        });
+        var chars = item.t.split(''), ci = 0;
+        var spd = item.cls === 'ts-think' ? 20 : 28;
+        function typeChar() {
+          if (ci < chars.length) {
+            txt.textContent += chars[ci++];
+            setTimeout(typeChar, spd + (Math.random() * 16 | 0));
+          } else {
+            cur.remove();
+            setTimeout(nextLine, item.cls === 'ts-think' ? 420 : 260);
           }
-          lines[i].classList.add('show'); i++;
-          setTimeout(next, 640);
-        })();
+        }
+        setTimeout(typeChar, 90);
       }
-      var tio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) runStream(); });
-      }, { threshold: 0.35 });
-      tio.observe(ts);
+      nextLine();
     }
-  }
+    var tio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting && !active) runScenario(); });
+    }, { threshold: 0.1 });
+    tio.observe(ts);
+  })();
 })();
 </script>
 </body>
