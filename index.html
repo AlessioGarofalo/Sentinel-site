@@ -1150,7 +1150,25 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">22 Jun 2026 &middot; Latest</div>
+            <div class="changelog-date">23 Jun 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Voice Command Routing, Action Blueprints &amp; a Tighter Curiosity Engine</div>
+              <div class="changelog-body">Voice now routes commands intelligently across all major app functions, including direct packet and theory targeting by name, market product lookups, and multi-step option selection with pending-state tracking. Each opportunity theory gains a structured Action Blueprint: a planning lane, specific operator steps with source and entity attribution, AI validation gates, and kill triggers, giving you a concrete tradeable plan alongside the evidence. A time-horizon engine estimates how long each theory takes to play out and surfaces it alongside the opportunity packet. Executed steps are quality-gated before surfacing, an artifact must meet minimum evidence count and source-attribution thresholds to be accepted, with ingestion notes explaining any shortfall. The curiosity system is tightened with a daily idea cap, a minimum confidence threshold (84%), and smart deduplication via subject-key normalisation and phrase canonicalisation. Opportunity confidence scores are now derived from evidence quality and source count rather than static fields, with legacy static scores auto-repaired on load.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Voice Command Routing</span>
+                <span class="changelog-tag">Action Blueprints</span>
+                <span class="changelog-tag">Time Horizon Engine</span>
+                <span class="changelog-tag">Step Quality Gates</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Curiosity Deduplication</span>
+                <span class="changelog-tag">Evidence-Derived Confidence</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">22 Jun 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Self-Directed Curiosity &amp; a More Transparent Analyst Workflow</div>
               <div class="changelog-body">The Analyst Agent gains a self-directed curiosity loop: between scheduled Goal runs it can generate independent ideas, run internet and platform research (markets, chatter, search trends, live media, environment, entity-risk, cyber, and country research), and draft new Goals for your review, all on a configurable cadence with per-action allow-listing. A new autonomy policy keeps external actions gated and exposes audit summaries and telemetry instead of hidden model chain-of-thought. The opportunity workspace now surfaces full analyst rationale, mechanism, and decision text in expandable drawers, living theories show a structured "changed since last run" summary, and every idea is traceable back to its Goal or to autonomous curiosity. Rounded out with engine and scheduler hardening, weather-quality fallback, source-confidence scoring, market-watch improvements, and mobile layout fixes.</div>
