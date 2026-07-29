@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENTINEL - Sovereign Opportunity Intelligence &amp; Autonomous Analyst</title>
-  <meta name="description" content="Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on, all running on your own hardware." />
+  <title>SENTINEL - Sovereign Resilience &amp; Decision Intelligence</title>
+  <meta name="description" content="Sentinel is a sovereign resilience and decision-intelligence platform for critical infrastructure, business entity protection, and AI-assisted decision making in crisis. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and turns them into decisions you can defend, all running on your own hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -445,7 +445,7 @@
       transition: max-height 0.3s ease, padding 0.3s ease;
       font-size: 14.5px; color: var(--muted); line-height: 1.75;
     }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+    .faq-item.open .faq-a { max-height: 700px; padding-bottom: 24px; }
 
     /* CTA band */
     .cta-band {
@@ -566,6 +566,7 @@
     html.js .content-wrap .section-body,
     html.js .feature-card, html.js .feature-card-wide,
     html.js .opp-flow, html.js .opp-step, html.js .opp-card,
+    html.js .domain-card, html.js .domain-note,
     html.js .market-callout-header, html.js .market-gate-pill,
     html.js .signal-pill,
     html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
@@ -588,6 +589,7 @@
       html.js .content-wrap .section-body,
       html.js .feature-card, html.js .feature-card-wide,
       html.js .opp-flow, html.js .opp-step, html.js .opp-card,
+    html.js .domain-card, html.js .domain-note,
       html.js .market-callout-header, html.js .market-gate-pill,
       html.js .signal-pill,
       html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
@@ -635,6 +637,28 @@
     .opp-card-icon { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); background: rgba(139,255,222,0.05); color: var(--accent); font-size: 17px; margin-bottom: 16px; }
     .opp-card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
     .opp-card-body { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+    /* ============================================================
+       MISSION DOMAINS
+       ============================================================ */
+    .domains-section { position: relative; overflow: hidden; background: rgba(3,10,12,0.84); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+    .domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 56px; border: 1px solid var(--line); }
+    .domain-card { padding: 36px 32px; background: rgba(2,8,10,0.72); border: 1px solid var(--line); margin: -1px; transition: background 0.2s; }
+    .domain-card:hover { background: rgba(6,16,19,0.94); }
+    .domain-card.primary { border-color: var(--line-strong); background: rgba(6,16,19,0.9); }
+    .domain-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+    .domain-n { font-family: "Roboto Mono", monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--accent); }
+    .domain-title { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+    .domain-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .domain-list { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
+    .domain-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .domain-item::before { content: "\203A"; color: var(--accent); flex-shrink: 0; font-family: "Roboto Mono", monospace; }
+    .domain-note {
+      margin-top: 40px; padding: 18px 22px;
+      border-left: 2px solid var(--line-strong);
+      font-size: 13.5px; color: var(--muted); line-height: 1.7;
+    }
+    @media (max-width: 860px) { .domain-grid { grid-template-columns: 1fr; } }
 
     /* ============================================================
        AUTONOMOUS ANALYST AGENT
@@ -693,9 +717,9 @@
 <nav id="mainNav">
   <a href="https://app.sentinel.info" class="nav-brand" target="_blank" rel="noopener noreferrer">SENTINEL</a>
   <div class="nav-links">
-    <a href="#opportunity">Opportunity Engine</a>
+    <a href="#decision">Decision Engine</a>
+    <a href="#domains">Domains</a>
     <a href="#agent">Analyst Agent</a>
-    <a href="#market">Market</a>
     <a href="#sovereign">Sovereign</a>
     <a href="#changelog">Updates</a>
     <a href="#" onclick="openDemoModal();return false;">Demo</a>
@@ -706,14 +730,14 @@
 <section class="hero" id="hero">
   <div class="hero-aura parallax-layer" data-parallax-speed="0.18" aria-hidden="true"></div>
   <div class="hero-inner" id="heroInner">
-    <div class="hero-eyebrow">Sovereign Opportunity Intelligence</div>
-    <h1>From raw signal<br /><em>to acted-on opportunity.</em><br />Autonomously.</h1>
+    <div class="hero-eyebrow">Sovereign Resilience &amp; Decision Intelligence</div>
+    <h1>From raw signal<br /><em>to a decision you can defend.</em><br />Before the crisis lands.</h1>
     <p class="hero-sub">
-      Sentinel is a sovereign opportunity-intelligence system. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and surfaces only the opportunities worth acting on, all running entirely on your hardware.
+      Sentinel is a sovereign resilience and decision-intelligence platform for critical infrastructure, business entity protection, and AI-assisted decision making under crisis conditions. You set the Goals; an autonomous analyst agent watches the world around the clock, connects faint signals into living theories, validates them, and turns them into evidence-backed courses of action, all running entirely on your hardware.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">REQUEST INFO</a>
-      <a href="#opportunity" class="btn-ghost">EXPLORE THE ENGINE</a>
+      <a href="#domains" class="btn-ghost">EXPLORE THE DOMAINS</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -723,6 +747,10 @@
       <div class="hero-stat">
         <div class="hero-stat-val">1000s</div>
         <div class="hero-stat-label">Signals Correlated Daily</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">4</div>
+        <div class="hero-stat-label">Mission Domains</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">100%</div>
@@ -750,8 +778,8 @@
   <section id="features" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
     <div class="section-inner">
       <div class="section-label">Capabilities</div>
-      <h2 class="section-title">Everything an analyst needs.<br /><em>Nothing they don't.</em></h2>
-      <p class="section-body">Purpose-built for professionals who need to turn the chaos of the world into a short list of opportunities worth acting on, without feeding their intelligence to a third-party cloud.</p>
+      <h2 class="section-title">Everything a decision needs.<br /><em>Nothing it doesn't.</em></h2>
+      <p class="section-body">Purpose-built for the people who have to keep something running: infrastructure operators, resilience and security leads, continuity planners, and crisis teams who need the chaos of the world reduced to a short list of decisions worth making, without feeding their intelligence to a third-party cloud.</p>
       <div class="features-grid">
 
         <!-- Opportunity Intelligence Engine - full width, flagship -->
@@ -759,8 +787,8 @@
           <div class="feature-wide-inner">
             <div>
               <div class="feature-icon">&#9678;</div>
-              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Opportunity Intelligence Engine</div>
-              <div class="feature-body" style="font-size:15px;">Sentinel's core is no longer a dashboard you read, it's an engine that hunts. Define a Goal and the engine continuously pulls relevant signals, connects the faint, easy-to-miss dots into living theories, gathers evidence and contradictions, and validates each idea with AI before promoting it to an actionable opportunity packet. Noise stays out; only what matters to your Goal reaches you.</div>
+              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Resilience &amp; Decision Intelligence Engine</div>
+              <div class="feature-body" style="font-size:15px;">Sentinel's core is no longer a dashboard you read, it's an engine that reasons. Define a Goal, a site, a supply route, an entity, a threat you cannot afford to miss, and the engine continuously pulls relevant signals, connects the faint, easy-to-miss dots into living theories, gathers evidence and contradictions, and validates each finding with AI before promoting it to a decision packet with a recommended course of action. Noise stays out; only what changes your posture reaches you.</div>
               <div style="margin-top:16px;">
                 <span class="feature-tag-accent">GOAL-LED</span>
                 <span class="feature-tag" style="margin-left:8px;">SELF-VALIDATING</span>
@@ -768,17 +796,17 @@
               </div>
             </div>
             <div>
-              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">From Goal to Opportunity</div>
+              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">From Goal to Decision</div>
               <div class="feature-gates">
                 <div class="feature-gate">
                   <div class="feature-gate-num">01 &middot; GOAL</div>
                   <div class="feature-gate-name">You set the intent</div>
-                  <div class="feature-gate-body">Persistent Goals focus every scan on what you actually care about.</div>
+                  <div class="feature-gate-body">Persistent Goals focus every scan on the assets, entities, and exposures you are accountable for.</div>
                 </div>
                 <div class="feature-gate">
                   <div class="feature-gate-num">02 &middot; CONNECT</div>
                   <div class="feature-gate-name">Invisible dots</div>
-                  <div class="feature-gate-body">Faint, scattered signals are linked into emerging patterns.</div>
+                  <div class="feature-gate-body">Faint, scattered signals are linked into emerging patterns and cascading dependencies.</div>
                 </div>
                 <div class="feature-gate">
                   <div class="feature-gate-num">03 &middot; THEORISE</div>
@@ -788,12 +816,12 @@
                 <div class="feature-gate">
                   <div class="feature-gate-num">04 &middot; VALIDATE</div>
                   <div class="feature-gate-name">AI prevalidation</div>
-                  <div class="feature-gate-body">Weak ideas are rejected before they ever reach your desk.</div>
+                  <div class="feature-gate-body">Weak findings and false alarms are rejected before they ever reach your desk.</div>
                 </div>
                 <div class="feature-gate" style="grid-column:1/-1;">
-                  <div class="feature-gate-num">05 &middot; PACKET</div>
-                  <div class="feature-gate-name">Opportunity packet</div>
-                  <div class="feature-gate-body">A validated, evidence-linked, lifecycle-tracked opportunity, ready to act on, with full provenance.</div>
+                  <div class="feature-gate-num">05 &middot; DECISION</div>
+                  <div class="feature-gate-name">Decision packet</div>
+                  <div class="feature-gate-body">A validated, evidence-linked, lifecycle-tracked finding with a recommended course of action, kill triggers, and full provenance back to source, so the decision can be defended after the fact.</div>
                 </div>
               </div>
             </div>
@@ -807,10 +835,16 @@
           <div class="feature-tag-accent">SELF-IMPROVING</div>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">&#11034;</div>
-          <div class="feature-title">Market Intelligence Engine</div>
-          <div class="feature-body">A quality-gated trading desk feeds the opportunity engine: every market idea is scored across catalyst quality, historical edge, live desk reliability, liquidity, and execution readiness, now with global, not just US, coverage.</div>
-          <div class="feature-tag">QUALITY-GATED &middot; GLOBAL</div>
+          <div class="feature-icon">&#9783;</div>
+          <div class="feature-title">Critical Infrastructure Watch</div>
+          <div class="feature-body">Track the things your operation depends on: energy, water, transport corridors, ports, telecoms, and the supply routes between them. Sentinel maps dependencies so a disruption three steps upstream reaches you as a warning, not a surprise.</div>
+          <div class="feature-tag">DEPENDENCY-AWARE</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9737;</div>
+          <div class="feature-title">Crisis Decision Support</div>
+          <div class="feature-body">When something breaks, the engine shifts from watching to advising: what is happening, what it cascades into, which options you have, and what each one costs. Courses of action arrive with evidence, contradictions, and explicit kill triggers.</div>
+          <div class="feature-tag-accent">COURSES OF ACTION</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&oplus;</div>
@@ -821,8 +855,14 @@
         <div class="feature-card">
           <div class="feature-icon">&#9672;</div>
           <div class="feature-title">AI Signal Analysis</div>
-          <div class="feature-body">Ask questions across all ingested signals. Sentinel correlates news, markets, chatter, and geographic data to deliver grounded, evidence-backed answers.</div>
+          <div class="feature-body">Ask questions across all ingested signals. Sentinel correlates news, infrastructure status, chatter, markets, and geographic data to deliver grounded, evidence-backed answers.</div>
           <div class="feature-tag">OpenAI / LOCAL LLM</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#11034;</div>
+          <div class="feature-title">Market &amp; Economic Exposure</div>
+          <div class="feature-body">The original market desk remains, now as one input among four: a quality-gated read on economic and financial exposure, scored across catalyst quality, historical calibration, desk reliability, liquidity, and execution readiness, with global coverage.</div>
+          <div class="feature-tag">ONE DOMAIN OF FOUR</div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#11041;</div>
@@ -847,12 +887,12 @@
   </section>
 
   <!-- OPPORTUNITY INTELLIGENCE -->
-  <section class="opp-section" id="opportunity">
+  <section class="opp-section" id="decision">
     <div class="opp-aura parallax-layer" data-parallax-speed="-0.06" aria-hidden="true"></div>
     <div class="section-inner">
-      <div class="section-label">The New Direction</div>
-      <h2 class="section-title">It doesn't just watch the world.<br /><em>It connects the dots.</em></h2>
-      <p class="section-body">Sentinel has been rebuilt around a single idea: opportunities rarely arrive as headlines. They emerge from faint, scattered signals that only mean something once you link them together. The opportunity engine does exactly that, continuously, and only for the Goals you set.</p>
+      <div class="section-label">Resilience &amp; Decision Making</div>
+      <h2 class="section-title">It doesn't just watch the world.<br /><em>It tells you what to do about it.</em></h2>
+      <p class="section-body">Sentinel is built around a single idea: the events that break an organisation rarely arrive as headlines. They emerge from faint, scattered signals that only mean something once you link them together, and by the time they are obvious the decision window has closed. The decision engine closes that gap, continuously, and only for the Goals you set.</p>
 
       <div class="opp-flow">
         <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Goal</div></div>
@@ -860,42 +900,113 @@
         <div class="opp-step"><div class="opp-step-n">03</div><div class="opp-step-name">Invisible Dots</div></div>
         <div class="opp-step"><div class="opp-step-n">04</div><div class="opp-step-name">Living Theory</div></div>
         <div class="opp-step"><div class="opp-step-n">05</div><div class="opp-step-name">Validation</div></div>
-        <div class="opp-step"><div class="opp-step-n">06</div><div class="opp-step-name">Packet</div></div>
-        <div class="opp-step"><div class="opp-step-n">07</div><div class="opp-step-name">Report</div></div>
+        <div class="opp-step"><div class="opp-step-n">06</div><div class="opp-step-name">Decision Packet</div></div>
+        <div class="opp-step"><div class="opp-step-n">07</div><div class="opp-step-name">Action</div></div>
       </div>
 
       <div class="opp-grid">
         <div class="opp-card">
           <div class="opp-card-icon">&#9678;</div>
           <div class="opp-card-title">Persistent Goals</div>
-          <div class="opp-card-body">Tell Sentinel what you're hunting for. Goals persist across sessions and steer every scan, so the engine works on your agenda, not a generic feed.</div>
+          <div class="opp-card-body">Tell Sentinel what you are accountable for: a plant, a corridor, a subsidiary, a threat class. Goals persist across sessions and steer every scan, so the engine works on your mandate, not a generic feed.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9673;</div>
-          <div class="opp-card-title">Opportunity Radar</div>
-          <div class="opp-card-body">A live radar of emerging opportunities ranked by relevance to your Goals, so the most promising leads rise to the top automatically.</div>
+          <div class="opp-card-title">Risk &amp; Opportunity Radar</div>
+          <div class="opp-card-body">A live radar of emerging threats, disruptions, and openings, ranked by relevance to your Goals, so what most affects your posture rises to the top automatically.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#10022;</div>
           <div class="opp-card-title">Invisible Dots</div>
-          <div class="opp-card-body">A connect-the-dots view that surfaces weak, easily-missed signals and the links between them, the raw material of an edge before it's obvious.</div>
+          <div class="opp-card-body">A connect-the-dots view that surfaces weak, easily-missed signals and the links between them, the early shape of a disruption before it is obvious to anyone else.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9784;</div>
           <div class="opp-card-title">Living Theories</div>
-          <div class="opp-card-body">Hypotheses that grow over time, accumulating supporting evidence and explicit contradictions so you can watch conviction strengthen, or break.</div>
+          <div class="opp-card-body">Hypotheses that grow over time, accumulating supporting evidence and explicit contradictions so you can watch confidence strengthen, or break, before you commit to a response.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9707;</div>
-          <div class="opp-card-title">Opportunity Packets</div>
-          <div class="opp-card-body">Each validated idea becomes a packet: thesis, evidence, contradictions, and lifecycle state in one place, with full provenance back to source.</div>
+          <div class="opp-card-title">Decision Packets</div>
+          <div class="opp-card-body">Each validated finding becomes a packet: assessment, evidence, contradictions, recommended action, kill triggers, and lifecycle state in one place, with full provenance back to source.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#8987;</div>
           <div class="opp-card-title">Temporal Memory</div>
-          <div class="opp-card-body">Sentinel remembers. Signals, theories, and outcomes are retained over time, so today's analysis is informed by everything that came before.</div>
+          <div class="opp-card-body">Sentinel remembers. Signals, theories, decisions, and outcomes are retained over time, so today's assessment is informed by every incident that came before.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- MISSION DOMAINS -->
+  <section class="domains-section" id="domains">
+    <div class="section-inner">
+      <div class="section-label">Mission Domains</div>
+      <h2 class="section-title">One engine.<br /><em>Four things worth protecting.</em></h2>
+      <p class="section-body">The same Goal-led pipeline runs behind every domain. What changes is what you point it at, and what a validated finding means once it lands on your desk.</p>
+
+      <div class="domain-grid">
+
+        <div class="domain-card primary">
+          <div class="domain-head">
+            <span class="domain-n">01</span>
+            <span class="domain-title">Critical Infrastructure Resilience</span>
+          </div>
+          <div class="domain-body">Energy, water, transport, ports, telecoms, and the supply chains threaded through them fail in cascades, not in isolation. Sentinel holds a live model of what depends on what, so a disruption upstream surfaces as a warning about your own continuity.</div>
+          <div class="domain-list">
+            <div class="domain-item">Dependency and single-point-of-failure mapping across sites and corridors</div>
+            <div class="domain-item">Early warning on disruption, from weather and disasters to strikes and conflict</div>
+            <div class="domain-item">Cascading-impact assessment: what breaks next, and how long you have</div>
+            <div class="domain-item">Continuity posture tracked over time, not reconstructed after the incident</div>
+          </div>
+        </div>
+
+        <div class="domain-card primary">
+          <div class="domain-head">
+            <span class="domain-n">02</span>
+            <span class="domain-title">Business Entity Protection</span>
+          </div>
+          <div class="domain-body">Standing watch on the organisations, sites, people, and counterparties your business depends on. Entity-level risk is assembled continuously rather than bought as a snapshot that is stale the day it arrives.</div>
+          <div class="domain-list">
+            <div class="domain-item">Per-entity risk posture across counterparties, suppliers, and subsidiaries</div>
+            <div class="domain-item">Adverse-signal monitoring, cyber exposure, and country-risk context</div>
+            <div class="domain-item">Physical and operational threat picture around your sites and people</div>
+            <div class="domain-item">Evidence trail on every judgement, ready for board, regulator, or insurer</div>
+          </div>
+        </div>
+
+        <div class="domain-card primary">
+          <div class="domain-head">
+            <span class="domain-n">03</span>
+            <span class="domain-title">AI Decision Making in Crisis</span>
+          </div>
+          <div class="domain-body">When something breaks, the constraint is rarely information, it is time. The engine shifts from watching to advising: it states what is happening, what it cascades into, which options exist, and what each one costs, with the reasoning exposed rather than hidden.</div>
+          <div class="domain-list">
+            <div class="domain-item">Courses of action with evidence, contradictions, and explicit kill triggers</div>
+            <div class="domain-item">Time-horizon estimates so you know which decisions cannot wait</div>
+            <div class="domain-item">Live analyst reasoning you can read, challenge, and overrule</div>
+            <div class="domain-item">Works air-gapped, for exactly the moment connectivity is the casualty</div>
+          </div>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-head">
+            <span class="domain-n">04</span>
+            <span class="domain-title">Market &amp; Economic Exposure</span>
+          </div>
+          <div class="domain-body">Sentinel's original market desk is still here, now serving the wider picture. Commodity, currency, and equity movement is one of the clearest early reads on stress in a region, a sector, or a counterparty, so it feeds the same engine as every other signal.</div>
+          <div class="domain-list">
+            <div class="domain-item">Quality-gated read on economic and financial exposure, global coverage</div>
+            <div class="domain-item">Early economic stress signals on regions, sectors, and counterparties</div>
+            <div class="domain-item">Scored across catalyst quality, calibration, reliability, and liquidity</div>
+            <div class="domain-item">One input among four, not the point of the platform</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="domain-note">Domains are not separate products. A port closure is an infrastructure event, a counterparty risk, a crisis decision, and an economic signal at the same time, and Sentinel treats it as one finding seen from four angles.</p>
     </div>
   </section>
 
@@ -906,7 +1017,7 @@
       <div class="agent-col">
         <div class="section-label">Autonomous Analyst</div>
         <h2 class="section-title">An analyst that never<br /><em>clocks off</em>, and improves itself.</h2>
-        <p class="section-body">The Sentinel Analyst Agent runs an hourly loop against your Goals. You watch it think in real time, and nothing ever leaves your machine.</p>
+        <p class="section-body">The Sentinel Analyst Agent runs an hourly loop against your Goals, watching the assets and entities you are responsible for. You see it think in real time, and nothing ever leaves your machine.</p>
         <div class="agent-loop">
           <div class="agent-loop-pill"><span class="dot"></span>Watch</div>
           <div class="agent-loop-pill"><span class="dot"></span>Hunt</div>
@@ -914,7 +1025,7 @@
           <div class="agent-loop-pill"><span class="dot"></span>Report</div>
         </div>
         <div class="agent-checklist">
-          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Hourly watch / hunt / validate / report.</strong> The agent monitors signals, hunts new opportunities, validates theories, and delivers reports on a schedule.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Hourly watch / hunt / validate / report.</strong> The agent monitors signals, hunts emerging risks and openings, validates theories, and delivers decision-ready reports on a schedule.</div></div>
           <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Visible chain of thought.</strong> A live Qwen / local thought stream and tool-loop telemetry show exactly what the agent is doing, and why.</div></div>
           <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Report delivery.</strong> Findings can be delivered straight to you, so you wake up to a briefing rather than a backlog.</div></div>
           <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Monitored runner.</strong> Agent status and health are always visible, with a runner you can start, pause, and inspect.</div></div>
@@ -926,15 +1037,16 @@
       <div class="agent-col">
         <div class="thought-stream" id="thoughtStream">
           <div class="ts-title"><span>SENTINEL ANALYST &middot; THOUGHT STREAM</span><span class="ts-live">live</span></div>
-          <div class="ts-line"><span class="ts-tag">[goal]</span> Hunt asymmetric setups in EM energy</div>
+          <div class="ts-line"><span class="ts-tag">[goal]</span> Continuity watch &middot; Gulf import corridor</div>
           <div class="ts-line"><span class="ts-watch">[watch]</span> 1,284 signals scanned &middot; 17 relevant</div>
-          <div class="ts-line ts-think">thinking: three signals cluster around Gulf shipping insurance&hellip;</div>
+          <div class="ts-line ts-think">thinking: three signals cluster around one transhipment port&hellip;</div>
           <div class="ts-line"><span class="ts-hunt">[hunt]</span> connecting invisible dots &rarr; theory #42</div>
-          <div class="ts-line ts-think">thinking: tanker re-routing + premium spike + refinery note</div>
+          <div class="ts-line ts-think">thinking: tanker re-routing + insurance premium spike + refinery outage</div>
           <div class="ts-line"><span class="ts-val">[validate]</span> evidence &times;6 &middot; contradiction &times;1 &middot; AI: PASS</div>
-          <div class="ts-line"><span class="ts-tag">[packet]</span> opportunity packet #42 promoted &middot; Ready</div>
+          <div class="ts-line"><span class="ts-tag">[impact]</span> cascade &rarr; 2 sites at risk &middot; window 9 days</div>
+          <div class="ts-line"><span class="ts-tag">[packet]</span> decision packet #42 &middot; recommend: pre-stage inventory</div>
           <div class="ts-line"><span class="ts-report">[report]</span> brief delivered &middot; next run in 60:00</div>
-          <div class="ts-line"><span class="ts-prompt">[self-improve]</span> proposed: add freight-rate source, <span class="ts-report">awaiting approval</span></div>
+          <div class="ts-line"><span class="ts-prompt">[self-improve]</span> proposed: add port-congestion source, <span class="ts-report">awaiting approval</span></div>
         </div>
       </div>
     </div>
@@ -944,10 +1056,10 @@
   <section class="market-callout" id="market">
     <div class="market-callout-header">
       <div>
-        <div class="section-label">Market Intelligence</div>
-        <h3>A <em>quality-gated</em> edge on every trade idea.</h3>
+        <div class="section-label">Domain 04 &middot; Market &amp; Economic Exposure</div>
+        <h3>The economic sense, <em>quality-gated</em> like the rest.</h3>
       </div>
-      <p>The market desk is one of the engine's sharpest senses. Every trade idea is scored across five independent layers, now with global, not just US, coverage, before it's promoted into an opportunity packet.</p>
+      <p>Money moves before institutions announce anything, which makes the market desk one of the engine's earliest reads on stress. It is one sense among several, and it earns its place the same way: every read is scored across five independent layers, with global coverage, before it reaches a decision packet.</p>
     </div>
     <div class="market-callout-inner">
       <div class="market-gate-pill">
@@ -958,7 +1070,7 @@
       <div class="market-gate-pill">
         <div class="market-gate-n">02</div>
         <div class="market-gate-label">Historical Edge Calibration</div>
-        <div class="market-gate-desc">Backtested win rates and P&amp;L across 3, 5, 8, and 13-bar horizons.</div>
+        <div class="market-gate-desc">Backtested performance across 3, 5, 8, and 13-bar horizons.</div>
       </div>
       <div class="market-gate-pill">
         <div class="market-gate-n">03</div>
@@ -968,12 +1080,12 @@
       <div class="market-gate-pill">
         <div class="market-gate-n">04</div>
         <div class="market-gate-label">Liquidity Profile</div>
-        <div class="market-gate-desc">Execution feasibility confirmed before ranking any opportunity.</div>
+        <div class="market-gate-desc">Execution feasibility confirmed before ranking any finding.</div>
       </div>
       <div class="market-gate-pill">
         <div class="market-gate-n">05</div>
         <div class="market-gate-label">Execution Readiness</div>
-        <div class="market-gate-desc">Composite Ready / Conditional / Defer / Reject tier gating every idea.</div>
+        <div class="market-gate-desc">Composite Ready / Conditional / Defer / Reject tier gating every read.</div>
       </div>
     </div>
   </section>
@@ -983,25 +1095,25 @@
     <div class="section-inner">
       <div class="section-label">Signal Sources</div>
       <h2 class="section-title">Thousands of signals.<br /><em>Hundreds of sources.</em></h2>
-      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, markets, maritime, aviation, disasters, and more, all feeding the opportunity engine, with resilient fallback and stale-cache behaviour when a provider goes quiet.</p>
+      <p class="section-body">Sentinel continuously pulls from authoritative public data sources across news, disasters, maritime, aviation, weather, conflict, and markets, all feeding the decision engine, with resilient fallback and stale-cache behaviour when a provider goes quiet.</p>
       <div class="signals-row">
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>News Hub (multi-provider)</div>
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Targeted Internet Search</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Global ETFs &amp; Local Listings</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>GDACS Disaster Alerts</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>AIS Maritime (AISstream)</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Conflict Zone Overlays</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Global News (NewsAPI)</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>GDELT Event Database</div>
-        <div class="signal-pill"><span class="signal-dot dot-sea"></span>AIS Maritime (AISstream)</div>
         <div class="signal-pill"><span class="signal-dot dot-air"></span>Live Flight Tracking</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Live Market Feed</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Market Opportunity Reports</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Quality-Gated Trade Ideas</div>
-        <div class="signal-pill"><span class="signal-dot dot-warn"></span>GDACS Disaster Alerts</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Live Market Feed</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Global ETFs &amp; Local Listings</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Quality-Gated Economic Reads</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Entity &amp; Cyber Risk Research</div>
         <div class="signal-pill"><span class="signal-dot dot-land"></span>Weather &amp; Pressure</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Social Chatter Trends</div>
         <div class="signal-pill"><span class="signal-dot dot-sea"></span>Live Webcam Registry</div>
         <div class="signal-pill"><span class="signal-dot dot-air"></span>OpenCCTV Cameras</div>
         <div class="signal-pill"><span class="signal-dot dot-special"></span>Search Trend Signals</div>
-        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Conflict Zone Overlays</div>
         <div class="signal-pill"><span class="signal-dot dot-land"></span>Country Profile Intelligence</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Air Quality (OpenAQ)</div>
         <div class="signal-pill"><span class="signal-dot dot-sea"></span>Wikipedia Geo-context</div>
@@ -1017,7 +1129,7 @@
       <div>
         <div class="section-label">Sovereign Mode</div>
         <h2 class="section-title">Your intelligence<br /><em>stays yours.</em></h2>
-        <p class="section-body">Most intelligence platforms send your queries, documents, and analysis to cloud servers. Sentinel is different. In Sovereign Mode, every byte stays on your hardware.</p>
+        <p class="section-body">Most intelligence platforms send your queries, documents, and analysis to cloud servers. For critical infrastructure and crisis work that is a dependency you cannot accept. In Sovereign Mode, every byte stays on your hardware, and the platform keeps working when the network does not.</p>
         <div class="sovereign-checklist">
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
@@ -1097,8 +1209,20 @@
       <h2 class="section-title">Common questions.</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q">What is the Opportunity Intelligence Engine? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">It's Sentinel's core. You define Goals describing what you want to find; the engine then continuously pulls relevant signals, connects faint "invisible dots" into living theories, gathers evidence and contradictions, validates each idea with AI, and promotes only the strongest into actionable, fully-sourced opportunity packets.</div>
+          <button class="faq-q">What is the Resilience &amp; Decision Intelligence Engine? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">It's Sentinel's core. You define Goals describing the assets, entities, or exposures you are accountable for; the engine then continuously pulls relevant signals, connects faint "invisible dots" into living theories, gathers evidence and contradictions, validates each finding with AI, and promotes only the strongest into fully-sourced decision packets carrying a recommended course of action.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is Sentinel still a financial product? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">No. Sentinel began as a market-first system, and the market desk is still there, but it now sits as one of four mission domains rather than the point of the platform. The focus is resilience and decision making: critical infrastructure continuity, business entity protection, and AI-assisted decision support in crisis. Economic and market movement is treated as what it genuinely is, an early and often unambiguous signal of stress somewhere in a region, sector, or counterparty.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How does Sentinel help with critical infrastructure? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">You define the assets and corridors you depend on: sites, energy and water supply, transport routes, ports, telecoms, key suppliers. Sentinel maintains a live picture of the dependencies between them and watches the signal sources that touch each one, so an upstream disruption reaches you as a warning about your own continuity, with an estimate of what cascades next and how long you have to act.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does "AI decision making in crisis" mean in practice? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">During an incident the constraint is time, not information. Sentinel states what is happening, what it is likely to cascade into, which options are open to you, and what each one costs, presented as courses of action with the supporting evidence, the contradicting evidence, and explicit kill triggers attached. The reasoning is exposed so you can challenge or overrule it, the human stays the decision maker, and because everything runs locally it keeps working when connectivity is itself a casualty of the crisis.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Can the Analyst Agent really change its own code? <span class="faq-arrow">+</span></button>
@@ -1109,8 +1233,8 @@
           <div class="faq-a">It can run a self-directed curiosity loop. On a cadence you control, the analyst generates independent ideas, runs internet and platform research (markets, chatter, search trends, live media, environment, entity-risk, cyber, and country research) and can draft new Goals for your review. Every allowed action is configurable, external actions stay gated, and Sentinel exposes audit summaries and telemetry rather than hidden model chain-of-thought.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Can I see why the agent surfaced an opportunity? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Yes. Every validated opportunity now carries a full written analyst rationale, the underlying mechanism, and the decision text in expandable drawers. Living theories show a structured "changed since last run" summary, and each idea is traceable back to the Goal, or to autonomous curiosity, that produced it.</div>
+          <button class="faq-q">Can I see why the agent surfaced a finding? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Yes, and this matters more than the finding itself. Every validated packet carries a full written analyst rationale, the underlying mechanism, and the decision text in expandable drawers. Living theories show a structured "changed since last run" summary, and each one is traceable back to the Goal, or to autonomous curiosity, that produced it. A decision you cannot explain afterwards is not one you should have made.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
@@ -1134,7 +1258,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">How do I get Sentinel? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Sentinel is delivered as a private engagement rather than an off-the-shelf download. Deployments range from the full workspace on your own hardware to a fully sovereign setup, a pre-configured encrypted SSD with Qwen 3 32B on-device, offline voice (Whisper + Kokoro), and hands-on onboarding that runs entirely air-gapped. Request info and we'll scope the right configuration for you.</div>
+          <div class="faq-a">Sentinel is delivered as a private engagement rather than an off-the-shelf download. Deployments range from the full platform on your own hardware to a fully sovereign setup, a pre-configured encrypted SSD with Qwen 3 32B on-device, offline voice (Whisper + Kokoro), and hands-on onboarding that runs entirely air-gapped. Request info and we'll scope the right configuration for you.</div>
         </div>
       </div>
     </div>
@@ -1145,7 +1269,7 @@
     <div class="section-inner">
       <div class="section-label">Updates</div>
       <h2 class="section-title">What's new in <em>Sentinel.</em></h2>
-      <p class="section-body">Recent additions to the intelligence engine, pushed directly from the product repository.</p>
+      <p class="section-body">Recent additions to the decision engine, pushed directly from the product repository.</p>
       <div class="changelog-scroll">
         <div class="changelog-list">
 
@@ -1564,8 +1688,8 @@
   <!-- CTA BAND -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
-      <h2>Ready to own your <em>intelligence</em>?</h2>
-      <p>Join analysts, traders, journalists, and security professionals who keep their data, and their edge, to themselves.</p>
+      <h2>Ready to own your <em>decisions</em>?</h2>
+      <p>Built for the people who have to keep something running: infrastructure operators, resilience and continuity leads, security and risk teams, and crisis cells who keep their data, and their judgement, to themselves.</p>
       <div class="hero-actions">
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AWhat%20would%20you%20like%20to%20know%3F%3A%20" class="btn-primary">REQUEST INFO</a>
         <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
@@ -1577,13 +1701,13 @@
   <footer>
     <div class="footer-brand">SENTINEL &copy; 2026</div>
     <div class="footer-links">
-      <a href="#opportunity">Opportunity Engine</a>
+      <a href="#decision">Decision Engine</a>
+      <a href="#domains">Domains</a>
       <a href="#agent">Analyst Agent</a>
-      <a href="#market">Market</a>
       <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
-    <div class="footer-copy">Sovereign Opportunity Intelligence &amp; Autonomous Analyst</div>
+    <div class="footer-copy">Sovereign Resilience &amp; Decision Intelligence</div>
   </footer>
 
 </div>
@@ -1636,6 +1760,7 @@
     '.content-wrap .section-label', '.content-wrap .section-title', '.content-wrap .section-body',
     '.feature-card', '.feature-card-wide',
     '.opp-flow', '.opp-step', '.opp-card',
+    '.domain-card', '.domain-note',
     '.market-callout-header', '.market-gate-pill',
     '.signal-pill',
     '.agent-loop', '.agent-check', '.agent-approve', '.thought-stream',
@@ -1645,7 +1770,7 @@
 
   // ---- Stagger within grouped rows/grids ----
   if (!reduce) {
-    ['.feature-card', '.opp-card', '.opp-step', '.market-gate-pill', '.signal-pill', '.ai-card', '.pricing-card', '.agent-check', '.sovereign-check'].forEach(function (sel) {
+    ['.feature-card', '.opp-card', '.opp-step', '.domain-card', '.market-gate-pill', '.signal-pill', '.ai-card', '.pricing-card', '.agent-check', '.sovereign-check'].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (el) {
         var p = el.parentNode; if (!p) return;
         if (p.__sidx == null) p.__sidx = 0;
@@ -1726,37 +1851,51 @@
     if (!ts || reduce) return;
     var SCENARIOS = [
       [
-        { cls: 'ts-tag',    label: '[goal]',        t: ' Hunt asymmetric setups in EM energy' },
-        { cls: 'ts-think',  label: null,             t: 'scanning 1,284 signals across maritime, news, commodities\u2026' },
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Continuity watch \u00b7 Gulf import corridor' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 1,284 signals across maritime, news, weather\u2026' },
         { cls: 'ts-watch',  label: '[watch]',        t: ' 17 relevant signals identified' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: three signals cluster around Gulf shipping insurance\u2026' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: three signals cluster around one transhipment port\u2026' },
         { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #42' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: tanker re-routing + premium spike + refinery note' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: tanker re-routing + insurance spike + refinery outage' },
         { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d76 \u00b7 contradiction \u00d71 \u00b7 AI: PASS' },
-        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #42 promoted \u00b7 Ready' },
+        { cls: 'ts-tag',    label: '[impact]',       t: ' cascade \u2192 2 sites at risk \u00b7 window 9 days' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' decision #42 \u00b7 recommend: pre-stage inventory' },
         { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' },
-        { cls: 'ts-prompt', label: '[self-improve]', t: ' proposed: add freight-rate source, awaiting approval' }
+        { cls: 'ts-prompt', label: '[self-improve]', t: ' proposed: add port-congestion source, awaiting approval' }
       ],
       [
-        { cls: 'ts-tag',    label: '[goal]',         t: ' Track macro divergence in G10 FX' },
-        { cls: 'ts-think',  label: null,             t: 'scanning 2,107 signals across central banks, rates, options\u2026' },
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Protect tier-1 suppliers \u00b7 EMEA' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 2,107 signals across entity risk, cyber, country data\u2026' },
         { cls: 'ts-watch',  label: '[watch]',        t: ' 23 relevant signals identified' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: USD/JPY momentum diverging from rate differential\u2026' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: supplier #4 exposure diverging from its peer group\u2026' },
         { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #19' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: BoJ minutes + carry unwind + options skew' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: credit downgrade + plant idling + adverse filings' },
         { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d75 \u00b7 contradiction \u00d70 \u00b7 AI: PASS' },
-        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #19 promoted \u00b7 Ready' },
+        { cls: 'ts-tag',    label: '[impact]',       t: ' single-source part \u00b7 no qualified alternate' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' decision #19 \u00b7 recommend: qualify second source' },
         { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' }
       ],
       [
-        { cls: 'ts-tag',    label: '[goal]',         t: ' Monitor geopolitical risk in shipping lanes' },
-        { cls: 'ts-think',  label: null,             t: 'scanning 941 signals across AIS, maritime intel, insurance\u2026' },
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Crisis cell \u00b7 regional grid instability' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 941 signals across grid status, weather, disasters\u2026' },
         { cls: 'ts-watch',  label: '[watch]',        t: ' 8 relevant signals identified' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: AIS dark events correlate with insurance premium spike\u2026' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: load-shed notices correlate with substation outage\u2026' },
         { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #7' },
-        { cls: 'ts-think',  label: null,             t: 'thinking: satellite imagery + Lloyd\'s notice + freight futures' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: heatwave peak + maintenance backlog + local alerts' },
         { cls: 'ts-val',    label: '[validate]',     t: ' evidence \u00d77 \u00b7 contradiction \u00d71 \u00b7 AI: PASS' },
-        { cls: 'ts-tag',    label: '[packet]',       t: ' opportunity #7 promoted \u00b7 Ready' },
+        { cls: 'ts-tag',    label: '[impact]',       t: ' cooling loss \u2192 data hall \u00b7 window 36 hours' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' decision #7 \u00b7 3 options \u00b7 kill trigger set' },
+        { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 awaiting operator call' }
+      ],
+      [
+        { cls: 'ts-tag',    label: '[goal]',         t: ' Economic exposure \u00b7 sector stress read' },
+        { cls: 'ts-think',  label: null,             t: 'scanning 1,540 signals across markets, news, chatter\u2026' },
+        { cls: 'ts-watch',  label: '[watch]',        t: ' 12 relevant signals identified' },
+        { cls: 'ts-think',  label: null,             t: 'thinking: freight and insurance pricing moving before the news\u2026' },
+        { cls: 'ts-hunt',   label: '[hunt]',         t: ' connecting invisible dots \u2192 theory #31' },
+        { cls: 'ts-val',    label: '[validate]',     t: ' gates \u00d75 passed \u00b7 AI: PASS' },
+        { cls: 'ts-tag',    label: '[impact]',       t: ' early stress signal \u00b7 2 counterparties flagged' },
+        { cls: 'ts-tag',    label: '[packet]',       t: ' decision #31 \u00b7 routed to entity watch' },
         { cls: 'ts-report', label: '[report]',       t: ' brief delivered \u00b7 next run in 60:00' }
       ]
     ];
