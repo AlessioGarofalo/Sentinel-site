@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SENTINEL - Resilience &amp; Decision Intelligence, Company to Country</title>
-  <meta name="description" content="Sentinel joins macro to micro: a 360 degree read of markets, macro-economic evidence, critical infrastructure, and geopolitics, connected to a precise model of whatever you are responsible for, from a single campus to a country's exposure. It traces a global shock down to the asset that fails first, then gives you impact, recovery, and insurance analysis. All local-first, on your hardware." />
+  <title>SENTINEL - Sovereign Resilience Intelligence</title>
+  <meta name="description" content="Sentinel is a sovereign resilience intelligence platform for countries, institutions and companies. It builds an evidenced model of what you depend on, your sites, suppliers, utilities, networks and infrastructure, then watches the world against it, so disruption arrives as a specific, costed, actionable warning. Everything runs on your own hardware." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -567,7 +567,7 @@
     html.js .feature-card, html.js .feature-card-wide,
     html.js .opp-flow, html.js .opp-step, html.js .opp-card,
     html.js .domain-card, html.js .domain-note,
-    html.js .macro-chain, html.js .macro-lane-head, html.js .macro-pivot,
+    html.js .macro-pivot,
     html.js .market-callout-header, html.js .market-gate-pill,
     html.js .signal-pill,
     html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
@@ -591,7 +591,7 @@
       html.js .feature-card, html.js .feature-card-wide,
       html.js .opp-flow, html.js .opp-step, html.js .opp-card,
     html.js .domain-card, html.js .domain-note,
-    html.js .macro-chain, html.js .macro-lane-head, html.js .macro-pivot,
+    html.js .macro-pivot,
       html.js .market-callout-header, html.js .market-gate-pill,
       html.js .signal-pill,
       html.js .agent-loop, html.js .agent-check, html.js .agent-approve, html.js .thought-stream,
@@ -647,6 +647,7 @@
        ============================================================ */
     .domains-section { position: relative; overflow: hidden; background: rgba(3,10,12,0.84); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
     .domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 56px; border: 1px solid var(--line); }
+    .domain-grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
     .domain-card { padding: 36px 32px; background: rgba(2,8,10,0.72); border: 1px solid var(--line); margin: -1px; transition: background 0.2s; }
     .domain-card:hover { background: rgba(6,16,19,0.94); }
     .domain-card.primary { border-color: var(--line-strong); background: rgba(6,16,19,0.9); }
@@ -662,39 +663,11 @@
       border-left: 2px solid var(--line-strong);
       font-size: 13.5px; color: var(--muted); line-height: 1.7;
     }
-    @media (max-width: 860px) { .domain-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) { .domain-grid, .domain-grid.grid-3 { grid-template-columns: 1fr; } }
 
     /* ============================================================
-       MACRO MEETS MICRO
+       CALLOUT PANEL
        ============================================================ */
-    .macro-section { position: relative; overflow: hidden; background: rgba(2,7,9,0.84); backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
-    .macro-lane { margin-top: 44px; }
-    .macro-lane + .macro-lane { margin-top: 40px; }
-    .macro-lane-head {
-      display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
-    }
-    .macro-lane-tag {
-      font-family: "Roboto Mono", monospace; font-size: 10px; letter-spacing: 0.14em;
-      text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--line-strong); color: var(--accent);
-    }
-    .macro-lane-tag.down { color: var(--special); border-color: rgba(255,184,92,0.5); }
-    .macro-lane-name { font-size: 15px; font-weight: 600; color: var(--ink); }
-    .macro-lane-note { font-size: 13px; color: var(--muted); }
-    .macro-chain { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); }
-    .macro-node {
-      position: relative; padding: 20px 14px; text-align: center;
-      border-right: 1px solid var(--line); background: rgba(2,5,6,0.5);
-    }
-    .macro-node:last-child { border-right: none; }
-    .macro-node-n { font-family: "Roboto Mono", monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 8px; }
-    .macro-node-name { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.35; }
-    .macro-chain.down .macro-node-n { color: var(--special); }
-    .macro-chain.up .macro-node-n { color: var(--accent); }
-    @media (max-width: 760px) {
-      .macro-chain { grid-template-columns: 1fr 1fr; }
-      .macro-node { border-bottom: 1px solid var(--line); }
-      .macro-node:nth-child(5) { grid-column: 1 / -1; border-right: none; border-bottom: none; }
-    }
     .macro-pivot {
       margin-top: 40px; padding: 24px 26px;
       border: 1px solid var(--line-strong); background: rgba(139,255,222,0.04);
@@ -759,10 +732,10 @@
 <nav id="mainNav">
   <a href="https://app.sentinel.info" class="nav-brand" target="_blank" rel="noopener noreferrer">SENTINEL</a>
   <div class="nav-links">
-    <a href="#domains">Domains</a>
-    <a href="#macro">Macro &amp; Micro</a>
+    <a href="#overview">Overview</a>
+    <a href="#who">Who It's For</a>
+    <a href="#journey">How It Works</a>
     <a href="#cyber">Cyber</a>
-    <a href="#markets">Markets</a>
     <a href="#sovereign">Sovereign</a>
     <a href="#" onclick="openDemoModal();return false;">Demo</a>
     <a href="#contact" class="nav-cta">REQUEST INFO &rarr;</a>
@@ -772,23 +745,23 @@
 <section class="hero" id="hero">
   <div class="hero-aura parallax-layer" data-parallax-speed="0.18" aria-hidden="true"></div>
   <div class="hero-inner" id="heroInner">
-    <div class="hero-eyebrow">Resilience &amp; Decision Intelligence &middot; Company to Country</div>
-    <h1>From a global shock<br /><em>to the asset that breaks first.</em><br />One picture.</h1>
+    <div class="hero-eyebrow">Sovereign Resilience Intelligence</div>
+    <h1>Know what you depend on.<br /><em>Before it fails you.</em></h1>
     <p class="hero-sub">
-      Sentinel joins the macro to the micro. On one side, a 360 degree read of the world: markets across seven asset classes, macro-economic evidence, critical infrastructure across 11 sectors, geopolitics, conflict, energy, and weather. On the other, a precise model of whatever you are responsible for, a single campus, a national utility, a whole country's exposure. Sentinel connects the two, so a cross-asset shock resolves into the specific supplier, substation, or sector that fails first, and what to do about it. All of it on your hardware.
+      Sentinel is a sovereign resilience intelligence platform for countries, institutions, and companies. It builds an evidenced model of what you depend on, your sites, suppliers, utilities, networks and infrastructure, then watches the world against that model. Disruption reaches you as a specific, costed, actionable warning instead of as news. Everything runs on your own hardware.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">REQUEST INFO</a>
-      <a href="#macro" class="btn-ghost">SEE MACRO MEET MICRO</a>
+      <a href="#overview" class="btn-ghost">WHAT'S INSIDE</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-val">11</div>
-        <div class="hero-stat-label">Infrastructure Sectors</div>
+        <div class="hero-stat-val">3</div>
+        <div class="hero-stat-label">Scales: Country, Institution, Company</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-val">7</div>
-        <div class="hero-stat-label">Market Asset Classes</div>
+        <div class="hero-stat-val">11</div>
+        <div class="hero-stat-label">Infrastructure Sectors</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">12</div>
@@ -796,11 +769,7 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-val">100%</div>
-        <div class="hero-stat-label">Local-First / On-Device</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-val">0</div>
-        <div class="hero-stat-label">Cloud Dependencies</div>
+        <div class="hero-stat-label">On Your Hardware</div>
       </div>
     </div>
   </div>
@@ -812,299 +781,189 @@
 
 <div class="content-wrap">
 
-  <!-- FEATURES -->
-  <section id="features" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
+  <!-- OVERVIEW -->
+  <section id="overview" style="background:rgba(2,5,6,0.82);backdrop-filter:blur(16px);">
     <div class="section-inner">
-      <div class="section-label">Capabilities</div>
-      <h2 class="section-title">Everything a decision needs.<br /><em>Nothing it doesn't.</em></h2>
-      <p class="section-body">Purpose-built for the people who have to keep something running, at whatever scale they run it: infrastructure operators, national resilience and security teams, continuity planners, analysts, and crisis cells who need the chaos of the world reduced to a short list of decisions worth making, without feeding their model to a third-party cloud.</p>
-      <div class="features-grid">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">One platform.<br /><em>Six things it does.</em></h2>
+      <p class="section-body">Sentinel replaces the gap between knowing what is happening in the world and knowing what it does to you. Here is the whole platform, in order.</p>
 
-        <!-- Opportunity Intelligence Engine - full width, flagship -->
-        <div class="feature-card-wide">
-          <div class="feature-wide-inner">
-            <div>
-              <div class="feature-icon">&#9678;</div>
-              <div class="feature-title" style="font-size:18px;margin-bottom:14px;">Entity-First Resilience Engine</div>
-              <div class="feature-body" style="font-size:15px;">Sentinel's core is not a dashboard you read, it's a model that reasons. The active entity holds the sites you own or operate plus the external dependencies that keep them working: suppliers, utilities, connectivity, services, partners. It scales the same way whether the entity is one campus or a national operator. Sentinel matches live signals strictly against named assets, operating locations, and distinctive dependency terms, then traces the cascade from event to dependency to the sites it actually reaches. Generic world news stays out.</div>
-              <div style="margin-top:16px;">
-                <span class="feature-tag-accent">ENTITY-FIRST</span>
-                <span class="feature-tag" style="margin-left:8px;">STRICT MATCHING</span>
-                <span class="feature-tag" style="margin-left:8px;">SOURCED LINKS</span>
-              </div>
-            </div>
-            <div>
-              <div style="font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">From Event to Course of Action</div>
-              <div class="feature-gates">
-                <div class="feature-gate">
-                  <div class="feature-gate-num">01 &middot; COMPANY</div>
-                  <div class="feature-gate-name">Company &amp; Assets</div>
-                  <div class="feature-gate-body">Build the entity: owned sites, operated sites, suppliers, utilities, services, and the links between them.</div>
-                </div>
-                <div class="feature-gate">
-                  <div class="feature-gate-num">02 &middot; MATCH</div>
-                  <div class="feature-gate-name">Events &amp; Response</div>
-                  <div class="feature-gate-body">Live signals are matched strictly against your named assets, locations, and dependency terms.</div>
-                </div>
-                <div class="feature-gate">
-                  <div class="feature-gate-num">03 &middot; CASCADE</div>
-                  <div class="feature-gate-name">Connected dots</div>
-                  <div class="feature-gate-body">The cascade runs event to dependency to affected site, so you see how it actually reaches you.</div>
-                </div>
-                <div class="feature-gate">
-                  <div class="feature-gate-num">04 &middot; COST</div>
-                  <div class="feature-gate-name">Impact &amp; cover</div>
-                  <div class="feature-gate-body">Severity, an estimated loss range, and an insurance-cover check on what you would actually carry.</div>
-                </div>
-                <div class="feature-gate" style="grid-column:1/-1;">
-                  <div class="feature-gate-num">05 &middot; ACT</div>
-                  <div class="feature-gate-name">Impact analysis &amp; recovery plan</div>
-                  <div class="feature-gate-body">A structured impact analysis covering operational, customer, safety, financial, and regulatory consequences, a phased recovery plan with time horizons, owners, and exit criteria, and a ranked list of the recovery actions that matter most. Read it from either analyst perspective: Criticalities for what threatens the entity, Opportunities for what the same disruption opens up.</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9906;</div>
+          <div class="opp-card-title"><a href="#cyber">Build the model</a></div>
+          <div class="opp-card-body">Name an organisation and Sentinel researches it from public evidence, proposing sites, providers and dependencies with a source behind each one. You review before anything is imported.</div>
         </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">&#9881;</div>
-          <div class="feature-title">Resilience Analyst</div>
-          <div class="feature-body">A focused analyst status sits in the header and works the entity: correlating signals, ranking criticalities, and drafting responses. Deliberately scoped. The legacy autonomous self-improvement, auto-coding, and curiosity loops are not started or exposed, because a resilience tool should do what you asked and nothing else.</div>
-          <div class="feature-tag-accent">SCOPED BY DESIGN</div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9930;</div>
+          <div class="opp-card-title"><a href="#cyber">Map the exposure</a></div>
+          <div class="opp-card-body">The digital estate is attributed to the exact assets it supports, including OT and ICS, then screened passively against public vulnerability and certificate sources.</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9906;</div>
-          <div class="feature-title">Company Intelligence</div>
-          <div class="feature-body">Name an organisation and Sentinel researches it from public evidence, proposing its offices, facilities, warehouses, infrastructure and providers with a claim, source, URL, date, and confidence behind each one. You review before anything enters your graph.</div>
-          <div class="feature-tag-accent">EVIDENCE-BACKED</div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9673;</div>
+          <div class="opp-card-title"><a href="#journey">Watch the world</a></div>
+          <div class="opp-card-body">News, chatter, search pressure, critical infrastructure, markets, weather, conflict and country data, matched strictly against your model rather than shown as a feed.</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9930;</div>
-          <div class="feature-title">Passive Cyber Intelligence</div>
-          <div class="feature-body">Twelve classes of digital estate attributed to the exact assets they support, including OT and ICS, then screened against CISA KEV, EPSS, NVD, certificate transparency, RDAP, and DNS. No active scanning, no login attempts, no probing.</div>
-          <div class="feature-tag-accent">PASSIVE ONLY</div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9707;</div>
+          <div class="opp-card-title"><a href="#response">Cost the impact</a></div>
+          <div class="opp-card-body">Severity, the dependency cascade, an estimated loss range and an insurance review, so you can see what you would actually carry.</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#8635;</div>
-          <div class="feature-title">Five-Stage Journey</div>
-          <div class="feature-body">Assets, cyber, signals, economics, and composition run as one persistent cycle on your cadence, each stage reporting status, evidence counts, and errors. Every cycle reports what changed since the last, and a blocked source becomes a visible evidence gap rather than a silent hole.</div>
-          <div class="feature-tag">VARIANCE-TRACKED</div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#10022;</div>
+          <div class="opp-card-title"><a href="#response">Act and rehearse</a></div>
+          <div class="opp-card-body">A phased recovery plan with owners and exit criteria, exportable as a playbook, plus the ability to test a disruption against the graph before it happens.</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9783;</div>
-          <div class="feature-title">Critical Infrastructure Catalog</div>
-          <div class="feature-body">A candidate map across 11 sectors, built from named public sources: airports and runways, ports, internet exchanges and peering facilities, power plants, water and wastewater treatment, hospitals, exchanges and central banks. Every asset carries its provenance, licence, and confidence. Incorporate any of it into your entity in one click.</div>
-          <div class="feature-tag">PROVENANCE-TRACKED</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9737;</div>
-          <div class="feature-title">Impact, Cover &amp; Rehearsal</div>
-          <div class="feature-body">Each matched event gets an impact severity on an I1 to I5 scale, a structured impact analysis, a phased recovery plan with owners and exit criteria, and an insurance review covering notification actions, evidence to preserve, and potential gaps. Test a disruption against the company graph before it happens, then export the whole thing as a playbook.</div>
-          <div class="feature-tag-accent">WHAT-IF REHEARSAL</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&oplus;</div>
-          <div class="feature-title">Global &amp; National Awareness</div>
-          <div class="feature-body">One canvas for the country-scale picture: news events, conflict zones, disasters, weather and pressure systems, country profiles, and alliance overlays for NATO, EU, G7, BRICS, ASEAN, GCC, AU, and QUAD. Switch between polygon, street, and satellite basemaps with street-level zoom.</div>
-          <div class="feature-tag">COUNTRY SCALE</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9672;</div>
-          <div class="feature-title">AI Signal Analysis</div>
-          <div class="feature-body">Ask questions across all ingested signals by text or voice. Sentinel routes risk, resilience, exposure, insurance, and scenario requests to the right workspace, and correlates news, infrastructure, chatter, markets, and geography into grounded answers.</div>
-          <div class="feature-tag">OpenAI / LOCAL LLM</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#11034;</div>
-          <div class="feature-title">Market &amp; Macro Intelligence</div>
-          <div class="feature-body">A full Market Analysis workspace across seven asset classes with worldwide session hours, setup filters, and a live macro lens that reads cross-asset shocks against official evidence. Price is the fastest signal there is, and Sentinel attaches it to your entity as exposure rather than as a trade idea.</div>
-          <div class="feature-tag-accent">SEVEN ASSET CLASSES</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#11041;</div>
-          <div class="feature-title">Private Knowledge Base</div>
-          <div class="feature-body">Upload PDFs, Word documents, spreadsheets, and images. OCR-powered ingestion, semantic search, and AI Q&amp;A over your private files, all stored locally.</div>
-          <div class="feature-tag">SEMANTIC SEARCH</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9654;</div>
-          <div class="feature-title">Voice Interface</div>
-          <div class="feature-body">Hands-free operation via Whisper speech-to-text and Kokoro neural TTS. Ask questions aloud; hear briefings read back in natural voice, no cloud STT required.</div>
-          <div class="feature-tag">WHISPER + KOKORO</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#9678;</div>
-          <div class="feature-title">Portable Appliance</div>
-          <div class="feature-body">Entire workspace runs from an encrypted external drive. Double-click to launch, browser, backend, and vault all self-contained. No install, no cloud account.</div>
-          <div class="feature-tag">PLUG &amp; PLAY</div>
+        <div class="opp-card">
+          <div class="opp-card-icon">&#9678;</div>
+          <div class="opp-card-title"><a href="#sovereign">Keep it yours</a></div>
+          <div class="opp-card-body">The model, the analysis and the AI run on your own hardware. No cloud account, no telemetry, no dependency map leaving your building.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MISSION DOMAINS -->
-  <section class="domains-section" id="domains">
+  <!-- WHO IT IS FOR -->
+  <section class="domains-section" id="who">
     <div class="section-inner">
-      <div class="section-label">Mission Domains</div>
-      <h2 class="section-title">Four lenses.<br /><em>One connected picture.</em></h2>
-      <p class="section-body">Resilience is not a single scale. The same engine runs whether the thing you are protecting is one campus, a national grid, or a country's economic exposure, and it reads that thing through four lenses at once. None of them is decoration for the others.</p>
+      <div class="section-label">Who It's For</div>
+      <h2 class="section-title">Resilience is the same problem<br /><em>at every scale.</em></h2>
+      <p class="section-body">A ministry, a hospital group and a data-centre operator all need the same thing: an honest map of what they depend on, and early warning when it moves. Sentinel changes what you point it at, not how it works.</p>
 
-      <div class="domain-grid">
-
+      <div class="domain-grid grid-3">
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">01</span>
-            <span class="domain-title">Company &amp; Entity Resilience</span>
+            <span class="domain-title">Countries</span>
           </div>
-          <div class="domain-body">The micro end of the scale. A precise model of the organisation you are responsible for: owned and operated sites plus every external dependency that keeps them working, each relationship typed, evidenced, and traceable back to a source.</div>
+          <div class="domain-body">National resilience across the sectors a state actually depends on: energy, water, transport, ports, telecoms, health and finance, read alongside alliances, conflict and country context.</div>
           <div class="domain-list">
-            <div class="domain-item">Typed relationships: operational, planned, contractual, MoU, customer stack, delivered</div>
-            <div class="domain-item">Strict event-to-entity matching, so proximity alone never counts as impact</div>
-            <div class="domain-item">Per-entity risk across counterparties, suppliers, and subsidiaries</div>
-            <div class="domain-item">Evidence trail on every judgement, ready for board, regulator, or insurer</div>
+            <div class="domain-item">Candidate infrastructure map across 11 sectors from named public sources</div>
+            <div class="domain-item">Alliance overlays for NATO, EU, G7, BRICS, ASEAN, GCC, AU and QUAD</div>
+            <div class="domain-item">Cross-border dependency and single-point-of-failure analysis</div>
           </div>
         </div>
 
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">02</span>
-            <span class="domain-title">National &amp; Infrastructure Resilience</span>
+            <span class="domain-title">Institutions</span>
           </div>
-          <div class="domain-body">The same method at country scale. Energy, water, transport, ports, telecoms, health, and finance across 11 sectors of public-source infrastructure, read alongside alliance structures, conflict zones, and country profiles.</div>
+          <div class="domain-body">Regulators, utilities, health systems, ports and operators of essential services, where continuity is a statutory obligation and every judgement has to survive review.</div>
           <div class="domain-list">
-            <div class="domain-item">Candidate infrastructure map: airports, ports, IXPs, power plants, water, hospitals</div>
-            <div class="domain-item">Alliance overlays for NATO, EU, G7, BRICS, ASEAN, GCC, AU, and QUAD</div>
-            <div class="domain-item">Conflict zones, disasters, weather and pressure systems on the same canvas</div>
-            <div class="domain-item">Country profile intelligence for the national context behind a local event</div>
+            <div class="domain-item">Evidence trail on every asset, relationship and assessment</div>
+            <div class="domain-item">Exportable playbooks for board, regulator or insurer</div>
+            <div class="domain-item">Passive-only cyber posture, with no active scanning of anyone</div>
           </div>
         </div>
 
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">03</span>
-            <span class="domain-title">Markets &amp; Macro-Economic Intelligence</span>
+            <span class="domain-title">Companies</span>
           </div>
-          <div class="domain-body">A full market desk, not a footnote. Seven asset classes, setup filters, worldwide session hours, and a macro lens that reads cross-asset shocks against official evidence. Markets are where stress becomes visible before anyone announces it.</div>
+          <div class="domain-body">The operators, security leads and continuity planners who have to keep a specific thing running, and who need the noise of the world reduced to the handful of events that reach their own sites.</div>
           <div class="domain-list">
-            <div class="domain-item">Stocks, ETFs, indices, commodities, FX, crypto, and bond ETFs or rates</div>
-            <div class="domain-item">Setups for movers, breakouts, catalysts, macro shocks, and your watchlist</div>
-            <div class="domain-item">Macro assessment built on official sources, with scenarios such as equity crash and energy surge</div>
-            <div class="domain-item">Market context attached to the entity, so a sector move lands as an exposure</div>
+            <div class="domain-item">Sites, suppliers, utilities and partners with typed relationships</div>
+            <div class="domain-item">Strict matching, so proximity alone never counts as an impact</div>
+            <div class="domain-item">Economic and market exposure attached to the entity</div>
           </div>
         </div>
-
-        <div class="domain-card primary">
-          <div class="domain-head">
-            <span class="domain-n">04</span>
-            <span class="domain-title">Crisis Decision Support</span>
-          </div>
-          <div class="domain-body">What all three lenses are for. When something breaks, the constraint is time, not information. Sentinel states what is happening, what it cascades into, what it plausibly costs, and what to do in what order, with assumptions and unknowns written down rather than buried.</div>
-          <div class="domain-list">
-            <div class="domain-item">Impact analysis across operations, customers, safety, finance, and regulation</div>
-            <div class="domain-item">Phased recovery with time horizons, named owners, and exit criteria</div>
-            <div class="domain-item">Insurance review: notifications owed, evidence to preserve, likely gaps</div>
-            <div class="domain-item">Export the incident as a playbook, graph and affected register included</div>
-          </div>
-        </div>
-
       </div>
-
-      <p class="domain-note">The lenses are not separate products. A port closure is an infrastructure failure, a counterparty risk, a freight and energy price signal, and a crisis decision at the same time. Sentinel treats it as one assessment seen four ways, which is the only way the four ever agree.</p>
     </div>
   </section>
 
-  <!-- OPPORTUNITY INTELLIGENCE -->
-  <section class="opp-section" id="decision">
+  <!-- HOW IT WORKS -->
+  <section class="opp-section" id="journey">
     <div class="opp-aura parallax-layer" data-parallax-speed="-0.06" aria-hidden="true"></div>
     <div class="section-inner">
-      <div class="section-label">The Entity Model &amp; Intelligence Journey</div>
-      <h2 class="section-title">Most alerts are about the world.<br /><em>These are about you.</em></h2>
-      <p class="section-body">Breadth is only useful if it lands somewhere. That is what the entity model is for: the thing you are accountable for, its sites, and the dependencies that keep it working, with every signal after that judged against it. A cable cut on the other side of the world is either two steps from your data hall or it is noise, and Sentinel is explicit about which. Model one campus or a national operator, the method does not change. Five stages run the model on a loop.</p>
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Five stages.<br /><em>Running on a loop.</em></h2>
+      <p class="section-body">Sentinel is entity-first: the model of what you depend on comes before the feed, and everything after it is judged against that model. Five stages keep the model current and turn it into decisions.</p>
 
       <div class="opp-flow flow-5">
-        <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Company Assets</div><div class="opp-step-desc">Discover and revalidate sites, providers, and relationships.</div></div>
-        <div class="opp-step"><div class="opp-step-n">02</div><div class="opp-step-name">Cyber Intelligence</div><div class="opp-step-desc">Attribute the digital estate to those exact assets, then screen it passively.</div></div>
-        <div class="opp-step"><div class="opp-step-n">03</div><div class="opp-step-name">Signal Scans</div><div class="opp-step-desc">Refresh news, chatter, search pressure, and infrastructure evidence.</div></div>
-        <div class="opp-step"><div class="opp-step-n">04</div><div class="opp-step-name">Macro &amp; Micro Economics</div><div class="opp-step-desc">Official indicators joined to your own exposure and concentration.</div></div>
-        <div class="opp-step"><div class="opp-step-n">05</div><div class="opp-step-name">Risks &amp; Opportunities</div><div class="opp-step-desc">The analyst composes the evidence into responses you can work.</div></div>
+        <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Assets</div><div class="opp-step-desc">Discover and revalidate sites, providers and relationships.</div></div>
+        <div class="opp-step"><div class="opp-step-n">02</div><div class="opp-step-name">Cyber</div><div class="opp-step-desc">Attribute the digital estate to those assets, then screen it passively.</div></div>
+        <div class="opp-step"><div class="opp-step-n">03</div><div class="opp-step-name">Signals</div><div class="opp-step-desc">Refresh news, chatter, search pressure and infrastructure evidence.</div></div>
+        <div class="opp-step"><div class="opp-step-n">04</div><div class="opp-step-name">Economics</div><div class="opp-step-desc">Official indicators joined to your own exposure and concentration.</div></div>
+        <div class="opp-step"><div class="opp-step-n">05</div><div class="opp-step-name">Composition</div><div class="opp-step-desc">The analyst composes evidence into risks and responses.</div></div>
       </div>
 
-      <p class="domain-note" style="margin-top:28px;">The journey is persistent, not a one-off scan. Every stage reports live status, evidence counts, timestamps, and errors, and the whole cycle reschedules itself at the cadence you set. When a cycle completes, Sentinel records what changed since the last one, so recurring discoveries arrive as proposed variances against a graph you already reviewed rather than silently overwriting it. A blocked source is kept as an explicit evidence gap while the later stages carry on.</p>
-
-      <div class="opp-grid">
-        <div class="opp-card">
-          <div class="opp-card-icon">&#9678;</div>
-          <div class="opp-card-title">Company &amp; Assets</div>
-          <div class="opp-card-body">Start empty and build by hand, or name an organisation and let Sentinel research it from public evidence. Either way the entity holds owned and operated sites plus suppliers, utilities, services, and partners, with typed relationships so an operational dependency is never confused with an MoU.</div>
-        </div>
-        <div class="opp-card">
-          <div class="opp-card-icon">&#9673;</div>
-          <div class="opp-card-title">Criticalities &amp; Opportunities</div>
-          <div class="opp-card-body">Exactly two analyst perspectives on the same matched events. Criticalities is what threatens the entity. Opportunities is what the same disruption opens up. Two lenses, deliberately, because a longer list of tabs is not more insight.</div>
-        </div>
-        <div class="opp-card">
-          <div class="opp-card-icon">&#10022;</div>
-          <div class="opp-card-title">Connected-Dot Cascade</div>
-          <div class="opp-card-body">The chain from event to dependency to affected site, drawn out rather than asserted. You can see which supplier, cable, substation, or exposed system carries the impact into your operation, and how many steps away it is.</div>
-        </div>
-        <div class="opp-card">
-          <div class="opp-card-icon">&#9784;</div>
-          <div class="opp-card-title">Insurance Review</div>
-          <div class="opp-card-body">Coverage considerations, the notifications you may owe your broker, the evidence worth preserving now, and the sublimits and exclusions most likely to bite. The number that matters is rarely the headline figure, it is the part you would actually carry.</div>
-        </div>
-        <div class="opp-card">
-          <div class="opp-card-icon">&#9707;</div>
-          <div class="opp-card-title">Recovery Plan &amp; Playbook</div>
-          <div class="opp-card-body">Phased recovery with time horizons, named owners, and exit criteria, plus the recovery actions ranked by what matters first. Export the lot as a playbook with the cover, dependency graph, and affected register, so the reasoning survives the handover.</div>
-        </div>
-        <div class="opp-card">
-          <div class="opp-card-icon">&#8987;</div>
-          <div class="opp-card-title">Test a Disruption</div>
-          <div class="opp-card-body">Describe a disruption, assess it with AI against the company graph, and watch the whole chain run: cable cut, grid loss, memory-supply shock, cooling-water failure, security-provider collapse. Simulated assessments are marked as such and never enter your live feeds.</div>
-        </div>
-      </div>
+      <p class="domain-note" style="margin-top:28px;">Not a one-off scan. Every stage reports live status, evidence counts and errors, the cycle reschedules at the cadence you set, and each pass records what changed since the last, so new findings arrive as proposed variances against a graph you already reviewed. A blocked source stays visible as an evidence gap instead of quietly leaving a hole.</p>
     </div>
   </section>
 
-  <!-- MACRO MEETS MICRO -->
-  <section class="macro-section" id="macro">
+  <!-- CAPABILITIES -->
+  <section id="capabilities">
     <div class="section-inner">
-      <div class="section-label">Macro Meets Micro</div>
-      <h2 class="section-title">Most tools give you one altitude.<br /><em>The answer needs both.</em></h2>
-      <p class="section-body">A macro desk tells you the energy complex is repricing but not which of your sites is exposed. An asset monitor tells you a substation tripped but not that it is the third one this quarter in a country whose currency is under pressure. Stage four of the journey exists precisely to join the two: official macro indicators combined with your own company exposure, operating countries, dependency concentration, suppliers, customers, and financing. Both directions, against one model, on a loop.</p>
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">What's in the box.</h2>
+      <p class="section-body">Nine capabilities, all working against the same model.</p>
+      <div class="features-grid">
 
-      <div class="macro-lane">
-        <div class="macro-lane-head">
-          <span class="macro-lane-tag down">Top down</span>
-          <span class="macro-lane-name">A global shock becomes your problem</span>
-          <span class="macro-lane-note">macro to asset</span>
+        <div class="feature-card">
+          <div class="feature-icon">&#9906;</div>
+          <div class="feature-title">Company Intelligence</div>
+          <div class="feature-body">Name an organisation and Sentinel researches it from public evidence, proposing offices, facilities, warehouses, infrastructure and providers with a claim, source, URL, date and confidence behind each record. Reviewed before import; re-runs arrive as proposed variances.</div>
+          <div class="feature-tag-accent">EVIDENCE-BACKED</div>
         </div>
-        <div class="macro-chain down">
-          <div class="macro-node"><div class="macro-node-n">01</div><div class="macro-node-name">Cross-asset shock</div></div>
-          <div class="macro-node"><div class="macro-node-n">02</div><div class="macro-node-name">Sector &amp; country stress</div></div>
-          <div class="macro-node"><div class="macro-node-n">03</div><div class="macro-node-name">Infrastructure exposed</div></div>
-          <div class="macro-node"><div class="macro-node-n">04</div><div class="macro-node-name">Your dependency</div></div>
-          <div class="macro-node"><div class="macro-node-n">05</div><div class="macro-node-name">The site that fails</div></div>
-        </div>
-      </div>
 
-      <div class="macro-lane">
-        <div class="macro-lane-head">
-          <span class="macro-lane-tag">Bottom up</span>
-          <span class="macro-lane-name">A local failure becomes a signal</span>
-          <span class="macro-lane-note">asset to macro</span>
+        <div class="feature-card">
+          <div class="feature-icon">&#9930;</div>
+          <div class="feature-title">Passive Cyber Intelligence</div>
+          <div class="feature-body">Twelve classes of digital estate attributed to the exact assets they support, including OT and ICS, screened against CISA KEV, EPSS, NVD, certificate transparency, RDAP and DNS. No active scanning, no login attempts, no probing.</div>
+          <div class="feature-tag-accent">PASSIVE ONLY</div>
         </div>
-        <div class="macro-chain up">
-          <div class="macro-node"><div class="macro-node-n">01</div><div class="macro-node-name">An asset degrades</div></div>
-          <div class="macro-node"><div class="macro-node-n">02</div><div class="macro-node-name">Dependency cascade</div></div>
-          <div class="macro-node"><div class="macro-node-n">03</div><div class="macro-node-name">Sector pattern</div></div>
-          <div class="macro-node"><div class="macro-node-n">04</div><div class="macro-node-name">Market confirmation</div></div>
-          <div class="macro-node"><div class="macro-node-n">05</div><div class="macro-node-name">National read</div></div>
-        </div>
-      </div>
 
-      <div class="macro-pivot">
-        <strong>Why both directions matter.</strong> Read top down only and you get commentary: true, general, and impossible to act on. Read bottom up only and you get alarms without context, so you cannot tell a one-off fault from the leading edge of something structural. Sentinel keeps the two joined to the same entity model, which is what makes a macro scenario resolve to a named asset, and a named asset's failure resolve into a sector and a country read.
+        <div class="feature-card">
+          <div class="feature-icon">&#9783;</div>
+          <div class="feature-title">Critical Infrastructure Catalog</div>
+          <div class="feature-body">A candidate map across 11 sectors from named public sources: airports, ports, internet exchanges, power plants, water and wastewater, hospitals, exchanges and central banks. Every asset carries its provenance, licence and confidence.</div>
+          <div class="feature-tag">PROVENANCE-TRACKED</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9737;</div>
+          <div class="feature-title">Impact &amp; Recovery</div>
+          <div class="feature-body">Severity on an I1 to I5 scale, a structured impact analysis across operations, customers, safety, finance and regulation, a phased recovery plan with owners and exit criteria, and an insurance review. Exportable as a playbook.</div>
+          <div class="feature-tag-accent">COURSES OF ACTION</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&oplus;</div>
+          <div class="feature-title">Global &amp; National Awareness</div>
+          <div class="feature-body">One canvas for the country-scale picture: news events, conflict zones, disasters, weather and pressure systems, country profiles and alliance overlays. Polygon, street or satellite basemaps with street-level zoom.</div>
+          <div class="feature-tag">COUNTRY SCALE</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#11034;</div>
+          <div class="feature-title">Markets &amp; Macro</div>
+          <div class="feature-body">Seven asset classes with worldwide session hours, setup filters for movers, breakouts, catalysts, macro shocks and your watchlist, and a macro lens reading cross-asset shocks against official evidence. Exposure, not a trading mandate.</div>
+          <div class="feature-tag">SEVEN ASSET CLASSES</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9672;</div>
+          <div class="feature-title">AI &amp; Voice</div>
+          <div class="feature-body">Ask questions across every ingested signal by text or voice. Sentinel routes risk, resilience, exposure, insurance and scenario requests to the right workspace, and reads briefings back in natural speech without cloud transcription.</div>
+          <div class="feature-tag">OpenAI / LOCAL LLM</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#11041;</div>
+          <div class="feature-title">Private Knowledge Base</div>
+          <div class="feature-body">Upload PDFs, documents, spreadsheets and images. OCR ingestion, semantic search and AI questions over your private files, stored locally and available as context for an assessment when you want them.</div>
+          <div class="feature-tag">SEMANTIC SEARCH</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9881;</div>
+          <div class="feature-title">Resilience Analyst</div>
+          <div class="feature-body">A scoped analyst that reassesses your entity on your cadence while Sentinel is open, above a severity floor you set, across the source lanes you enable. Risks gain strength as evidence corroborates and ease when it stops.</div>
+          <div class="feature-tag">HOURLY CADENCE</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1113,22 +972,20 @@
   <section class="domains-section" id="cyber">
     <div class="section-inner">
       <div class="section-label">Company &amp; Cyber Intelligence</div>
-      <h2 class="section-title">You should not have to<br /><em>type in your own company.</em></h2>
-      <p class="section-body">Stages one and two of the journey build the model for you. Name an organisation and Sentinel researches it from public evidence, proposes its offices, facilities, warehouses, infrastructure and providers with a source behind each one, and waits for you to review before anything is imported. Then it attributes the digital estate to those exact assets and screens it, passively.</p>
+      <h2 class="section-title">You should not have to<br /><em>type in your own organisation.</em></h2>
+      <p class="section-body">The first two stages build the model for you. Sentinel researches the organisation from public evidence and proposes its assets with a source behind each one, then attributes the digital estate to those exact assets and screens it, passively.</p>
 
       <div class="domain-grid">
-
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">01</span>
-            <span class="domain-title">Company ingestion, with the receipts</span>
+            <span class="domain-title">Ingestion, with the receipts</span>
           </div>
-          <div class="domain-body">Every proposed asset and relationship carries its evidence: the claim, the source, the URL, the publication date, and a confidence score. The draft map builds live as records stream in, relationships connect the moment both endpoints exist, and you can interrupt the research at any point.</div>
+          <div class="domain-body">Every proposed asset and relationship carries its evidence: the claim, the source, the URL, the date and a confidence score. The draft map builds live as records stream in, and you can interrupt the research at any point.</div>
           <div class="domain-list">
             <div class="domain-item">Reviewed before import, never written straight into your graph</div>
-            <div class="domain-item">Re-runs arrive as proposed variances, so reviewed assets are not overwritten</div>
-            <div class="domain-item">Every asset records its location basis, label, and coordinate precision</div>
-            <div class="domain-item">Assets without verified coordinates are placed by graph layout and marked as such, never given a plausible-looking location</div>
+            <div class="domain-item">Every asset records its location basis, label and coordinate precision</div>
+            <div class="domain-item">Anything without verified coordinates is marked as such, never given a plausible-looking location</div>
           </div>
         </div>
 
@@ -1137,44 +994,38 @@
             <span class="domain-n">02</span>
             <span class="domain-title">Cyber, mapped to assets you own</span>
           </div>
-          <div class="domain-body">Most attack-surface tools hand you a list of hostnames with no idea what they support. Sentinel attributes the digital estate to the specific mapped asset it belongs to, across twelve inventory classes, so an exposure inherits the criticality and the dependencies of the thing it actually runs.</div>
+          <div class="domain-body">Most attack-surface tools hand you hostnames with no idea what they support. Sentinel attributes the digital estate to the specific asset it belongs to, so an exposure inherits the criticality and the dependencies of the thing it actually runs.</div>
           <div class="domain-list">
-            <div class="domain-item">Domains, IP ranges, cloud environments, applications, network zones</div>
-            <div class="domain-item">Identity providers, data stores, vendors, certificates, exposed services</div>
-            <div class="domain-item">OT and ICS systems, for the estate where cyber becomes physical</div>
-            <div class="domain-item">Findings correlate through the dependency graph, so a portal exposure surfaces as an operations risk</div>
+            <div class="domain-item">Domains, IP ranges, cloud, applications, network zones, identity providers</div>
+            <div class="domain-item">Data stores, vendors, certificates, exposed services, and OT and ICS systems</div>
+            <div class="domain-item">Findings correlate through the graph, so a portal exposure surfaces as an operations risk</div>
           </div>
         </div>
-
       </div>
 
       <div class="signals-row" style="margin-top:40px;">
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>CISA KEV</div>
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>FIRST EPSS</div>
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>NVD / CVSS</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Certificate Transparency (crt.sh)</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>RDAP registration data</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Certificate Transparency</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>RDAP</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>DNS over HTTPS</div>
       </div>
 
       <div class="macro-pivot" style="margin-top:36px;">
-        <strong>Passive means passive.</strong> Neither stage performs active scanning, login attempts, exploitation, or probing. Sentinel reads public vulnerability catalogues, exploit-prediction scores, certificate transparency logs, registration records, and DNS. That is a deliberate ceiling, not a roadmap item: a resilience tool that quietly port-scans your suppliers creates a legal problem for you and an incident for them.
-      </div>
-
-      <div class="macro-pivot" style="margin-top:20px;">
-        <strong>Scored to survive an argument.</strong> Each finding carries a priority score built from exploitability and how far it reaches through your dependency graph, and a separate confidence score built from source reliability, how well it matched the asset, evidence completeness, freshness, and corroboration. The two are kept apart on purpose, because "severe" and "certain" are different questions. Sentinel is also deliberately conservative about what counts: buying from a vendor is not the same as running their product, so a commercial relationship alone never manufactures a vulnerability against you.
+        <strong>Passive means passive.</strong> No active scanning, no login attempts, no exploitation, no probing. Sentinel reads public vulnerability catalogues, exploit-prediction scores, certificate transparency logs, registration records and DNS. That is a deliberate ceiling, not a roadmap item: a resilience tool that quietly port-scans your suppliers creates a legal problem for you and an incident for them. Findings carry a priority score and a separate confidence score, because "severe" and "certain" are different questions.
       </div>
     </div>
   </section>
 
-  <!-- EVENTS & RESPONSE -->
-  <section class="agent-section" id="events">
+  <!-- RESPONSE -->
+  <section class="agent-section" id="response">
     <div class="agent-aura parallax-layer" data-parallax-speed="0.05" aria-hidden="true"></div>
     <div class="agent-inner">
       <div class="agent-col">
         <div class="section-label">Events &amp; Response</div>
-        <h2 class="section-title">A resilience analyst<br />that works <em>your company</em>, hourly.</h2>
-        <p class="section-body">While Sentinel is open, a scoped resilience analyst reassesses your entity against fresh signals on an hourly cadence, above a severity floor you set, across the source lanes you enable. It is deliberately narrow. There is no self-improvement loop and no auto-coding.</p>
+        <h2 class="section-title">From a matched event<br />to a <em>plan with owners.</em></h2>
+        <p class="section-body">When something reaches your model, Sentinel traces how it got there and what it costs, then gives you a response you can hand to someone.</p>
         <div class="agent-loop">
           <div class="agent-loop-pill"><span class="dot"></span>Match</div>
           <div class="agent-loop-pill"><span class="dot"></span>Cascade</div>
@@ -1182,13 +1033,10 @@
           <div class="agent-loop-pill"><span class="dot"></span>Respond</div>
         </div>
         <div class="agent-checklist">
-          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Risks that live and fade.</strong> A risk gains strength as corroborating reports arrive and eases when they stop, carrying a trend of new, rising, or falling plus its own evidence history. One quiet scan never makes a real risk disappear.</div></div>
-          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Strict entity matching.</strong> A story merely set in your city is not an impact. Sentinel requires a named asset, an operating location, or a distinctive dependency term before anything reaches your register.</div></div>
-          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Alerts that know your graph.</strong> Email alerts fire only when an affected dependency actually intersects assets you have mapped, and Sentinel tracks what it already sent so you are not told twice.</div></div>
-          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Shared workspace.</strong> The company model, its graph, and its assessments sync across the machines you run Sentinel on, with deletions treated as authoritative so a stale device cannot resurrect an asset you removed.</div></div>
-        </div>
-        <div class="agent-approve">
-          <strong>Scoped on purpose.</strong> The legacy autonomous agent, its self-improvement manifests, auto-coding, and curiosity loop are not started and not exposed in this build. A tool you rely on during an incident should do what you asked and nothing else.
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Strict matching.</strong> A story merely set in your city is not an impact. Sentinel requires a named asset, an operating location or a distinctive dependency term before anything reaches your register.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>The cascade, drawn out.</strong> Event to dependency to affected site, so you can see which supplier, cable, substation or exposed system carries the impact, and how many steps away it is.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Impact, cost and cover.</strong> Severity, a structured impact analysis, an estimated loss range, and an insurance review covering notifications owed, evidence to preserve and likely gaps.</div></div>
+          <div class="agent-check"><div class="cm">&checkmark;</div><div class="agent-check-text"><strong>Rehearse before it happens.</strong> Test a disruption against the graph, a cable cut, grid loss, cooling-water failure, and the whole chain runs. Simulations are marked and never enter your live feeds.</div></div>
         </div>
       </div>
       <div class="agent-col">
@@ -1208,259 +1056,79 @@
     </div>
   </section>
 
-  <!-- CRITICAL INFRASTRUCTURE -->
-  <section class="domains-section" id="infrastructure">
+  <!-- SIGNALS & INFRASTRUCTURE -->
+  <section class="signals-section" id="sources">
     <div class="section-inner">
-      <div class="section-label">Critical Infrastructure</div>
-      <h2 class="section-title">A candidate map of the world's<br /><em>load-bearing assets.</em></h2>
-      <p class="section-body">Eleven sectors of public-source infrastructure, drawn from named datasets rather than scraped or asserted. Filter by sector, type, country, status, confidence, and criticality, then incorporate anything relevant straight into your company model. Inclusion is analytical only and never claims an official regulatory designation.</p>
-
-      <div class="domain-grid">
-        <div class="domain-card primary">
-          <div class="domain-head">
-            <span class="domain-n">MAP</span>
-            <span class="domain-title">Built for reading, not decoration</span>
-          </div>
-          <div class="domain-body">Static pictograms cluster adaptively and never pulse. Click a cluster for a source and type summary, click a single asset for its full metadata. Data arrives in viewport-prioritized pages so the map paints as it loads instead of blocking on a full download.</div>
-          <div class="domain-list">
-            <div class="domain-item">Original polygon view, OpenStreetMap streets, or satellite imagery</div>
-            <div class="domain-item">Tiles requested only for the viewport you are actually looking at</div>
-            <div class="domain-item">Assets without coordinates stay searchable instead of being forced onto the map</div>
-            <div class="domain-item">Add your own points locally, with your own provenance and confidence</div>
-          </div>
-        </div>
-
-        <div class="domain-card primary">
-          <div class="domain-head">
-            <span class="domain-n">SRC</span>
-            <span class="domain-title">Provenance on every point</span>
-          </div>
-          <div class="domain-body">Every asset carries where it came from, the licence it came under, and how confident Sentinel is in it. The Data Sources panel shows connector readiness and per-source totals, including which sources need a credential or a manual release before they will return anything.</div>
-          <div class="domain-list">
-            <div class="domain-item">Source, licence, confidence, services, and dependency profile per asset</div>
-            <div class="domain-item">Sources needing a contract or portal access are shown with the required action</div>
-            <div class="domain-item">No silent scraping of download forms, no restricted cable routes imported</div>
-            <div class="domain-item">Registered legal offices are never treated as operational facilities</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="signals-row" style="margin-top:40px;">
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>OurAirports (public domain)</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>NGA World Port Index</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>PeeringDB facilities &amp; IXPs</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>WRI Global Power Plant DB (CC BY 4.0)</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>HydroWASTE treatment plants (CC BY 4.0)</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>EEA UWWTD treatment layer</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Wikidata hospitals &amp; drinking water (CC0)</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Wikidata central banks &amp; exchanges (CC0)</div>
-        <div class="signal-pill"><span class="signal-dot dot-air"></span>Wikidata spaceports &amp; ground stations (CC0)</div>
-        <div class="signal-pill"><span class="signal-dot dot-sea"></span>OpenStreetMap via cached Overpass tiles</div>
-        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Global Energy Monitor (manual release)</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Local seed catalog fallback</div>
-      </div>
-
-      <p class="domain-note">Overpass tiles are deliberately capped in size to protect the public service that provides them. Panning loads the next tile rather than pulling the planet, because a resilience tool that degrades the commons it depends on has failed at its own premise.</p>
-    </div>
-  </section>
-
-  <!-- MARKET & MACRO INTELLIGENCE -->
-  <section class="market-callout" id="markets">
-    <div class="market-callout-header">
-      <div>
-        <div class="section-label">Markets &amp; Macro</div>
-        <h3>The <em>earliest</em> read you will get.</h3>
-      </div>
-      <p>Institutions announce late. Prices move first. The Market Analysis workspace covers seven asset classes with worldwide session hours, and a macro lens reads cross-asset shocks against official evidence, so economic stress in a region, a sector, or a counterparty reaches you before the press release does.</p>
-    </div>
-    <div class="market-callout-inner">
-      <div class="market-gate-pill">
-        <div class="market-gate-n">01</div>
-        <div class="market-gate-label">Movers</div>
-        <div class="market-gate-desc">Unusual moves against a product's own recent behaviour.</div>
-      </div>
-      <div class="market-gate-pill">
-        <div class="market-gate-n">02</div>
-        <div class="market-gate-label">Breakouts</div>
-        <div class="market-gate-desc">Technical breaks worth a second look, not an instruction.</div>
-      </div>
-      <div class="market-gate-pill">
-        <div class="market-gate-n">03</div>
-        <div class="market-gate-label">Catalysts</div>
-        <div class="market-gate-desc">News-driven moves, linked back to the signal that drove them.</div>
-      </div>
-      <div class="market-gate-pill">
-        <div class="market-gate-n">04</div>
-        <div class="market-gate-label">Macro</div>
-        <div class="market-gate-desc">Cross-asset shocks read against official sources, with scenarios such as equity crash and energy surge.</div>
-      </div>
-      <div class="market-gate-pill">
-        <div class="market-gate-n">05</div>
-        <div class="market-gate-label">Watchlist</div>
-        <div class="market-gate-desc">Your core universe, tracked continuously alongside the entity.</div>
-      </div>
-    </div>
-
-    <div class="section-inner" style="margin-top:44px;">
-      <div class="signals-row" style="margin-top:0;">
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Stocks</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>ETFs</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Indices</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Commodities</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>FX</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Crypto</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Bond ETFs &amp; Rates</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Worldwide session hours</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Live market pulse</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Macro official evidence</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Market product context</div>
-      </div>
-
-      <div class="macro-pivot" style="margin-top:36px;">
-        <strong>Markets as intelligence, not as a mandate.</strong> Sentinel will not tell you what to buy, and it does not pretend a backtest is a forecast. What it does is treat price as one of the fastest and least deniable signals available: energy repricing, freight rates moving, a currency under pressure, a counterparty's sector selling off. Those readings attach to your entity as exposure, which is exactly where a resilience decision starts.
-      </div>
-    </div>
-  </section>
-
-  <!-- SIGNALS -->
-  <section class="signals-section" id="signals">
-    <div class="section-inner">
-      <div class="section-label">Signal Sources</div>
-      <h2 class="section-title">Official feeds first.<br /><em>Keyed providers for depth.</em></h2>
-      <p class="section-body">News Hub is the backbone for Events &amp; Response and the map's live feeds. Official feeds and curated RSS are the baseline that always works; keyed providers add depth when you configure them. No single provider can block discovery, and when one goes quiet the others carry on.</p>
+      <div class="section-label">Sources</div>
+      <h2 class="section-title">Named sources.<br /><em>Licences attached.</em></h2>
+      <p class="section-body">Official feeds and curated RSS are the baseline that always works; keyed providers add depth when you configure them, and no single provider can block discovery. Infrastructure comes from named public datasets, each asset carrying its source, licence and confidence. Inclusion is analytical only and never claims an official designation.</p>
       <div class="signals-row">
         <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Official feeds &amp; curated RSS</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>NewsAPI.ai</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>NewsData.io</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>NewsAPI.org</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>Guardian Open Platform</div>
         <div class="signal-pill"><span class="signal-dot dot-accent"></span>World News API</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>GDELT (enrichment, never blocking)</div>
-        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>Critical Infrastructure Catalog</div>
-        <div class="signal-pill"><span class="signal-dot dot-special"></span>Live Market Feed</div>
-        <div class="signal-pill"><span class="signal-dot dot-special"></span>Macro &amp; Official Evidence</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Weather &amp; Temperature Overlay</div>
-        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Conflict Zone Overlays</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Social Chatter Trends</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Search Trend Signals</div>
-        <div class="signal-pill"><span class="signal-dot dot-sea"></span>Cameras &amp; Broadcasts (optional)</div>
-        <div class="signal-pill"><span class="signal-dot dot-air"></span>Moving Assets (optional)</div>
-        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Fire / EONET (optional)</div>
-        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Air Quality Sensors (optional)</div>
-        <div class="signal-pill"><span class="signal-dot dot-land"></span>Country Profile Intelligence</div>
-        <div class="signal-pill"><span class="signal-dot dot-special"></span>Private Knowledge Base</div>
+        <div class="signal-pill"><span class="signal-dot dot-land"></span>GDELT</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>OurAirports</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>NGA World Port Index</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>PeeringDB</div>
+        <div class="signal-pill highlighted"><span class="signal-dot dot-special"></span>WRI Global Power Plant DB</div>
+        <div class="signal-pill"><span class="signal-dot dot-land"></span>HydroWASTE &amp; EEA UWWTD</div>
+        <div class="signal-pill"><span class="signal-dot dot-land"></span>Wikidata (CC0)</div>
+        <div class="signal-pill"><span class="signal-dot dot-sea"></span>OpenStreetMap</div>
+        <div class="signal-pill"><span class="signal-dot dot-special"></span>Live market feed</div>
+        <div class="signal-pill"><span class="signal-dot dot-warn"></span>Conflict &amp; disaster overlays</div>
+        <div class="signal-pill"><span class="signal-dot dot-accent"></span>Weather &amp; country profiles</div>
       </div>
-
-      <div class="domain-card primary" style="margin-top:44px;">
-        <div class="domain-head">
-          <span class="domain-n">STATUS</span>
-          <span class="domain-title">Every provider tells you exactly where it stands</span>
-        </div>
-        <div class="domain-body">Most tools show a feed as either working or broken. Sentinel distinguishes six states, because "your key is wrong" and "your quota is exhausted" need different actions from you.</div>
-        <div class="domain-list">
-          <div class="domain-item"><strong>OK</strong> returned usable articles, with the count</div>
-          <div class="domain-item"><strong>CONFIGURED</strong> key present, nothing live on that pass</div>
-          <div class="domain-item"><strong>KEY_REQUIRED</strong> missing key, or disabled locally</div>
-          <div class="domain-item"><strong>KEY_REJECTED</strong> the provider refused the key, so re-entering it will not help</div>
-          <div class="domain-item"><strong>BACKOFF</strong> circuit breaker waiting after quota or rate limits</div>
-          <div class="domain-item"><strong>DEGRADED</strong> partial results returned alongside errors</div>
-        </div>
-      </div>
-
-      <p class="domain-note">Optional physical feeds stay off until you enable them. Sentinel does not quietly open cameras, broadcasts, or sensor overlays on your behalf.</p>
     </div>
   </section>
 
-  <!-- SOVEREIGN MODE -->
+  <!-- SOVEREIGN -->
   <section class="sovereign-section" id="sovereign">
     <div class="sovereign-bg"></div>
     <div class="sovereign-inner">
       <div>
         <div class="section-label">Sovereign Mode</div>
-        <h2 class="section-title">Your intelligence<br /><em>stays yours.</em></h2>
-        <p class="section-body">Most platforms send your queries, documents, and analysis to cloud servers. For critical infrastructure and crisis work that is a dependency you cannot accept, and your company's dependency map is exactly the document you would least like to hand over. In Sovereign Mode every byte stays on your hardware, and the platform keeps working when the network does not.</p>
+        <h2 class="section-title">Your dependency map<br /><em>stays yours.</em></h2>
+        <p class="section-body">Most platforms send your queries, documents and analysis to cloud servers. For a country or an operator of essential services that is a dependency you cannot accept, and your dependency map is exactly the document you would least like to hand over. In Sovereign Mode everything stays on your hardware and keeps working when the network does not.</p>
         <div class="sovereign-checklist">
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local LLM via Ollama,</strong> Qwen 3.6 35B runs entirely on-device. No OpenAI account required.</div>
+            <div class="check-text"><strong>Local LLM via Ollama,</strong> Qwen 3.6 35B runs entirely on-device. No OpenAI account required for analysis.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Local Speech,</strong> Whisper STT and Kokoro TTS run offline. Voice never leaves your machine.</div>
+            <div class="check-text"><strong>Local speech,</strong> Whisper and Kokoro run offline. Voice never leaves your machine.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Encrypted vault,</strong> all data lives in a VeraCrypt/BitLocker container. Unlock before launch.</div>
+            <div class="check-text"><strong>Localhost-only binding,</strong> the server refuses non-local connections by design.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Localhost-only binding,</strong> server refuses non-local connections by design.</div>
-          </div>
-          <div class="sovereign-check">
-            <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Air-gap ready,</strong> public signal feeds are optional. Core analysis works fully disconnected.</div>
-          </div>
-          <div class="sovereign-check">
-            <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Your company model stays local,</strong> the entity, its dependency graph, and every assessment live in local storage and sync only between machines you run.</div>
-          </div>
-          <div class="sovereign-check">
-            <div class="check-mark">&checkmark;</div>
-            <div class="check-text"><strong>Manual records never leave,</strong> assets you add by hand are written to a local file and are never pushed to a remote automatically.</div>
+            <div class="check-text"><strong>Your model stays local,</strong> the entity, its graph and every assessment live in local storage and sync only between machines you run.</div>
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&times;</div>
-            <div class="check-text"><strong>Two functions are honestly excluded.</strong> Company ingestion and cyber discovery research the public web, so they need an OpenAI key and connectivity. In Sovereign Mode they are refused outright with an explicit external-connection error, rather than silently reaching out. Everything else keeps working.</div>
+            <div class="check-text"><strong>Two functions are honestly excluded.</strong> Company ingestion and cyber discovery research the public web, so they need connectivity and an OpenAI key. Sovereign Mode refuses them outright with an explicit error rather than quietly reaching out. Everything else keeps working.</div>
           </div>
         </div>
       </div>
       <div class="sovereign-terminal">
-        <div class="term-title">SENTINEL VAULT - LAUNCH SEQUENCE</div>
-        <div class="term-line"><span class="term-prompt">$</span> <span class="kw">Sentinel.cmd</span></div>
-        <div class="term-line comment">  # Unlocking encrypted vault&hellip;</div>
-        <div class="term-line">  <span class="kw">vault</span>   <span class="val">SentinelVault/ [encrypted]</span></div>
+        <div class="term-title">SENTINEL - LOCAL RUNTIME</div>
+        <div class="term-line"><span class="term-prompt">$</span> <span class="kw">sentinel</span> start</div>
+        <div class="term-line comment">  # Starting local runtime&hellip;</div>
         <div class="term-line">  <span class="kw">backend</span> <span class="val">127.0.0.1:5173 [localhost only]</span></div>
         <div class="term-line">  <span class="kw">ai</span>      <span class="val">qwen3.6:35b [on-device]</span></div>
-        <div class="term-line">  <span class="kw">voice</span>   <span class="val">whisper-large [on-device]</span></div>
-        <div class="term-line">  <span class="kw">tts</span>     <span class="val">kokoro [on-device]</span></div>
-        <div class="term-line comment">  # No outbound auth required.</div>
-        <div class="term-line comment">  # No telemetry. No cloud keys.</div>
-        <br/>
+        <div class="term-line">  <span class="kw">voice</span>   <span class="val">whisper + kokoro [on-device]</span></div>
         <div class="term-line">  <span class="kw">entity</span>  <span class="val">company graph [local storage]</span></div>
+        <div class="term-line comment">  # No outbound auth required.</div>
+        <div class="term-line comment">  # No telemetry. No cloud account.</div>
+        <br/>
         <div class="term-line"><span class="term-prompt">$</span> <span class="kw">status</span></div>
         <div class="term-line">  <span class="val">&checkmark; SOVEREIGN MODE ACTIVE</span></div>
         <div class="term-line">  <span class="val">&checkmark; ALL SYSTEMS OPERATIONAL</span><span class="cursor">_</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- AI SECTION -->
-  <section id="ai">
-    <div class="section-inner">
-      <div class="section-label">AI Integration</div>
-      <h2 class="section-title"><em>OpenAI</em> in the cloud.<br /><em>Qwen 3.6 35B</em> on your machine.</h2>
-      <p class="section-body">Two AI modes. One interface. Switch without changing how you work.</p>
-      <div class="ai-grid">
-        <div class="ai-card">
-          <div class="ai-card-label">Cloud &middot; Requires API key</div>
-          <div class="ai-card-title">OpenAI</div>
-          <div class="ai-card-body">Connect your own OpenAI key. Sentinel sends your question, with full signal and map context, and returns the answer. Nothing is stored beyond the single request.</div>
-          <div class="ai-model-list">
-            <div class="ai-model"><span class="ai-model-name">OpenAI</span><span class="ai-model-badge badge-cloud">CLOUD</span></div>
-          </div>
-        </div>
-        <div class="ai-card">
-          <div class="ai-card-label">Local &middot; Zero data egress &middot; No API key</div>
-          <div class="ai-card-title">Qwen 3.6 35B</div>
-          <div class="ai-card-body">Qwen 3.6 35B runs entirely on your hardware via Ollama. No internet, no API key, no data leaving your machine. Full sovereign operation, including air-gapped environments, with your private documents available as context for an assessment when you want them.</div>
-          <div class="ai-model-list">
-            <div class="ai-model"><span class="ai-model-name">Qwen 3.6 35B</span><span class="ai-model-badge badge-local">LOCAL</span></div>
-          </div>
-        </div>
-      </div>
-      <p style="margin-top:28px; font-size:13.5px; color:var(--muted); font-family:'Roboto Mono',monospace; border-left: 2px solid var(--line-strong); padding-left: 16px;">
-        Deployments can be configured to use any compatible model, on-premise, private cloud, or custom endpoints. <a href="#contact" style="color:var(--accent);">Request info</a> to discuss your requirements.
-      </p>
     </div>
   </section>
 
@@ -1471,80 +1139,44 @@
       <h2 class="section-title">Common questions.</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q">What does "entity-first" actually mean? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">It means the model comes before the feed. You build an entity holding the sites you own or operate plus the external dependencies that keep them working, each relationship typed and evidenced. Every signal after that is judged against that model: a story merely set in your city is not an impact, but a named supplier, an operating location, or a distinctive dependency term is. The result is a register of things that actually reach you, rather than a filtered world news feed.</div>
+          <button class="faq-q">Who is Sentinel for? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Countries, institutions and companies, using the same method at three scales. The entity is whatever you are accountable for: a ministry looking at national exposure, a utility or health system with a statutory continuity obligation, or an operator keeping one campus running. In each case you model the assets and the dependencies, and Sentinel matches signals against them. Country scale is supported directly by the infrastructure catalog across 11 sectors, alliance and conflict overlays, and country profiles, so a national picture is assembled from the same parts as a corporate one.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Does this only work at company level? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No. The entity is whatever you are accountable for, and the method does not change with its size. A single campus, a utility, a port authority, a ministry looking at national exposure: in each case you model the assets and the dependencies, and Sentinel matches signals against them. Country scale is supported directly by the infrastructure catalog across 11 sectors, alliance and conflict overlays, country profile intelligence, and the macro lens, so a national picture is assembled from the same parts as a corporate one rather than from a separate product.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What does "macro meets micro" actually mean here? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Two directions against one model. Top down, a cross-asset shock or a macro scenario resolves through sector and country stress into the specific infrastructure and dependency that carries it to your sites. Bottom up, a single asset degrading becomes a dependency cascade, then a sector pattern, then something markets and national data either confirm or contradict. Most tools pick an altitude and stay there. Read only macro and you get commentary you cannot act on; read only assets and you cannot tell a one-off fault from the leading edge of something structural.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Do I have to build the company graph by hand? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No. Workspaces start empty, and you can either add records manually or name an organisation and let Sentinel research it from public evidence. It proposes offices, facilities, warehouses, infrastructure and providers, each with the claim, source, URL, publication date, and a confidence score attached, and the draft map builds live as records arrive. Nothing enters your graph until you review it. When the research runs again later, new discoveries arrive as proposed variances rather than overwriting assets you already approved.</div>
+          <button class="faq-q">Do I have to build the model by hand? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">No. Workspaces start empty, and you can either add records manually or name an organisation and let Sentinel research it from public evidence. It proposes offices, facilities, warehouses, infrastructure and providers, each with the claim, source, URL, date and a confidence score attached, and the draft map builds live as records arrive. Nothing enters your graph until you review it, and later re-runs arrive as proposed variances rather than overwriting assets you already approved.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Is the cyber capability a vulnerability scanner? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No, and this is a hard boundary rather than a current limitation. Sentinel performs no active scanning, no login attempts, no exploitation, and no probing. It reads public sources: the CISA Known Exploited Vulnerabilities catalogue, FIRST's EPSS exploit-prediction scores, NVD for CVSS, certificate transparency logs, RDAP registration records, and DNS. What makes it useful is attribution rather than volume: findings are tied to the specific mapped asset they belong to, so an exposure inherits that asset's criticality and reaches through your dependency graph to whatever else depends on it. It is also conservative about what counts, so buying from a vendor never by itself manufactures a vulnerability against you.</div>
+          <div class="faq-a">No, and this is a hard boundary rather than a current limitation. There is no active scanning, no login attempts, no exploitation and no probing. Sentinel reads public sources: the CISA Known Exploited Vulnerabilities catalogue, FIRST's EPSS scores, NVD for CVSS, certificate transparency logs, RDAP registration records and DNS. What makes it useful is attribution rather than volume, since findings are tied to the specific mapped asset they belong to and reach through your dependency graph to whatever else depends on it. It is also conservative about what counts, so buying from a vendor never by itself manufactures a vulnerability against you.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">What is the five-stage journey? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">The persistent cycle Sentinel runs on your entity: company assets, cyber intelligence, signal scans, macro and micro economics, then risk and opportunity composition. It is not a one-off scan. Each stage reports live status, evidence counts, timestamps, and errors, the whole cycle reschedules at the cadence you set in Events &amp; Response, and on completion Sentinel records what changed since the previous cycle. If a source is blocked or fails, it is retained as an explicit evidence gap and the later stages continue where they can, so one dead provider never silently produces a confident-looking but incomplete picture.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Where does market intelligence fit now? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">As one of four full lenses, not a footnote. The Market Analysis workspace covers stocks, ETFs, indices, commodities, FX, crypto, and rates, with setup filters, worldwide session hours, and a macro lens that reads cross-asset shocks against official evidence. What changed is the purpose. Sentinel will not tell you what to buy and does not pretend a backtest is a forecast. It treats price as the fastest and least deniable signal available, and attaches that reading to your entity as exposure, which is where a resilience decision starts.</div>
+          <button class="faq-q">What are the five stages? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Assets, cyber, signals, economics and composition. It is a persistent cycle rather than a one-off scan: each stage reports live status, evidence counts, timestamps and errors, the cycle reschedules at the cadence you set, and each pass records what changed since the last. If a source is blocked or fails, it is retained as an explicit evidence gap and the later stages continue where they can, so one dead provider never silently produces a confident-looking but incomplete picture.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Where does the infrastructure data come from? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Named public datasets, each carrying its licence: OurAirports for aviation, NGA's World Port Index for ports, PeeringDB for exchanges and peering facilities, the WRI Global Power Plant Database for generation, HydroWASTE and the EEA's treatment layer for water, and CC0 Wikidata slices for hospitals, drinking water, banking, food supply, and public administration. OpenStreetMap fills in detail through small cached tiles as you zoom. Every asset shows its source, licence, and confidence, and inclusion is analytical only, never a claim of official designation. Sources that need a credential or a manual release are listed with the action required rather than quietly skipped.</div>
+          <div class="faq-a">Named public datasets, each carrying its licence: OurAirports for aviation, NGA's World Port Index for ports, PeeringDB for exchanges and peering facilities, the WRI Global Power Plant Database for generation, HydroWASTE and the EEA treatment layer for water, and CC0 Wikidata slices for hospitals, drinking water, banking, food supply and public administration. OpenStreetMap fills in detail through small cached tiles as you zoom. Every asset shows its source, licence and confidence, and inclusion is analytical only, never a claim of official designation.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">What does "AI decision making in crisis" mean in practice? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">During an incident the constraint is time, not information. Sentinel produces a structured impact analysis covering direct, operational, customer, safety, financial, and regulatory consequences, a phased recovery plan with time horizons, named owners, and exit criteria, a ranked set of recovery actions, and an insurance review covering notifications, evidence to preserve, and likely gaps. Assumptions and unknowns are stated rather than buried. The human stays the decision maker, and because everything runs locally it keeps working when connectivity is itself a casualty.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Does Sentinel still have an autonomous self-improving agent? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No, and that is deliberate. Earlier builds shipped an autonomous agent with approval-gated self-improvement, auto-coding, and a curiosity loop. None of it is started or exposed in the current release. What remains is a scoped resilience analyst: it reassesses your entity hourly while Sentinel is open, above a severity floor you set, across the source lanes you enable. A tool you depend on during an incident should do what you asked and nothing else.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">How does a risk change over time? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Risks accumulate evidence rather than being recreated each pass. When a second report corroborates the first, the existing risk gains strength, its evidence list grows, and its trend reads as rising. When fresh reporting stops, strength eases and the trend falls, but the risk stays on the register rather than vanishing, because one quiet scan is not the same as resolution. Each risk keeps its own strength history so you can see the shape of it.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Can I see why something was flagged? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Yes, and this matters more than the flag itself. Each assessment carries the impact analysis, the dependency path that carried the event to your sites, the supporting articles, and the assumptions and unknowns written out explicitly. The recovery plan names owners and exit criteria per phase. You can export the whole incident as a playbook including the graph and the affected register, so the reasoning survives the handover.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Can I test a disruption before it happens? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Yes. Describe a disruption and assess it against the company graph: a cable cut, grid loss, a memory-supply shock, cooling-water failure, a security provider collapsing. The full chain runs, cascade, impact, recovery plan, insurance review, and the result is marked as simulated so it is never confused with a live assessment and never enters your feeds. You can delete a rehearsal when you are done with it.</div>
+          <button class="faq-q">Where does market intelligence fit? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">As economic context for the entity. The Market Analysis workspace covers stocks, ETFs, indices, commodities, FX, crypto and rates, with setup filters, worldwide session hours and a macro lens reading cross-asset shocks against official evidence. Sentinel will not tell you what to buy and does not pretend a backtest is a forecast. It treats price as the fastest and least deniable signal available, and attaches that reading to your entity as exposure, which is where a resilience decision starts.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">In Sovereign Mode the analysis runs entirely offline. Live signal feeds (news, infrastructure, weather, markets) require internet, and two functions are excluded by design: company ingestion and cyber discovery research the public web, so Sovereign Mode refuses them with an explicit external-connection error rather than quietly reaching out. Everything else, the company model, AI analysis via Qwen, voice, and the private knowledge base, works fully air-gapped. The workspace is stored locally, so an incident that takes out your connectivity does not take out your incident tooling.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What operating systems does it support? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Sentinel currently runs on Windows 10 and Windows 11 only. No installation is required, the portable build bundles Python, Chromium, and Ollama. macOS and Linux builds are on the roadmap.</div>
+          <div class="faq-a">The analysis runs entirely offline in Sovereign Mode. Live signal feeds require internet, and two functions are excluded by design: company ingestion and cyber discovery research the public web, so Sovereign Mode refuses them with an explicit external-connection error rather than quietly reaching out. Everything else, the model, AI analysis via Qwen, voice and the private knowledge base, works fully air-gapped, so an incident that takes out your connectivity does not take out your incident tooling.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Do I need an OpenAI account? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No. In Sovereign Mode, Sentinel runs Qwen 3.6 35B locally via Ollama, no OpenAI account or API key is required. If you prefer OpenAI, you connect your own key and it is stored locally in your encrypted vault.</div>
+          <div class="faq-a">Not for analysis. Sentinel runs Qwen 3.6 35B locally via Ollama, and if you prefer OpenAI you connect your own key, stored locally. Company ingestion and cyber discovery are the exception: they use AI with public web research and do require an OpenAI key and connectivity.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">What hardware do I need for Sovereign Mode? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">For OpenAI mode, any modern laptop works. For local Qwen 3.6 35B, we recommend 32GB RAM and an NVIDIA GPU (16GB VRAM+) for best performance.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Is the pre-loaded drive encrypted? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">The Sovereign Edition ships with a VeraCrypt-compatible vault structure. We recommend enabling full-disk encryption (BitLocker or VeraCrypt) before first use. The launcher integrates with an encrypted container unlock step.</div>
+          <button class="faq-q">What do I need to run it? <span class="faq-arrow">+</span></button>
+          <div class="faq-a">Sentinel currently runs on Windows 10 and Windows 11. For cloud AI, any modern laptop works. For the local Qwen model we recommend 32GB RAM and an NVIDIA GPU with 16GB VRAM or more. macOS and Linux builds are on the roadmap.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">How do I get Sentinel? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Sentinel is delivered as a private engagement rather than an off-the-shelf download. Deployments range from the full platform on your own hardware to a fully sovereign setup, a pre-configured encrypted SSD with Qwen 3.6 35B on-device, offline voice (Whisper + Kokoro), and hands-on onboarding that runs entirely air-gapped. Request info and we'll scope the right configuration for you.</div>
+          <div class="faq-a">Sentinel is delivered as a private engagement rather than an off-the-shelf download. Deployments range from the full platform on your own hardware to a fully sovereign setup with the model on-device, offline voice and hands-on onboarding. Request info and we'll scope the right configuration for you.</div>
         </div>
       </div>
     </div>
@@ -2019,8 +1651,8 @@
   <!-- CTA BAND -->
   <section class="cta-band" id="contact">
     <div class="cta-band-inner">
-      <h2>Ready to see <em>both altitudes</em> at once?</h2>
-      <p>Built for the people who have to keep something running, from a single campus to a national grid: infrastructure operators, resilience and continuity leads, analysts, security and risk teams, and crisis cells who keep their dependency map, and their judgement, to themselves.</p>
+      <h2>Ready to map what you <em>depend on</em>?</h2>
+      <p>For countries, institutions and companies who need an honest picture of their own dependencies, and who would rather it never left their building.</p>
       <div class="hero-actions">
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AWhat%20would%20you%20like%20to%20know%3F%3A%20" class="btn-primary">REQUEST INFO</a>
         <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
@@ -2032,16 +1664,15 @@
   <footer>
     <div class="footer-brand">SENTINEL &copy; 2026</div>
     <div class="footer-links">
-      <a href="#domains">Domains</a>
-      <a href="#macro">Macro &amp; Micro</a>
+      <a href="#overview">Overview</a>
+      <a href="#who">Who It's For</a>
+      <a href="#journey">How It Works</a>
       <a href="#cyber">Cyber</a>
-      <a href="#markets">Markets</a>
-      <a href="#infrastructure">Infrastructure</a>
-      <a href="#events">Response</a>
+      <a href="#sovereign">Sovereign</a>
       <a href="#changelog">Updates</a>
       <a href="mailto:alessio@rabbitholetech.io">Contact</a>
     </div>
-    <div class="footer-copy">Resilience &amp; Decision Intelligence, Company to Country</div>
+    <div class="footer-copy">Sovereign Resilience Intelligence</div>
   </footer>
 
 </div>
@@ -2095,7 +1726,7 @@
     '.feature-card', '.feature-card-wide',
     '.opp-flow', '.opp-step', '.opp-card',
     '.domain-card', '.domain-note',
-    '.macro-chain', '.macro-lane-head', '.macro-pivot',
+    '.macro-pivot',
     '.market-callout-header', '.market-gate-pill',
     '.signal-pill',
     '.agent-loop', '.agent-check', '.agent-approve', '.thought-stream',
