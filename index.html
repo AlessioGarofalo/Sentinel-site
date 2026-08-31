@@ -1192,7 +1192,27 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">01 Aug 2026 &middot; Latest</div>
+            <div class="changelog-date">31 Aug 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Unified Resilience Alerts &amp; Intelligence Workflows</div>
+              <div class="changelog-body">Background resilience and the five-stage journey are now a single workflow. What a pass composes and what reaches you as an alert are governed by the same evidence, cadence and entity graph, so an alert fires only when affected dependencies intersect assets you have actually mapped, never on proximity alone. Background resilience now runs and is verified end to end while the interface is closed, macro and micro economic context is folded into every pass, and provider loading is bounded and sequential with explicit pipeline limits, so one slow or failing source cannot stall a cycle or inflate the picture. Company ingestion, the News Hub providers and the evidence store were hardened for larger entity graphs, and evidence scoring was cleaned up so confidence reflects source reliability and corroboration rather than static fields. The legacy standalone report module was retired in favour of the unified Events and Response workflow.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Unified Resilience Alerts</span>
+                <span class="changelog-tag">Background Resilience</span>
+                <span class="changelog-tag">Macro &amp; Micro In Every Pass</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Bounded Provider Loading</span>
+                <span class="changelog-tag">Larger Entity Graphs</span>
+                <span class="changelog-tag">Evidence Scoring Cleanup</span>
+                <span class="changelog-tag fix">SCOPE</span>
+                <span class="changelog-tag">Legacy Reports Retired</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">01 Aug 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Company Intelligence &amp; Cyber Discovery Pipeline</div>
               <div class="changelog-body">Sentinel can now build the company graph for you. Name an organisation and staged ingestion researches it from public evidence, proposing offices, facilities, warehouses, infrastructure and providers with a claim, source, URL, publication date and confidence attached to each record. The draft map materialises live as validated records stream in, relationships connect the moment both endpoints exist, and research can be interrupted mid-run. Nothing is written until reviewed, and later re-runs arrive as proposed graph variances instead of overwriting approved assets. Every asset records its location basis, label and coordinate precision, and anything without verified coordinates is placed by graph layout and marked, never given a plausible-looking position. A second stage attributes the digital estate to those exact assets across twelve inventory classes including OT and ICS systems, then screens it passively against CISA KEV, FIRST EPSS, NVD, certificate transparency, RDAP and DNS. No active scanning, login attempts, exploitation or probing at any point. Findings carry a priority score built from exploitability and dependency reach, and a separate confidence score from source reliability, asset match, evidence completeness, freshness and corroboration, and they correlate through the dependency graph so an exposure on one system surfaces as a risk to everything downstream. The whole thing runs as a persistent five-stage journey, company assets, cyber, signal scans, macro and micro economics, and risk composition, with per-stage status, evidence metrics, run history, cadence scheduling and variance reporting. Workspaces now start empty. Company ingestion and cyber discovery require external connectivity and are refused outright in Sovereign Mode with an explicit error.</div>
@@ -1471,7 +1491,7 @@
               <div class="changelog-tags">
                 <span class="changelog-tag new">NEW</span>
                 <span class="changelog-tag">SOL / XRP / BNB</span>
-                <span class="changelog-tag">Hang Seng · KOSPI · ASX · TAIEX</span>
+                <span class="changelog-tag">Hang Seng &middot; KOSPI &middot; ASX &middot; TAIEX</span>
                 <span class="changelog-tag improve">IMPROVEMENT</span>
                 <span class="changelog-tag">EM FX Pairs</span>
                 <span class="changelog-tag">OpenSky Global</span>
@@ -1892,7 +1912,7 @@
         var txt = document.createTextNode('');
         row.appendChild(txt);
         var cur = document.createElement('span');
-        cur.className = 'ts-cursor'; cur.textContent = '\u2588';
+        cur.className = 'ts-cursor'; cur.textContent = '█';
         row.appendChild(cur);
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
