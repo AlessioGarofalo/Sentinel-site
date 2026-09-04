@@ -528,26 +528,6 @@
       .changelog-entry { grid-template-columns: 1fr; gap: 8px; }
     }
 
-    /* Video modal */
-    .video-modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(2,5,6,0.92); backdrop-filter: blur(12px);
-      align-items: center; justify-content: center;
-    }
-    .video-modal-overlay.active { display: flex; }
-    .video-modal {
-      position: relative; width: 90vw; max-width: 960px;
-      aspect-ratio: 16/9;
-    }
-    .video-modal iframe { width: 100%; height: 100%; border: 1px solid var(--line-strong); }
-    .video-modal-close {
-      position: absolute; top: -40px; right: 0;
-      background: none; border: none; color: var(--accent);
-      font-size: 28px; cursor: pointer; line-height: 1;
-      font-family: "Roboto Mono", monospace;
-    }
-    .video-modal-close:hover { color: var(--ink); }
-
     /* ============================================================
        MOTION & DYNAMISM  (parallax, scroll-reveal, progress)
        ============================================================ */
@@ -737,7 +717,6 @@
     <a href="#journey">How It Works</a>
     <a href="#cyber">Cyber</a>
     <a href="#sovereign">Sovereign</a>
-    <a href="#" onclick="openDemoModal();return false;">Demo</a>
     <a href="#contact" class="nav-cta">REQUEST INFO &rarr;</a>
   </div>
 </nav>
@@ -1675,7 +1654,6 @@
       <p>For countries, institutions and companies who need an honest picture of their own dependencies, and who would rather it never left their building.</p>
       <div class="hero-actions">
         <a href="mailto:alessio@rabbitholetech.io?subject=Sentinel%20Enquiry&body=Name%3A%20%0ACompany%3A%20%0AEmail%3A%20%0APhone%3A%20%0A%0AWhat%20would%20you%20like%20to%20know%3F%3A%20" class="btn-primary">REQUEST INFO</a>
-        <a href="#" onclick="openDemoModal();return false;" class="btn-ghost">CHECK OUR DEMO</a>
       </div>
     </div>
   </section>
@@ -1712,28 +1690,6 @@
       if (!isOpen) item.classList.add('open');
     });
   });
-</script>
-
-<div class="video-modal-overlay" id="demoModal" onclick="closeDemoModal(event)">
-  <div class="video-modal">
-    <button class="video-modal-close" onclick="closeDemoModal()">&#x2715;</button>
-    <iframe id="demoIframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Sentinel Demo"></iframe>
-  </div>
-</div>
-
-<script>
-  function openDemoModal() {
-    document.getElementById('demoIframe').src = 'https://www.youtube.com/embed/NB0B6vacOzA?autoplay=1';
-    document.getElementById('demoModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDemoModal(e) {
-    if (e && e.target !== document.getElementById('demoModal') && !e.target.classList.contains('video-modal-close')) return;
-    document.getElementById('demoIframe').src = '';
-    document.getElementById('demoModal').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDemoModal({ target: document.getElementById('demoModal') }); });
 </script>
 
 <!-- Motion & dynamism: scroll progress, parallax, scroll-reveal, count-up, thought stream -->
