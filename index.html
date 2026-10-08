@@ -60,6 +60,36 @@
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a { color: rgba(217,255,244,0.7); font-size: 13px; letter-spacing: 0.03em; font-family: "Roboto Mono", monospace; }
     .nav-links a:hover { color: var(--ink); text-decoration: none; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-demo {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 9px 18px; min-height: 40px; border: 1px solid var(--accent);
+      background: var(--accent); color: var(--bg); cursor: pointer;
+      font: 600 12px "Roboto Mono", monospace; letter-spacing: 0.06em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-demo:hover { background: #b2ffe9; transform: translateY(-1px); }
+    .nav-demo svg { width: 14px; height: 14px; fill: currentColor; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .demo-dialog {
+      width: min(1040px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+      margin: auto; padding: 0; overflow: auto;
+      border: 1px solid var(--line-strong); border-radius: 12px;
+      background: var(--bg2); color: var(--ink);
+      box-shadow: 0 24px 100px rgba(0,0,0,0.7);
+    }
+    .demo-dialog::backdrop { background: rgba(0,5,7,0.88); backdrop-filter: blur(8px); }
+    .demo-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 24px; }
+    .demo-header h2 { font-size: 20px; font-weight: 600; }
+    .demo-close {
+      flex-shrink: 0; min-width: 44px; min-height: 44px; padding: 8px 12px;
+      border: 1px solid var(--line-strong); border-radius: 6px;
+      background: transparent; color: var(--ink); cursor: pointer; font: inherit;
+    }
+    .demo-close:hover { background: rgba(139,255,222,0.1); }
+    .demo-video { aspect-ratio: 16 / 9; background: #000; }
+    .demo-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .demo-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding: 16px 24px; font-size: 13px; color: var(--muted); }
     .nav-cta {
       padding: 8px 20px;
       border: 1px solid var(--line-strong);
@@ -91,6 +121,7 @@
 
     .hero {
       position: relative; z-index: 10;
+      overflow: hidden;
       min-height: 100vh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
@@ -471,14 +502,23 @@
       background: rgba(2,5,6,0.88); backdrop-filter: blur(14px);
     }
     .footer-brand { font-family: "Roboto Mono", monospace; font-size: 14px; color: var(--muted); letter-spacing: 0.08em; }
-    .footer-links { display: flex; gap: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 24px; }
     .footer-links a { font-size: 13px; color: var(--muted); font-family: "Roboto Mono", monospace; }
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-size: 12px; color: rgba(126,165,155,0.4); font-family: "Roboto Mono", monospace; }
 
+    @media (max-width: 1100px) {
+      .nav-links { gap: 16px; }
+      .nav-actions { gap: 16px; }
+    }
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+    }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      .demo-header { padding: 14px 16px; }
+      .demo-header h2 { font-size: 18px; }
+      .demo-footer { padding: 14px 16px; }
       .sovereign-inner { grid-template-columns: 1fr; gap: 40px; }
       .ai-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 28px; }
@@ -610,7 +650,7 @@
     }
     .opp-step:last-child::after { display: none; }
     @media (max-width: 820px) {
-      .opp-flow { grid-template-columns: repeat(2, 1fr); }
+      .opp-flow, .opp-flow.flow-5 { grid-template-columns: repeat(2, 1fr); }
       .opp-step { border-bottom: 1px solid var(--line); }
       .opp-step::after { display: none; }
     }
@@ -711,15 +751,33 @@
 
 <nav id="mainNav">
   <a href="https://app.sentinel.info" class="nav-brand" target="_blank" rel="noopener noreferrer">SENTINEL</a>
-  <div class="nav-links">
+  <div class="nav-actions">
+    <div class="nav-links">
     <a href="#overview">Overview</a>
     <a href="#who">Who It's For</a>
     <a href="#journey">How It Works</a>
     <a href="#cyber">Cyber</a>
     <a href="#sovereign">Sovereign</a>
     <a href="#contact" class="nav-cta">REQUEST INFO &rarr;</a>
+    </div>
+    <button type="button" class="nav-demo" id="demoButton" aria-haspopup="dialog" aria-controls="demoDialog">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13 8z" /></svg>
+      DEMO
+    </button>
   </div>
 </nav>
+
+<dialog class="demo-dialog" id="demoDialog" aria-labelledby="demoTitle">
+  <div class="demo-header">
+    <h2 id="demoTitle">See Sentinel in action</h2>
+    <button type="button" class="demo-close" id="demoClose" aria-label="Close demo" autofocus>Close &times;</button>
+  </div>
+  <div class="demo-video" id="demoVideo"></div>
+  <div class="demo-footer">
+    <span>A walkthrough of Sentinel.</span>
+    <a href="https://youtu.be/HzxGgq5ZgDk" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>
+  </div>
+</dialog>
 
 <section class="hero" id="hero">
   <div class="hero-aura parallax-layer" data-parallax-speed="0.18" aria-hidden="true"></div>
@@ -776,7 +834,7 @@
         <div class="opp-card">
           <div class="opp-card-icon">&#9930;</div>
           <div class="opp-card-title"><a href="#cyber">Map the exposure</a></div>
-          <div class="opp-card-body">The digital estate is attributed to the exact assets it supports, including OT and ICS, then screened passively against public vulnerability and certificate sources.</div>
+          <div class="opp-card-body">Public cyber findings connect to the assets they support. Check protection on the device running Sentinel alongside your company's external exposure.</div>
         </div>
         <div class="opp-card">
           <div class="opp-card-icon">&#9673;</div>
@@ -832,7 +890,7 @@
           <div class="domain-list">
             <div class="domain-item">Evidence trail on every asset, relationship and assessment</div>
             <div class="domain-item">Exportable playbooks for board, regulator or insurer</div>
-            <div class="domain-item">Passive-only cyber posture, with no active scanning of anyone</div>
+            <div class="domain-item">Public company exposure and checks on your own Sentinel device</div>
           </div>
         </div>
 
@@ -862,7 +920,7 @@
 
       <div class="opp-flow flow-5">
         <div class="opp-step"><div class="opp-step-n">01</div><div class="opp-step-name">Assets</div><div class="opp-step-desc">Discover and revalidate sites, providers and relationships.</div></div>
-        <div class="opp-step"><div class="opp-step-n">02</div><div class="opp-step-name">Cyber</div><div class="opp-step-desc">Attribute the digital estate to those assets, then screen it passively.</div></div>
+        <div class="opp-step"><div class="opp-step-n">02</div><div class="opp-step-name">Cyber</div><div class="opp-step-desc">Track company exposure. Check protection on your own device.</div></div>
         <div class="opp-step"><div class="opp-step-n">03</div><div class="opp-step-name">Signals</div><div class="opp-step-desc">Refresh news, chatter, search pressure and infrastructure evidence.</div></div>
         <div class="opp-step"><div class="opp-step-n">04</div><div class="opp-step-name">Economics</div><div class="opp-step-desc">Official indicators joined to your own exposure and concentration.</div></div>
         <div class="opp-step"><div class="opp-step-n">05</div><div class="opp-step-name">Composition</div><div class="opp-step-desc">The analyst composes evidence into risks and responses.</div></div>
@@ -889,9 +947,9 @@
 
         <div class="feature-card">
           <div class="feature-icon">&#9930;</div>
-          <div class="feature-title">Passive Cyber Intelligence</div>
-          <div class="feature-body">Twelve classes of digital estate attributed to the exact assets they support, including OT and ICS, screened against CISA KEV, EPSS, NVD, certificate transparency, RDAP and DNS. No active scanning, no login attempts, no probing.</div>
-          <div class="feature-tag-accent">PASSIVE ONLY</div>
+          <div class="feature-title">Cyber Protection</div>
+          <div class="feature-body">See public exposure for your company alongside antivirus, firewall, updates, encryption, connections and backup checks on the device running Sentinel. Clear next steps help you review what is allowed and verify what needs attention.</div>
+          <div class="feature-tag-accent">COMPANY + YOUR SYSTEMS</div>
         </div>
 
         <div class="feature-card">
@@ -939,7 +997,7 @@
         <div class="feature-card">
           <div class="feature-icon">&#9881;</div>
           <div class="feature-title">Resilience Analyst</div>
-          <div class="feature-body">A scoped analyst that reassesses your entity on your cadence while Sentinel is open, above a severity floor you set, across the source lanes you enable. Risks gain strength as evidence corroborates and ease when it stops.</div>
+          <div class="feature-body">A scoped analyst that reassesses your entity on your cadence while Sentinel's backend is running, above a severity floor you set, across the source lanes you enable. Risks gain strength as evidence corroborates and ease when it stops.</div>
           <div class="feature-tag">HOURLY CADENCE</div>
         </div>
 
@@ -951,10 +1009,10 @@
   <section class="domains-section" id="cyber">
     <div class="section-inner">
       <div class="section-label">Company &amp; Cyber Intelligence</div>
-      <h2 class="section-title">You should not have to<br /><em>type in your own organisation.</em></h2>
-      <p class="section-body">The first two stages build the model for you. Sentinel researches the organisation from public evidence and proposes its assets with a source behind each one, then attributes the digital estate to those exact assets and screens it, passively.</p>
+      <h2 class="section-title">Know your company.<br /><em>Protect what keeps it running.</em></h2>
+      <p class="section-body">Build your company model from public evidence. Then see external exposure and protection on your own Sentinel device in one clear view, with simple actions for what needs attention.</p>
 
-      <div class="domain-grid">
+      <div class="domain-grid grid-3">
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">01</span>
@@ -971,13 +1029,27 @@
         <div class="domain-card primary">
           <div class="domain-head">
             <span class="domain-n">02</span>
-            <span class="domain-title">Cyber, mapped to assets you own</span>
+            <span class="domain-title">Your company's public exposure</span>
           </div>
-          <div class="domain-body">Most attack-surface tools hand you hostnames with no idea what they support. Sentinel attributes the digital estate to the specific asset it belongs to, so an exposure inherits the criticality and the dependencies of the thing it actually runs.</div>
+          <div class="domain-body">Public findings connect to the assets and dependencies they support. See software warnings, company domains and source coverage without probing external systems.</div>
           <div class="domain-list">
-            <div class="domain-item">Domains, IP ranges, cloud, applications, network zones, identity providers</div>
-            <div class="domain-item">Data stores, vendors, certificates, exposed services, and OT and ICS systems</div>
-            <div class="domain-item">Findings correlate through the graph, so a portal exposure surfaces as an operations risk</div>
+            <div class="domain-item">Relevant software warnings, certificate records and domain information</div>
+            <div class="domain-item">Source dates, coverage gaps and actions to reconnect a provider</div>
+            <div class="domain-item">Previous evidence retained when a source is unavailable</div>
+          </div>
+        </div>
+
+        <div class="domain-card primary">
+          <div class="domain-head">
+            <span class="domain-n">03</span>
+            <span class="domain-title">Protection on your own device</span>
+          </div>
+          <div class="domain-body">Check the Windows device running Sentinel. See what is verified, what needs permission and what you should review, with an action beside each finding.</div>
+          <div class="domain-list">
+            <div class="domain-item">Antivirus, firewall, updates and disk encryption</div>
+            <div class="domain-item">Allow expected connections, flag others and confirm eligible service stops</div>
+            <div class="domain-item">Create a local Sentinel backup and verify it can be restored</div>
+            <div class="domain-item">Import a dated check from another device you own</div>
           </div>
         </div>
       </div>
@@ -992,7 +1064,7 @@
       </div>
 
       <div class="macro-pivot" style="margin-top:36px;">
-        <strong>Passive means passive.</strong> No active scanning, no login attempts, no exploitation, no probing. Sentinel reads public vulnerability catalogues, exploit-prediction scores, certificate transparency logs, registration records and DNS. That is a deliberate ceiling, not a roadmap item: a resilience tool that quietly port-scans your suppliers creates a legal problem for you and an incident for them. Findings carry a priority score and a separate confidence score, because "severe" and "certain" are different questions.
+        <strong>You stay in control.</strong> Company checks use public sources. Device checks run locally, and stopping an eligible service needs your confirmation and Windows permission. Company and device monitoring have separate schedules. Optional Daybreak Blue explanations use a short check summary with your existing OpenAI key and approved project access; they are unavailable in Sovereign Mode. Local protection checks remain available.
       </div>
     </div>
   </section>
@@ -1089,7 +1161,7 @@
           </div>
           <div class="sovereign-check">
             <div class="check-mark">&times;</div>
-            <div class="check-text"><strong>Two functions are honestly excluded.</strong> Company ingestion and cyber discovery research the public web, so they need connectivity and an OpenAI key. Sovereign Mode refuses them outright with an explicit error rather than quietly reaching out. Everything else keeps working.</div>
+            <div class="check-text"><strong>External research stays off.</strong> Company ingestion, cyber discovery and Daybreak Blue explanations require connectivity and OpenAI access. Sovereign Mode disables them. Local protection checks, your model, local AI, voice and private knowledge remain available.</div>
           </div>
         </div>
       </div>
@@ -1127,7 +1199,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Is the cyber capability a vulnerability scanner? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">No, and this is a hard boundary rather than a current limitation. There is no active scanning, no login attempts, no exploitation and no probing. Sentinel reads public sources: the CISA Known Exploited Vulnerabilities catalogue, FIRST's EPSS scores, NVD for CVSS, certificate transparency logs, RDAP registration records and DNS. What makes it useful is attribution rather than volume, since findings are tied to the specific mapped asset they belong to and reach through your dependency graph to whatever else depends on it. It is also conservative about what counts, so buying from a vendor never by itself manufactures a vulnerability against you.</div>
+          <div class="faq-a">Company exposure checks read public sources and connect findings to your mapped assets. They do not probe external systems. Separately, Sentinel checks protection on the Windows device running its backend, including antivirus, firewall, updates, encryption, listening connections and local backup recovery. You can allow expected connections, flag unexpected ones and explicitly confirm stopping an eligible service. A completed check and your own review are shown separately.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">What are the five stages? <span class="faq-arrow">+</span></button>
@@ -1143,11 +1215,11 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Does Sentinel require an internet connection? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">The analysis runs entirely offline in Sovereign Mode. Live signal feeds require internet, and two functions are excluded by design: company ingestion and cyber discovery research the public web, so Sovereign Mode refuses them with an explicit external-connection error rather than quietly reaching out. Everything else, the model, AI analysis via Qwen, voice and the private knowledge base, works fully air-gapped, so an incident that takes out your connectivity does not take out your incident tooling.</div>
+          <div class="faq-a">Your model, analysis via local Qwen, voice, private knowledge and local protection checks work offline in Sovereign Mode. Live feeds and public company checks need internet. Company ingestion, cyber discovery and optional Daybreak Blue explanations are disabled in Sovereign Mode.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Do I need an OpenAI account? <span class="faq-arrow">+</span></button>
-          <div class="faq-a">Not for analysis. Sentinel runs Qwen 3.6 35B locally via Ollama, and if you prefer OpenAI you connect your own key, stored locally. Company ingestion and cyber discovery are the exception: they use AI with public web research and do require an OpenAI key and connectivity.</div>
+          <div class="faq-a">Local analysis and device protection checks do not require OpenAI. Company ingestion and cyber discovery use your OpenAI key for public research. Optional Daybreak Blue explanations reuse that key and require Daybreak access on your API project. Local checks still work when that access is unavailable.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">What do I need to run it? <span class="faq-arrow">+</span></button>
@@ -1171,7 +1243,24 @@
         <div class="changelog-list">
 
           <div class="changelog-entry">
-            <div class="changelog-date">31 Aug 2026 &middot; Latest</div>
+            <div class="changelog-date">08 Oct 2026 &middot; Latest</div>
+            <div class="changelog-right">
+              <div class="changelog-title">Cyber Protection You Can Act On</div>
+              <div class="changelog-body">Cyber View now brings company public exposure and protection on your own Sentinel device into one simple overview. Six local checks cover antivirus, firewall, updates, encryption, listening connections and Sentinel backups. Allow connections you expect, flag those you do not, or confirm stopping an eligible service with Windows approval. Missing checks have direct actions, backups are tested through an isolated restore, and another device can be added through a dated report. Separate company and device schedules keep checks current while the backend runs. Public sources show coverage, repair actions and retained evidence when a provider fails. Optional Daybreak Blue explanations require approved API project access. Street and satellite maps also gain sharper, better-aligned imagery at deep zoom.</div>
+              <div class="changelog-tags">
+                <span class="changelog-tag new">NEW</span>
+                <span class="changelog-tag">Local Protection Checks</span>
+                <span class="changelog-tag">Connection Review</span>
+                <span class="changelog-tag">Verified Local Recovery</span>
+                <span class="changelog-tag improve">IMPROVEMENT</span>
+                <span class="changelog-tag">Public Source Recovery</span>
+                <span class="changelog-tag">Sharper Maps</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry">
+            <div class="changelog-date">31 Aug 2026</div>
             <div class="changelog-right">
               <div class="changelog-title">Unified Resilience Alerts &amp; Intelligence Workflows</div>
               <div class="changelog-body">Background resilience and the five-stage journey are now a single workflow. What a pass composes and what reaches you as an alert are governed by the same evidence, cadence and entity graph, so an alert fires only when affected dependencies intersect assets you have actually mapped, never on proximity alone. Background resilience now runs and is verified end to end while the interface is closed, macro and micro economic context is folded into every pass, and provider loading is bounded and sequential with explicit pipeline limits, so one slow or failing source cannot stall a cycle or inflate the picture. Company ingestion, the News Hub providers and the evidence store were hardened for larger entity graphs, and evidence scoring was cleaned up so confidence reflects source reliability and corroboration rather than static fields. The legacy standalone report module was retired in favour of the unified Events and Response workflow.</div>
@@ -1674,6 +1763,43 @@
   </footer>
 
 </div>
+
+<script id="demo-player-script">
+(function () {
+  const button = document.getElementById('demoButton');
+  const dialog = document.getElementById('demoDialog');
+  const close = document.getElementById('demoClose');
+  const video = document.getElementById('demoVideo');
+  let previousOverflow = '';
+
+  button.addEventListener('click', function () {
+    if (dialog.open) return;
+    const player = document.createElement('iframe');
+    player.src = 'https://www.youtube-nocookie.com/embed/HzxGgq5ZgDk?autoplay=1&rel=0';
+    player.title = 'Sentinel demo walkthrough';
+    player.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    player.allowFullscreen = true;
+    player.referrerPolicy = 'strict-origin-when-cross-origin';
+    video.replaceChildren(player);
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    close.focus();
+  });
+
+  close.addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (event) {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+  dialog.addEventListener('close', function () {
+    video.replaceChildren();
+    document.body.style.overflow = previousOverflow;
+    button.focus({preventScroll: true});
+  });
+})();
+</script>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
