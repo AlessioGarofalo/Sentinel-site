@@ -72,7 +72,8 @@
     .nav-demo svg { width: 14px; height: 14px; fill: currentColor; }
     button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     .demo-dialog {
-      width: min(1040px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+      width: min(1040px, calc(100vw - 32px), calc((100dvh - 200px) * 16 / 9));
+      max-height: calc(100dvh - 32px);
       margin: auto; padding: 0; overflow: auto;
       border: 1px solid var(--line-strong); border-radius: 12px;
       background: var(--bg2); color: var(--ink);
@@ -90,6 +91,11 @@
     .demo-video { aspect-ratio: 16 / 9; background: #000; }
     .demo-video iframe { display: block; width: 100%; height: 100%; border: 0; }
     .demo-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding: 16px 24px; font-size: 13px; color: var(--muted); }
+    @media (max-height: 600px) {
+      .demo-header { padding: 12px 16px; }
+      .demo-header h2 { font-size: 18px; }
+      .demo-footer { padding: 12px 16px; font-size: 12px; }
+    }
     .nav-cta {
       padding: 8px 20px;
       border: 1px solid var(--line-strong);
